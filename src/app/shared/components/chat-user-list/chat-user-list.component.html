@@ -1,0 +1,5 @@
+<p>chat-user-list works!</p>
+@for (item of users$| async; track $index) {
+<app-chat-user-card [user]="item"></app-chat-user-card>
+<div style="height: 5px;"></div>
+}

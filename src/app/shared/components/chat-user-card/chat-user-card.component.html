@@ -1,0 +1,15 @@
+<ng-container>
+    <div class="chat-user-card">
+        <div class="chat-user-card__avatar">
+            <img [src]="avater" alt="avatar" />
+        </div>
+        <div class="chat-user-card__info">
+            <div class="chat-user-card__info__name">{{ user.name }}</div>
+            <div class="chat-user-card__info__status">
+                <span class="chat-user-card__info__status__indicator"
+                    [ngClass]="{ 'online': user.status === 'online', 'offline': user.status === 'offline' }"></span>
+                <span>{{ user.status }}</span>
+            </div>
+        </div>
+    </div>
+</ng-container>
