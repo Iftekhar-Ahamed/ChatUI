@@ -17,8 +17,6 @@ export interface LogedInUserStateModel {
             name: "Iftekhar Ahamed",
             email: "iftekhar@email.com",
             avatar: "avater.jpg",
-            status: UserStatus.Online,
-            type: UserType.LoginUser,
             token: "Not found"
         }
     }

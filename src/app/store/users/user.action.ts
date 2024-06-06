@@ -5,4 +5,8 @@ export namespace UserAction {
         static readonly type = '[SetUserData] Set User data';
         constructor(public user: User[]) { }
     }
+    export class SelectUser {
+        static readonly type = '[SelectUser] User Selected';
+        constructor(public user: User) { }
+    }
 }       

@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { LogedInUser, User } from '../../models/user.model';
 import { Observable } from 'rxjs';
-import { UserState } from '../../../store';
+import { UserAction, UserState } from '../../../store';
 
 @Component({
   selector: 'app-chat-user-card',
@@ -17,10 +17,13 @@ export class ChatUserCardComponent {
 
   @Input() user!: User;
 
-  constructor() {
+  constructor(private store: Store) {
   }
 
-  get avater(): string {
+  get avatar(): string {
     return `assets/${this.user.avatar}`;
+  }
+  onSelect(): void {
+    this.store.dispatch(new UserAction.SelectUser(this.user));
   }
 }

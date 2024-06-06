@@ -18,4 +18,9 @@ export class ChatUserListComponent {
   constructor() {
 
   }
+
+  trackfn(index: number, user: User): string {
+    return `${user.id}${user.isSelected}${Math.random()}`;
+  }
+
 }
