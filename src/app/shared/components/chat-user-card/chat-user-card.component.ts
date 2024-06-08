@@ -1,9 +1,8 @@
-import { AsyncPipe, CommonModule, NgClass, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { LogedInUser, User } from '../../models/user.model';
-import { Observable } from 'rxjs';
-import { UserAction, UserState } from '../../../store';
+import { Store } from '@ngxs/store';
+import { UserAction } from '../../../store';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-chat-user-card',

@@ -1,8 +1,6 @@
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { LogedInUser } from "../../shared/models/user.model";
-import { UserStatus, UserType } from "../../shared/enums/user.enum";
 import { Injectable } from "@angular/core";
-import { UserAction } from "../users/user.action";
 import { logedInUserAction } from "./logedInUser.action";
 
 export interface LogedInUserStateModel {

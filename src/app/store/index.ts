@@ -1,7 +1,6 @@
-import { UserState } from './users/user.state';
-export * from '../store/users/user.action';
-export * from '../store/users/user.state';
-
+import { ChatListState } from './chatList/chatList.state';
+export * from '../store/chatList/chatList.action';
+export * from '../store/chatList/chatList.state';
 export const AppState = [
-    UserState,
+    ChatListState
 ];
