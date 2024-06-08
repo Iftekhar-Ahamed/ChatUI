@@ -1,7 +1,10 @@
 <header class="header">
     <nav>
         <ul class="nav-links">
-            <li><a href="home/chatList" [ngClass]="{'selected': isSelected}">All Chats</a></li>
+            <li *ngFor="let item of (itemLinks$ | async); trackBy: trackfn">
+                <a [href]="item.url" [ngClass]="{'selected': item.isSelected}" (click)="onSelect(item)">{{ item.name
+                    }}</a>
+            </li>
         </ul>
     </nav>
 </header>

@@ -33,8 +33,7 @@ export interface chatListStateModel {
                 type: UserType.LoginUser,
                 lastMessage: "Bye",
                 isSelected: false
-            }],
-            isSelected: true
+            }]
         },
         pev: null,
         current: null
