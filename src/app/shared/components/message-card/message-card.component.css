@@ -3,8 +3,35 @@
     border-radius: 8px;
     padding: 10px;
     margin: 10px 0;
-    background-color: #f9f9f9;
+    max-width: 60%;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.self {
+    background: linear-gradient(135deg, #d1ffd6, #a3ffb2);
+    /* Gradient for self messages */
+    margin-left: auto;
+    margin-left: 50%;
+    text-align: right;
+    border-radius: 8px 8px 0 8px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Extra shadow */
+    padding: 10px 15px;
+    /* Extra padding */
+}
+
+.other {
+    background-color: #f1f1f1;
+    /* Light gray for other messages */
+    margin-right: 50%;
+    margin-right: auto;
+    text-align: left;
+    border-radius: 8px 8px 0 8px;
+    padding: 10px 15px;
 }
 
 .message-header {
@@ -27,4 +54,14 @@
 .message-body {
     font-size: 1em;
     color: #555;
+}
+
+.message-card.self .author {
+    color: #2c662d;
+    /* Different color for the author's name in self messages */
+}
+
+.message-card.self .date-time {
+    color: #2c662d;
+    /* Different color for the date-time in self messages */
 }

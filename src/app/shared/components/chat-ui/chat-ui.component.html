@@ -1,4 +1,9 @@
 <p>chat-ui works!</p>
-@for (msg of room?.messages; track $index) {
-<app-message-card [msg]="msg"></app-message-card>
-}
+<div class="chat-container">
+    <p>Chat UI</p>
+    <div class="messages">
+        @for (msg of room?.messages; track $index) {
+        <app-message-card [msg]="msg"></app-message-card>
+        }
+    </div>
+</div>

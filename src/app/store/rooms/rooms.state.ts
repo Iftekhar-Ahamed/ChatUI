@@ -28,6 +28,12 @@ export interface RoomsStateModel {
                         message: "Hi",
                         messageDateTime: new Date(),
                         id: "2"
+                    },
+                    {
+                        author: "User 1",
+                        message: "Hi",
+                        messageDateTime: new Date(),
+                        id: "2"
                     }
                 ],
                 lastMessage: "Hi",
