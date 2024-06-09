@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { ChatUserCardComponent } from '../chat-user-card/chat-user-card.component';
 import { ChatListState } from '../../../store';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChatListModel } from '../../models/chatList.model';
+import { ActivatedRoute } from '@angular/router';
+import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 
 @Component({
   selector: 'app-chat-user-list',
@@ -16,8 +18,12 @@ import { ChatListModel } from '../../models/chatList.model';
 })
 export class ChatUserListComponent {
   @Select(ChatListState.chatLists) chatList$!: Observable<ChatListModel>;
-  constructor() {
-
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store
+  ) {
+    const data = this.route.snapshot.data;
+    store.dispatch(new ItemLinkAction.SelectItemLink(data['path']))
   }
 
   trackfn(index: number, user: User): string {

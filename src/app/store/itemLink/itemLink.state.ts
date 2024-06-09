@@ -14,15 +14,15 @@ export interface itemLinkStateModel {
     defaults: {
         items: [
             {
-                id: 1,
+                key: "home/chatList",
                 name: "All Chat",
                 isSelected: false,
-                url: "home/chatList"
+                url: "chatList"
             }, {
-                id: 2,
+                key: "home/profile",
                 name: "Profile",
                 isSelected: false,
-                url: "home/profile"
+                url: "profile"
             }
         ],
         pev: null,
@@ -42,7 +42,7 @@ export class itemLinkState {
     ) { }
 
     @Action(ItemLinkAction.SetItemLinkData)
-    async setUserData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData) {
+    async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData) {
         let state = ctx.getState();
         ctx.setState({
             ...state,
@@ -50,28 +50,41 @@ export class itemLinkState {
         });
     }
     @Action(ItemLinkAction.SelectItemLink)
-    async selectUser(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink) {
+    async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink) {
         let state = ctx.getState();
 
-        if (state.current && state.current.id === action.item.id) {
+
+        if (state.current && state.current.key === action.key) {
             return;
         }
 
+        const actionItem = state.items.find(x => x.key == action.key);
+
         if (state.current) {
             state.current.isSelected = false;
-            const item = state.items.find(item => item.id === state.current?.id);
+            const item = state.items.find(item => item.key === state.current?.key);
             if (item) {
                 item.isSelected = false;
             }
         }
 
-        action.item.isSelected = true;
         const temp = state.current;
 
-        ctx.setState({
-            ...state,
-            current: action.item,
-            pev: temp
-        });
+        if (actionItem) {
+            actionItem.isSelected = true;
+
+
+            ctx.setState({
+                ...state,
+                current: actionItem,
+                pev: temp
+            });
+        } else {
+            ctx.setState({
+                ...state,
+                current: null,
+                pev: temp
+            });
+        }
     }
 }

@@ -10,10 +10,16 @@ export const routes: Routes = [
         component: HomelayoutComponent,
         children: [{
             path: 'chatList',
+            data: {
+                path: 'home/chatList'
+            },
             component: ChatUserListComponent
         },
         {
             path: 'profile',
+            data: {
+                path: 'home/profile'
+            },
             component: ProfileComponent
         }]
     },

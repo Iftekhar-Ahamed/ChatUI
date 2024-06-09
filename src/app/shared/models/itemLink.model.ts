@@ -1,5 +1,5 @@
 export interface ItemLinkModel {
-    id: number;
+    key: string;
     name: string;
     url: string;
     isSelected: boolean;

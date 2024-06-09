@@ -2,7 +2,8 @@
     <nav>
         <ul class="nav-links">
             <li *ngFor="let item of (itemLinks$ | async); trackBy: trackfn">
-                <a [href]="item.url" [ngClass]="{'selected': item.isSelected}" (click)="onSelect(item)">{{ item.name
+                <a [routerLink]="item.url" [ngClass]="{'selected': item.isSelected}">{{
+                    item.name
                     }}</a>
             </li>
         </ul>
