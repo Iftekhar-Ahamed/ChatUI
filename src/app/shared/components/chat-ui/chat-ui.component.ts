@@ -5,11 +5,12 @@ import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 import { RoomSate } from '../../../store/rooms/rooms.state';
 import { map, takeWhile, tap } from 'rxjs';
 import { Room } from '../../models/message.model';
+import { MessageCardComponent } from '../message-card/message-card.component';
 
 @Component({
   selector: 'app-chat-ui',
   standalone: true,
-  imports: [],
+  imports: [MessageCardComponent],
   templateUrl: './chat-ui.component.html',
   styleUrl: './chat-ui.component.css'
 })

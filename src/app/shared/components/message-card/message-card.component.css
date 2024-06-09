@@ -1,0 +1,30 @@
+.message-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.author {
+    font-weight: bold;
+    color: #333;
+}
+
+.date-time {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.message-body {
+    font-size: 1em;
+    color: #555;
+}

@@ -1,1 +1,10 @@
 <p>message-card works!</p>
+<div class="message-card">
+    <div class="message-header">
+        <span class="author">{{ msg.author }}</span>
+        <span class="date-time">{{ msg.messageDateTime | date:'short'}}</span>
+    </div>
+    <div class="message-body">
+        <p>{{ msg.message }}</p>
+    </div>
+</div>
