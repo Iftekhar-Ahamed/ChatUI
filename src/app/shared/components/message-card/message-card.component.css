@@ -12,23 +12,16 @@
 
 .self {
     background: linear-gradient(135deg, #d1ffd6, #a3ffb2);
-    /* Gradient for self messages */
-    margin-left: auto;
-    margin-left: 50%;
+    margin-left: 75%;
     text-align: right;
     border-radius: 8px 8px 0 8px;
-    /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Extra shadow */
     padding: 10px 15px;
-    /* Extra padding */
 }
 
 .other {
     background-color: #f1f1f1;
-    /* Light gray for other messages */
-    margin-right: 50%;
-    margin-right: auto;
+    margin-right: 75%;
     text-align: left;
     border-radius: 8px 8px 0 8px;
     padding: 10px 15px;
@@ -38,7 +31,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .author {
@@ -58,10 +51,28 @@
 
 .message-card.self .author {
     color: #2c662d;
-    /* Different color for the author's name in self messages */
 }
 
 .message-card.self .date-time {
     color: #2c662d;
-    /* Different color for the date-time in self messages */
+}
+
+@media screen and (max-width: 768px) {
+    .other {
+        margin-right: 75%;
+    }
+
+    .self {
+        margin-left: 75%;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .other {
+        margin-right: 50%;
+    }
+
+    .self {
+        margin-left: 55%;
+    }
 }
