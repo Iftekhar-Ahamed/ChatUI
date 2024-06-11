@@ -2,8 +2,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
-    margin: 10px 0;
-    max-width: 60%;
+    max-width: 100%;
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
@@ -12,7 +11,7 @@
 
 .self {
     background: linear-gradient(135deg, #d1ffd6, #a3ffb2);
-    margin-left: 75%;
+    margin-left: 20%;
     text-align: right;
     border-radius: 8px 8px 0 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -21,7 +20,7 @@
 
 .other {
     background-color: #f1f1f1;
-    margin-right: 75%;
+    margin-right: 20%;
     text-align: left;
     border-radius: 8px 8px 0 8px;
     padding: 10px 15px;
@@ -55,24 +54,4 @@
 
 .message-card.self .date-time {
     color: #2c662d;
-}
-
-@media screen and (max-width: 768px) {
-    .other {
-        margin-right: 75%;
-    }
-
-    .self {
-        margin-left: 75%;
-    }
-}
-
-@media screen and (max-width: 390px) {
-    .other {
-        margin-right: 50%;
-    }
-
-    .self {
-        margin-left: 55%;
-    }
 }

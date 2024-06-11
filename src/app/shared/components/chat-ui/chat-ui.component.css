@@ -1,6 +1,7 @@
 .chat-container {
-    width: 100%;
-    max-width: 800px;
+    width: 90%;
+    height: calc(100vh - 70px);
+    margin: 10px auto 0;
     margin: 0 auto;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -34,10 +35,4 @@
     padding: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-@media screen and (max-width: 390px) {
-    .chat-container {
-        width: 100%;
-    }
 }

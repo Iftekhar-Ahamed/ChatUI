@@ -39,4 +39,5 @@ export class ChatUIComponent {
   ngDistroy() {
     this.isAlive = false;
   }
+
 }
