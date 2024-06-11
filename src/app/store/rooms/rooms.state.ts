@@ -19,19 +19,51 @@ export interface RoomsStateModel {
                 roomName: "Room 1",
                 messages: [
                     {
-                        author: "User 1",
+                        author: "Iftekhar",
                         message: "Hello",
                         messageDateTime: new Date(),
                         id: "1"
                     }, {
-                        author: "User 2",
+                        author: "Al-Amin",
                         message: "Hi",
                         messageDateTime: new Date(),
                         id: "2"
                     },
                     {
-                        author: "User 1",
+                        author: "Iftekhar",
+                        message: "Yess!!",
+                        messageDateTime: new Date(),
+                        id: "3"
+                    }, {
+                        author: "Iftekhar",
+                        message: "Hello",
+                        messageDateTime: new Date(),
+                        id: "1"
+                    }, {
+                        author: "Al-Amin",
                         message: "Hi",
+                        messageDateTime: new Date(),
+                        id: "2"
+                    },
+                    {
+                        author: "Iftekhar",
+                        message: "Yess!!",
+                        messageDateTime: new Date(),
+                        id: "2"
+                    }, {
+                        author: "Iftekhar",
+                        message: "Hello",
+                        messageDateTime: new Date(),
+                        id: "1"
+                    }, {
+                        author: "Al-Amin",
+                        message: "Hi",
+                        messageDateTime: new Date(),
+                        id: "2"
+                    },
+                    {
+                        author: "Iftekhar",
+                        message: "Yess!!",
                         messageDateTime: new Date(),
                         id: "2"
                     }
@@ -58,7 +90,7 @@ export interface RoomsStateModel {
                 lastMessage: "Hi",
                 lastMessageTime: new Date(),
                 isRead: true
-            }
+            },
         ],
         pev: null,
         current: null

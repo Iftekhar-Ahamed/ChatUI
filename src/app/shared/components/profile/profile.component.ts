@@ -16,7 +16,6 @@ export class ProfileComponent {
     private store: Store
   ) {
     const data = this.route.snapshot.data;
-    console.log(data['path']);
     store.dispatch(new ItemLinkAction.SelectItemLink(data['path']))
   }
 }
