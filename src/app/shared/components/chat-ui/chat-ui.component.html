@@ -1,7 +1,7 @@
 <div style="height: 10px;"></div>
 <div class="chat-container">
     <p>Chat UI</p>
-    <div class="messages">
+    <div class="messages md:max-h-[650px]  xl:max-h-[700px] max-h-[77vh]">
         @for (msg of room?.messages; track $index) {
         <app-message-card [msg]="msg"></app-message-card>
         }

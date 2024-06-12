@@ -23,14 +23,13 @@
     gap: 10px;
     /* Space between messages */
     overflow-y: auto;
-    max-height: 550px;
     /* Adjust as necessary */
     /* Space for scrollbar */
 }
 
 /* For webkit-based browsers */
 .messages::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
     /* Adjust the width of the scrollbar */
 }
 
