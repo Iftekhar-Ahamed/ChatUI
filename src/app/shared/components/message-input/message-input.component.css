@@ -1,0 +1,49 @@
+/* styles.css */
+
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    /* border-top: 1px solid #d1d5db; */
+    /* Tailwind's gray-300 */
+}
+
+.chat-input {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    outline: none;
+}
+
+.chat-input:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    /* Tailwind's ring-2 ring-blue-500 */
+    border-color: #3b82f6;
+    /* Tailwind's blue-500 */
+}
+
+.send-button {
+    background-color: #3b82f6;
+    /* Tailwind's blue-500 */
+    color: white;
+    border-radius: 0.375rem;
+    /* Tailwind's rounded-lg */
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 0.5rem;
+    /* Add margin to create space */
+}
+
+.send-button:hover {
+    background-color: #2563eb;
+    /* Tailwind's blue-600 */
+}
+
+.send-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    /* Tailwind's ring-2 ring-blue-500 */
+}
