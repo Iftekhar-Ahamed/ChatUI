@@ -110,6 +110,10 @@ export class RoomSate {
             return state.rooms.find(x => x.roomId == roomId) || null;
         };
     }
+    @Selector()
+    static currentRoom(state: RoomsStateModel): Room | null {
+        return state.current;
+    }
 
     constructor(
         private store: Store
@@ -123,42 +127,38 @@ export class RoomSate {
             rooms: action.rooms
         });
     }
-    // @Action(ItemLinkAction.SelectItemLink)
-    // async selectItem(ctx: StateContext<RoomsStateModel>, action: ItemLinkAction.SelectItemLink) {
-    //     let state = ctx.getState();
+    @Action(RoomsAction.SelectRoom)
+    async selectRoom(ctx: StateContext<RoomsStateModel>, action: RoomsAction.SelectRoom) {
+        let state = ctx.getState();
 
+        const actionItem = state.rooms.find(x => x.roomId == action.key);
 
-    //     if (state.current && state.current.key === action.key) {
-    //         return;
-    //     }
+        const temp = state.current;
 
-    //     const actionItem = state.items.find(x => x.key == action.key);
+        if (actionItem) {
 
-    //     if (state.current) {
-    //         state.current.isSelected = false;
-    //         const item = state.items.find(item => item.key === state.current?.key);
-    //         if (item) {
-    //             item.isSelected = false;
-    //         }
-    //     }
+            ctx.setState(
+                {
+                    ...state,
+                    current: actionItem,
+                    pev: temp
+                }
+            );
 
-    //     const temp = state.current;
+        } else {
 
-    //     if (actionItem) {
-    //         actionItem.isSelected = true;
-
-
-    //         ctx.setState({
-    //             ...state,
-    //             current: actionItem,
-    //             pev: temp
-    //         });
-    //     } else {
-    //         ctx.setState({
-    //             ...state,
-    //             current: null,
-    //             pev: temp
-    //         });
-    //     }
-    // }
+            ctx.setState(
+                {
+                    ...state,
+                    current: null,
+                    pev: temp
+                }
+            );
+        }
+    }
+    @Action(RoomsAction.AddMessageIntoCurrentRoom)
+    async AddMessage(ctx: StateContext<RoomsStateModel>, action: RoomsAction.AddMessageIntoCurrentRoom) {
+        let state = ctx.getState();
+        state.current?.messages.push(action.msg);
+    }
 }

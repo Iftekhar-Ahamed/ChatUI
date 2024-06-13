@@ -1,4 +1,4 @@
 <div class="chat-input-container">
-    <input type="text" placeholder="Type a message" class="chat-input">
-    <button class="send-button">Send</button>
+    <input type="text" placeholder="Type a message" [(ngModel)]="msg.message" class="chat-input">
+    <button class="send-button" (click)="send()">Send</button>
 </div>

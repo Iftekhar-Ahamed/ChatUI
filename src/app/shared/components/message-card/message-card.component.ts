@@ -12,4 +12,6 @@ import { CommonModule } from '@angular/common';
 export class MessageCardComponent {
   @Input() msg!: Message;
   loggedInUser: string = "Al-Amin";
+  constructor() {
+  }
 }

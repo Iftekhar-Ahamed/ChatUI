@@ -11,6 +11,7 @@ import { environment } from './environments/environment';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 export const appConfig: ApplicationConfig = {
@@ -35,11 +36,13 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     importProvidersFrom(
-      NgxsStoragePluginModule.forRoot()
+      NgxsStoragePluginModule.forRoot({
+        keys: '*'
+      })
     ),
     importProvidersFrom(
       NgxsLoggerPluginModule.forRoot({ disabled: environment.production })
     ),
-    provideAnimations(),
+    provideAnimations(), provideAnimationsAsync(),
   ]
 };
