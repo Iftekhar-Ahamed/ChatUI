@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChatListModel } from '../../models/chatList.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 
 @Component({
   selector: 'app-chat-user-list',
   standalone: true,
-  imports: [CommonModule, ChatUserCardComponent, AsyncPipe],
+  imports: [CommonModule, ChatUserCardComponent, AsyncPipe,RouterModule],
   templateUrl: './chat-user-list.component.html',
   styleUrl: './chat-user-list.component.css'
 })
