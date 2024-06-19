@@ -6,7 +6,8 @@ import { ChatUIComponent } from './shared/components/chat-ui/chat-ui.component';
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/home/chatList/chat', pathMatch: 'full' },
+    { path: 'home/chatList', redirectTo: '/home/chatList/chat', pathMatch: 'full' },
     {
         path: 'home',
         component: HomelayoutComponent,
@@ -14,15 +15,15 @@ export const routes: Routes = [
         [
             {
                 path: 'chatList',
-                data: 
-                {
-                    path: 'home/chatList'
-                },
                 component: ChatUserListComponent,
                 children:
                 [
                     {
                         path:'chat',
+                        data: 
+                        {
+                            path: 'home/chatList'
+                        },
                         component : ChatUIComponent
                     }
                 ]
@@ -40,6 +41,12 @@ export const routes: Routes = [
                     path: 'home/chat'
                 },
                 component: ChatUIComponent
+            },{
+                path: 'chatFriends',
+                data: {
+                    path: 'home/chatFriends'
+                },
+                component: ChatUserListComponent
             }
         ]
     },

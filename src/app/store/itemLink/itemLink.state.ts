@@ -29,7 +29,12 @@ export interface itemLinkStateModel {
                 name: "Chat",
                 isSelected: false,
                 url: "chat"
-            }
+            },{
+                key: "home/chatFriends",
+                name: "Chat Friends",
+                isSelected: false,
+                url: "chatFriends"
+            },
         ],
         pev: null,
         current: null

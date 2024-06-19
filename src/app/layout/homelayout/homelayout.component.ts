@@ -4,11 +4,6 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ChatUserListComponent } from '../../shared/components/chat-user-list/chat-user-list.component';
 import { NavigationComponent } from '../../shared/components/navigation/navigation.component';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { ChatListModel } from '../../shared/models/chatList.model';
-import { ChatListState } from '../../store';
-import { ItemLinkModel } from '../../shared/models/itemLink.model';
-import { itemLinkState } from '../../store/itemLink/itemLink.state';
 import { ItemLinkAction } from '../../store/itemLink/itemLink.action';
 
 @Component({
