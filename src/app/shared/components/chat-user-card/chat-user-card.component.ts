@@ -39,6 +39,11 @@ export class ChatUserCardComponent implements OnInit {
 
     if(this.user)
     {
+      if(this.user.isSelected)
+      {
+        this.onSelect();
+      }
+
       this.store.select(RoomSate.getRoomById)
         .pipe(
           takeWhile(() => this.isAlive),
@@ -50,6 +55,7 @@ export class ChatUserCardComponent implements OnInit {
             }
           })
         ).subscribe();
+
     }
   }
 
