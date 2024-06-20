@@ -7,7 +7,6 @@ export interface User {
     avatar: string;
     status: UserStatus;
     type: UserType;
-    lastMessage: string;
     isSelected: boolean;
 }
 

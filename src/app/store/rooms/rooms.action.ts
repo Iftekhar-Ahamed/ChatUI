@@ -18,7 +18,7 @@ export namespace RoomsAction {
 
     }
 
-    export class AddMessageIntoCurrentRoom {
+    export class AddMessageRoomById {
 
         static readonly type = '[AddMessageIntoCurrentRoom] Message Added';
 

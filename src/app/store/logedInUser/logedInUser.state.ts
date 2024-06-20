@@ -16,7 +16,7 @@ export interface LogedInUserStateModel
         {
             logedInUser: 
             {
-                id: 1,
+                id: "1",
                 name: "Iftekhar Ahamed",
                 email: "iftekhar@email.com",
                 avatar: "avater.jpg",
@@ -26,13 +26,16 @@ export interface LogedInUserStateModel
     }
 )
 @Injectable()
-export class UserState 
+export class LogedInUserState 
 {
 
     @Selector()
     static userNameOrEmail(state: LogedInUserStateModel): string 
     {
-        return state.logedInUser?.name ?? state.logedInUser?.email ?? "";
+        if (state && state.logedInUser) {
+            return state.logedInUser.name;
+        }
+        return "";
     }
 
     @Selector()

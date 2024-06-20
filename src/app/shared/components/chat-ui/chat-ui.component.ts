@@ -55,7 +55,6 @@ export class ChatUIComponent implements AfterViewChecked
   ngAfterViewChecked(): void 
   {
     this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
-    console.log(this.scrollFrame.nativeElement.scrollTop);
   }
   ngDistroy() 
   {

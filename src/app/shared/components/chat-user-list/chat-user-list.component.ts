@@ -17,7 +17,9 @@ import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
   styleUrl: './chat-user-list.component.css'
 })
 export class ChatUserListComponent {
+  
   @Select(ChatListState.chatLists) chatList$!: Observable<ChatListModel>;
+
   constructor(
     private route: ActivatedRoute,
     private store: Store

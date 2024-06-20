@@ -24,7 +24,7 @@ export interface RoomsStateModel {
                     messages: 
                     [
                         {
-                            author: "Iftekhar",
+                            author: "Iftekhar Ahamed",
                             message: "Hello",
                             messageDateTime: new Date(),
                             id: "1"
@@ -35,12 +35,12 @@ export interface RoomsStateModel {
                             id: "2"
                         },
                         {
-                            author: "Iftekhar",
+                            author: "Iftekhar Ahamed",
                             message: "Yess!!",
                             messageDateTime: new Date(),
                             id: "3"
                         }, {
-                            author: "Iftekhar",
+                            author: "Iftekhar Ahamed",
                             message: "Hello",
                             messageDateTime: new Date(),
                             id: "1"
@@ -51,12 +51,12 @@ export interface RoomsStateModel {
                             id: "2"
                         },
                         {
-                            author: "Iftekhar",
+                            author: "Iftekhar Ahamed",
                             message: "Yess!!",
                             messageDateTime: new Date(),
                             id: "2"
                         }, {
-                            author: "Iftekhar",
+                            author: "Iftekhar Ahamed",
                             message: "Hello",
                             messageDateTime: new Date(),
                             id: "1"
@@ -67,13 +67,13 @@ export interface RoomsStateModel {
                             id: "2"
                         },
                         {
-                            author: "Iftekhar",
+                            author: "Iftekhar Ahamed",
                             message: "Yess!!",
                             messageDateTime: new Date(),
                             id: "2"
                         }
                     ],
-                    lastMessage: "Hi",
+                    lastMessage: "Yess!!",
                     lastMessageTime: new Date(),
                     isRead: false
                 }, 
@@ -89,7 +89,7 @@ export interface RoomsStateModel {
                             id: "1"
                         }, 
                         {
-                            author: "User 4",
+                            author: "Iftekhar Ahamed",
                             message: "Hi",
                             messageDateTime: new Date(),
                             id: "2"
@@ -196,12 +196,16 @@ export class RoomSate {
         }
     }
 
-    @Action(RoomsAction.AddMessageIntoCurrentRoom)
-    async AddMessage(ctx: StateContext<RoomsStateModel>, action: RoomsAction.AddMessageIntoCurrentRoom) 
+    @Action(RoomsAction.AddMessageRoomById)
+    async AddMessage(ctx: StateContext<RoomsStateModel>, action: RoomsAction.AddMessageRoomById) 
     {
 
         let state = ctx.getState();
-        state.current?.messages.push(action.msg);
-
+        const room = state.rooms.find(x => x.roomId === action.key);
+        if(room)
+        {
+            room.messages.push(action.msg);
+            room.lastMessage = action.msg.message;
+        }
     }
 }

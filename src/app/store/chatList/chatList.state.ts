@@ -29,7 +29,6 @@ export interface chatListStateModel
                         avatar: "avater.jpg",
                         status: UserStatus.Online,
                         type: UserType.LoginUser,
-                        lastMessage: "Hello",
                         isSelected: false
                     }, 
                     {
@@ -39,7 +38,6 @@ export interface chatListStateModel
                         avatar: "avater.jpg",
                         status: UserStatus.Offline,
                         type: UserType.LoginUser,
-                        lastMessage: "Bye",
                         isSelected: false
                     }
                 ]
