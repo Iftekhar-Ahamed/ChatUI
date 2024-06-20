@@ -7,42 +7,54 @@ import { Observable, map, takeUntil, takeWhile, tap } from 'rxjs';
 import { Room } from '../../models/message.model';
 import { MessageCardComponent } from '../message-card/message-card.component';
 import { MessageInputComponent } from '../message-input/message-input.component';
-import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
+import { ViewportScroller } from "@angular/common";
 
-@Component({
-  selector: 'app-chat-ui',
-  standalone: true,
-  imports: [CdkVirtualScrollViewport, MessageCardComponent, MessageInputComponent, ScrollingModule, CommonModule],
-  templateUrl: './chat-ui.component.html',
-  styleUrl: './chat-ui.component.css'
-})
-export class ChatUIComponent {
+@Component
+(
+  {
+    selector: 'app-chat-ui',
+    standalone: true,
+    imports: [ MessageCardComponent, MessageInputComponent, CommonModule ],
+    templateUrl: './chat-ui.component.html',
+    styleUrl: './chat-ui.component.css',
+    providers: [],
+  }
+)
+export class ChatUIComponent 
+{
+
 
   room$: Observable<Room | null>;
   isAlive: boolean = true;
 
-
   constructor(
     private route: ActivatedRoute,
     private store: Store
-  ) {
+  ) 
+  {
 
     const data = this.route.snapshot.data;
     store.dispatch(new ItemLinkAction.SelectItemLink(data['path']));
 
     this.room$ = this.store.select(RoomSate.roomById)
-      .pipe(
+      .pipe
+      (
         takeWhile(() => this.isAlive),
         map(filterFn => filterFn("1")),
-        tap((x: Room | null) => {
-          console.log(x);
-          return x;
-        })
+        tap
+        (
+          (x: Room | null) => 
+          {
+            return x;
+          }
+        )
       );
   }
 
-  ngDistroy() {
+  ngDistroy() 
+  {
     this.isAlive = false;
   }
 

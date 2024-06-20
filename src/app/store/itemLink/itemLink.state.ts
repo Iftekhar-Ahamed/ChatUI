@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { ItemLinkAction } from './itemLink.action';
 import { ItemLinkModel } from "../../shared/models/itemLink.model";
 
-export interface itemLinkStateModel {
+export interface itemLinkStateModel 
+{
     items: ItemLinkModel[];
     pev: ItemLinkModel | null;
     current: ItemLinkModel | null;
@@ -11,7 +12,8 @@ export interface itemLinkStateModel {
 
 @State<itemLinkStateModel>({
     name: 'itemLink',
-    defaults: {
+    defaults: 
+    {
         items: [
             {
                 key: "home/chatList",
@@ -39,12 +41,14 @@ export interface itemLinkStateModel {
         pev: null,
         current: null
     }
-})
+)
+
 @Injectable()
 export class itemLinkState {
 
     @Selector()
-    static itemList(state: itemLinkStateModel): ItemLinkModel[] {
+    static itemList(state: itemLinkStateModel): ItemLinkModel[] 
+    {
         return state.items;
     }
 
@@ -53,49 +57,78 @@ export class itemLinkState {
     ) { }
 
     @Action(ItemLinkAction.SetItemLinkData)
-    async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData) {
+    async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData) 
+    {
+
         let state = ctx.getState();
-        ctx.setState({
-            ...state,
-            items: action.items
-        });
+
+        ctx.setState
+        (
+            {
+                ...state,
+                items: action.items
+            }
+        );
+
     }
+
     @Action(ItemLinkAction.SelectItemLink)
-    async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink) {
+    async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink)
+    {
+
         let state = ctx.getState();
 
 
-        if (state.current && state.current.key === action.key) {
+        if (state.current && state.current.key === action.key) 
+        {
             return;
         }
 
         const actionItem = state.items.find(x => x.key == action.key);
 
-        if (state.current) {
+        if (state.current) 
+        {
+
             state.current.isSelected = false;
             const item = state.items.find(item => item.key === state.current?.key);
-            if (item) {
+
+            if (item)
+            {
                 item.isSelected = false;
             }
+
         }
 
         const temp = state.current;
 
-        if (actionItem) {
+        if (actionItem) 
+        {
+
             actionItem.isSelected = true;
 
 
-            ctx.setState({
-                ...state,
-                current: actionItem,
-                pev: temp
-            });
-        } else {
-            ctx.setState({
-                ...state,
-                current: null,
-                pev: temp
-            });
+            ctx.setState
+            (
+                {
+                    ...state,
+                    current: actionItem,
+                    pev: temp
+                }
+            );
+
+        } 
+        else 
+        {
+
+            ctx.setState
+            (
+                {
+                    ...state,
+                    current: null,
+                    pev: temp
+                }
+            );
+
         }
     }
 }

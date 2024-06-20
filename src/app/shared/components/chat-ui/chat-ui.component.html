@@ -1,6 +1,7 @@
 <div style="height: 10px;"></div>
 <div class="chat-container">
     <p>Chat UI</p>
+
     <div *ngIf="room$ | async as room" class="messages md:max-h-[650px]  xl:max-h-[730px] max-h-[77vh]">
         <div *ngFor="let item of room?.messages || []; let i = index">
             <app-message-card [msg]="item"></app-message-card>

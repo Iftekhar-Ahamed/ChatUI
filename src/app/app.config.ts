@@ -43,6 +43,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       NgxsLoggerPluginModule.forRoot({ disabled: environment.production })
     ),
-    provideAnimations(), provideAnimationsAsync(),
+    provideAnimations(), provideAnimationsAsync(), provideAnimationsAsync(),
   ]
 };

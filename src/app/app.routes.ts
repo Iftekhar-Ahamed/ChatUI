@@ -3,6 +3,7 @@ import { HomelayoutComponent } from './layout/homelayout/homelayout.component';
 import { ChatUserListComponent } from './shared/components/chat-user-list/chat-user-list.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
 import { ChatUIComponent } from './shared/components/chat-ui/chat-ui.component';
+import { TestComponent } from './shared/components/test/test.component';
 
 
 export const routes: Routes = [
@@ -27,6 +28,14 @@ export const routes: Routes = [
                         component : ChatUIComponent
                     }
                 ]
+            },
+            {
+                path: 'test',
+                data: 
+                {
+                  path: 'home/test'
+                },
+                component: TestComponent
             },
             {
                 path: 'profile',

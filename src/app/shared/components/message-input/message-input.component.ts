@@ -13,19 +13,22 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './message-input.component.html',
   styleUrl: './message-input.component.css'
 })
-export class MessageInputComponent {
-  msg: Message = {
+export class MessageInputComponent 
+{
+  msg: Message = 
+  {
     author: "Al-Amin",
     message: "",
     messageDateTime: new Date(),
     id: "1"
   }
 
-  constructor(private store: Store) {
+  constructor(private store: Store) 
+  {
   }
 
-  send() {
-    console.log(this.msg);
+  send() 
+  {
     this.store.dispatch(new RoomsAction.SelectRoom("1"));
     this.msg.messageDateTime = new Date();
     let tmp = cloneDeep(this.msg);
