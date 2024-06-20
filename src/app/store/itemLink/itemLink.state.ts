@@ -41,7 +41,7 @@ export interface itemLinkStateModel
         pev: null,
         current: null
     }
-)
+})
 
 @Injectable()
 export class itemLinkState {

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
@@ -22,10 +22,10 @@ import { ViewportScroller } from "@angular/common";
     providers: [],
   }
 )
-export class ChatUIComponent 
+export class ChatUIComponent implements AfterViewChecked
 {
 
-
+  @ViewChild('scrollframe') private scrollFrame!: ElementRef;
   room$: Observable<Room | null>;
   isAlive: boolean = true;
 
@@ -53,6 +53,10 @@ export class ChatUIComponent
       );
   }
 
+  ngAfterViewChecked(): void {
+    this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
+    console.log(this.scrollFrame.nativeElement.scrollTop);
+  }
   ngDistroy() 
   {
     this.isAlive = false;
