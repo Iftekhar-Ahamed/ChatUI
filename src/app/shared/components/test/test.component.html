@@ -1,0 +1,5 @@
+<cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+    <div *cdkVirtualFor="let item of items$ | async; trackBy: trackfn">
+        {{ item }}
+    </div>
+</cdk-virtual-scroll-viewport>

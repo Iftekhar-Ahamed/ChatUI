@@ -5,60 +5,82 @@ import { User } from "../../shared/models/user.model";
 import { UserStatus, UserType } from "../../shared/enums/user.enum";
 import { ChatListModel } from "../../shared/models/chatList.model";
 
-export interface chatListStateModel {
+export interface chatListStateModel 
+{
     chatList: ChatListModel;
     pev: User | null;
     current: User | null;
 }
 
-@State<chatListStateModel>({
-    name: 'chatList',
-    defaults: {
-        chatList: {
-            users: [{
-                id: 1,
-                name: "Iftekhar Ahamed",
-                email: "iftekhar@email.com",
-                avatar: "avater.jpg",
-                status: UserStatus.Online,
-                type: UserType.LoginUser,
-                lastMessage: "Hello",
-                isSelected: false
-            }, {
-                id: 2,
-                name: "Al-Amin",
-                email: "alamin@email.com",
-                avatar: "avater.jpg",
-                status: UserStatus.Offline,
-                type: UserType.LoginUser,
-                lastMessage: "Bye",
-                isSelected: false
-            }]
-        },
-        pev: null,
-        current: null
+@State<chatListStateModel>
+(
+    {
+        name: 'chatList',
+        defaults: 
+        {
+            chatList: 
+            {
+                users: 
+                [
+                    {
+                        id: 1,
+                        name: "Iftekhar Ahamed",
+                        email: "iftekhar@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.LoginUser,
+                        lastMessage: "Hello",
+                        isSelected: false
+                    }, 
+                    {
+                        id: 2,
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Offline,
+                        type: UserType.LoginUser,
+                        lastMessage: "Bye",
+                        isSelected: false
+                    }
+                ]
+            },
+            pev: null,
+            current: null
+        }
     }
-})
+)
+
 @Injectable()
-export class ChatListState {
+export class ChatListState 
+{
 
     @Selector()
-    static chatLists(state: chatListStateModel): ChatListModel {
+    static chatLists(state: chatListStateModel): ChatListModel 
+    {
         return state.chatList;
     }
 
+    
     constructor(
         private store: Store
     ) { }
 
+    //#region  Actions
+
     @Action(UserAction.SetUserData)
-    async setUserData(ctx: StateContext<chatListStateModel>, action: UserAction.SetUserData) {
+    async setUserData(ctx: StateContext<chatListStateModel>, action: UserAction.SetUserData)
+    {
         let state = ctx.getState();
-        ctx.setState({
-            ...state,
-            chatList: action.chatLists
-        });
+
+        ctx.setState
+        (
+            {
+                ...state,
+                chatList: action.chatLists
+            }
+        );
     }
+
     @Action(UserAction.SelectUser)
     async selectUser(ctx: StateContext<chatListStateModel>, action: UserAction.SelectUser) {
         let state = ctx.getState();
@@ -84,4 +106,5 @@ export class ChatListState {
             pev: temp
         });
     }
+    //#endregion Actions
 }
