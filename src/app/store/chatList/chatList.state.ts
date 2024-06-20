@@ -23,7 +23,7 @@ export interface chatListStateModel
                 users: 
                 [
                     {
-                        id: 1,
+                        id: "1",
                         name: "Iftekhar Ahamed",
                         email: "iftekhar@email.com",
                         avatar: "avater.jpg",
@@ -33,7 +33,7 @@ export interface chatListStateModel
                         isSelected: false
                     }, 
                     {
-                        id: 2,
+                        id: "2",
                         name: "Al-Amin",
                         email: "alamin@email.com",
                         avatar: "avater.jpg",

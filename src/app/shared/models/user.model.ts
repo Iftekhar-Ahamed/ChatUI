@@ -1,7 +1,7 @@
 import { UserStatus, UserType } from "../enums/user.enum";
 
 export interface User {
-    id: number;
+    id: string;
     name: string;
     email: string;
     avatar: string;
@@ -12,7 +12,7 @@ export interface User {
 }
 
 export interface LogedInUser {
-    id: number;
+    id: string;
     name: string;
     email: string;
     avatar: string;

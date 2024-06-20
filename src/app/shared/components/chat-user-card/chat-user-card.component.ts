@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { UserAction } from '../../../store';
 import { User } from '../../models/user.model';
+import { RoomsAction } from '../../../store/rooms/rooms.action';
 
 @Component({
   selector: 'app-chat-user-card',
@@ -24,5 +25,6 @@ export class ChatUserCardComponent {
   }
   onSelect(): void {
     this.store.dispatch(new UserAction.SelectUser(this.user));
+    this.store.dispatch(new RoomsAction.SelectRoom(this.user.id));
   }
 }

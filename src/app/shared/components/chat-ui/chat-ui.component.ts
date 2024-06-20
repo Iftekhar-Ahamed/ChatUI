@@ -38,11 +38,10 @@ export class ChatUIComponent implements AfterViewChecked
     const data = this.route.snapshot.data;
     store.dispatch(new ItemLinkAction.SelectItemLink(data['path']));
 
-    this.room$ = this.store.select(RoomSate.roomById)
+    this.room$ = this.store.select(RoomSate.getCurrentRoom)
       .pipe
       (
         takeWhile(() => this.isAlive),
-        map(filterFn => filterFn("1")),
         tap
         (
           (x: Room | null) => 
@@ -53,7 +52,8 @@ export class ChatUIComponent implements AfterViewChecked
       );
   }
 
-  ngAfterViewChecked(): void {
+  ngAfterViewChecked(): void 
+  {
     this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
     console.log(this.scrollFrame.nativeElement.scrollTop);
   }

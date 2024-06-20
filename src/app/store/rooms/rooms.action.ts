@@ -13,7 +13,7 @@ export namespace RoomsAction {
     export class SelectRoom {
 
         static readonly type = '[SelectRoom] Room Selected';
-
+        
         constructor(public key: string) { }
 
     }

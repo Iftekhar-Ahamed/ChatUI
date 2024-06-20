@@ -101,7 +101,16 @@ export interface RoomsStateModel {
                 },
             ],
             pev: null,
-            current: null
+            current: {
+                roomId: "",
+                roomName: "",
+                messages: 
+                [
+                ],
+                lastMessage: "",
+                lastMessageTime: new Date(),
+                isRead: true
+            }
         }
     }
 )
@@ -109,13 +118,13 @@ export interface RoomsStateModel {
 export class RoomSate {
 
     @Selector()
-    static roomList(state: RoomsStateModel): Room[] 
+    static getRoomList(state: RoomsStateModel): Room[] 
     {
         return state.rooms;
     }
 
     @Selector()
-    static roomById(state: RoomsStateModel): (roomId: string) => Room | null 
+    static getRoomById(state: RoomsStateModel): (roomId: string) => Room | null 
     {
 
         return (roomId: string) => 
@@ -126,7 +135,7 @@ export class RoomSate {
     }
 
     @Selector()
-    static currentRoom(state: RoomsStateModel): Room | null 
+    static getCurrentRoom(state: RoomsStateModel): Room | null 
     {
         return state.current;
     }
