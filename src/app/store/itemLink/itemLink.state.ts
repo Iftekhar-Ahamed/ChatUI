@@ -10,35 +10,36 @@ export interface itemLinkStateModel
     current: ItemLinkModel | null;
 }
 
-@State<itemLinkStateModel>
-(
+@State<itemLinkStateModel>({
+    name: 'itemLink',
+    defaults: 
     {
-        name: 'itemLink',
-        defaults: 
-        {
-            items: 
-            [
-                {
-                    key: "home/chatList",
-                    name: "All Chat",
-                    isSelected: false,
-                    url: "chatList"
-                }, {
-                    key: "home/profile",
-                    name: "Profile",
-                    isSelected: false,
-                    url: "profile"
-                },
-                {
-                    key: "home/chat",
-                    name: "Chat",
-                    isSelected: false,
-                    url: "chat"
-                }
-            ],
-            pev: null,
-            current: null
-        }
+        items: [
+            {
+                key: "home/chatList",
+                name: "All Chat",
+                isSelected: false,
+                url: "chatList"
+            }, {
+                key: "home/profile",
+                name: "Profile",
+                isSelected: false,
+                url: "profile"
+            },
+            {
+                key: "home/chat",
+                name: "Chat",
+                isSelected: false,
+                url: "chat"
+            },{
+                key: "home/chatFriends",
+                name: "Chat Friends",
+                isSelected: false,
+                url: "chatFriends"
+            },
+        ],
+        pev: null,
+        current: null
     }
 )
 

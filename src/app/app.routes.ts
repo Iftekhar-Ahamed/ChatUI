@@ -5,36 +5,58 @@ import { ProfileComponent } from './shared/components/profile/profile.component'
 import { ChatUIComponent } from './shared/components/chat-ui/chat-ui.component';
 import { TestComponent } from './shared/components/test/test.component';
 
+
 export const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/home/chatList/chat', pathMatch: 'full' },
+    { path: 'home/chatList', redirectTo: '/home/chatList/chat', pathMatch: 'full' },
     {
         path: 'home',
         component: HomelayoutComponent,
-        children: [{
-            path: 'chatList',
-            data: {
-                path: 'home/chatList'
+        children: 
+        [
+            {
+                path: 'chatList',
+                component: ChatUserListComponent,
+                children:
+                [
+                    {
+                        path:'chat',
+                        data: 
+                        {
+                            path: 'home/chatList'
+                        },
+                        component : ChatUIComponent
+                    }
+                ]
             },
-            component: ChatUserListComponent
-        },
-        {
-            path: 'profile',
-            data: {
-                path: 'home/profile'
+            {
+                path: 'test',
+                data: 
+                {
+                  path: 'home/test'
+                },
+                component: TestComponent
             },
-            component: ProfileComponent
-        }, {
-            path: 'chat',
-            data: {
-                path: 'home/chat'
-            },
-            component: ChatUIComponent
-        }, {
-            path: 'test',
-            data: {
-                path: 'home/test'
-            },
-            component: TestComponent
-        }]
+            {
+                path: 'profile',
+                data: {
+                    path: 'home/profile'
+                },
+                component: ProfileComponent
+            }, 
+            {
+                path: 'chat',
+                data: {
+                    path: 'home/chat'
+                },
+                component: ChatUIComponent
+            },{
+                path: 'chatFriends',
+                data: {
+                    path: 'home/chatFriends'
+                },
+                component: ChatUserListComponent
+            }
+        ]
     },
 ];

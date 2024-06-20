@@ -1,16 +1,16 @@
 .chat-container {
     width: 90%;
-    height: calc(100vh - 70px);
+    height:max-content;
     margin: 10px auto 0;
     margin: 0 auto;
-    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
     background-color: #fafafa;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .chat-container p {
+    
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 20px;
@@ -21,10 +21,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border-radius: 8px;
     /* Space between messages */
     overflow-y: auto;
-    /* Adjust as necessary */
-    /* Space for scrollbar */
+    padding: 1%;
+    background-color: #fafafa;
 }
 
 /* For webkit-based browsers */
