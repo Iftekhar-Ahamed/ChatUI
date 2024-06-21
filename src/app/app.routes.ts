@@ -27,19 +27,6 @@ export const routes: Routes = [
                     path: 'home/profile'
                 },
                 component: ProfileComponent
-            }, 
-            {
-                path: 'chat',
-                data: {
-                    path: 'home/chat'
-                },
-                component: ChatUIComponent
-            },{
-                path: 'chatFriends',
-                data: {
-                    path: 'home/chatFriends'
-                },
-                component: ChatUserListComponent
             }
         ]
     },
