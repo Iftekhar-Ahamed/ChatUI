@@ -8,6 +8,7 @@
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2px;
+    font-family: 'Medium';
     /* Add margin bottom for spacing */
 }
 
@@ -65,8 +66,8 @@
 }
 
 .chat-user-card__info__last-message {
-    font-size: 14px;
-    color: #555;
+    font-family: 'Thin';
+    color: #000000;
     margin-top: 5px;
     /* Add margin-top for spacing */
 }

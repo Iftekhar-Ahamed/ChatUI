@@ -6,3 +6,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face 
+{
+    font-family: Medium;
+    src: url(assets/fonts/SFUIText-Medium.woff) format("opentype");
+}
+@font-face 
+{
+    font-family: Thin;
+    src: url(assets/fonts/SFUIDisplay-Thin.woff) format("opentype");
+}
