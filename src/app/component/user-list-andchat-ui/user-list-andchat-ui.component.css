@@ -4,12 +4,9 @@
 
 .user-list {
     width: 30%;
-    /* Adjust the width as needed */
-    border-right: 1px solid #d1d5db;
-    /* Optional: Add a border to separate the user list from the chat content */
     overflow-y: auto;
-    /* Enable vertical scrolling if the user list is long */
     padding: 10px;
+    background-color: hsla(0, 0%, 100%, .3);
 }
 
 .chat-content {
