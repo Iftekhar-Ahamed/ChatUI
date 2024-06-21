@@ -20,7 +20,7 @@ export interface RoomsStateModel {
             [
                 {
                     roomId: "1",
-                    roomName: "Room 1",
+                    roomName: "Al-Amin",
                     messages: 
                     [
                         {
@@ -79,11 +79,11 @@ export interface RoomsStateModel {
                 }, 
                 {
                     roomId: "2",
-                    roomName: "Room 2",
+                    roomName: "Sihab",
                     messages: 
                     [
                         {
-                            author: "User 3",
+                            author: "Sihab",
                             message: "Hello",
                             messageDateTime: new Date(),
                             id: "1"
