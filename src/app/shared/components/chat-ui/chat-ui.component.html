@@ -1,17 +1,21 @@
 <div style="height: 10px;"></div>
-<div class="chat-container">
+<div class="chat-container ">
+    
     <p>Chat UI</p>
     
     <div  *ngIf="room$ | async as room" >
-        <div #scrollframe class="messages md:max-h-[650px]  xl:max-h-[730px] max-h-[77vh]" >
-            <div  *ngFor="let item of room?.messages || []; let i = index" >
-                <app-message-card [msg]="item"></app-message-card>
+
+            <div #scrollframe class="messages  md:max-h-[650px] xl:max-h-[520px] md:min-h-[200px] xl:min-h-[520px] " >
+                <div  *ngFor="let item of room?.messages || []; let i = index" >
+                    <app-message-card [msg]="item"></app-message-card>
+                </div>
             </div>
-        </div>
 
         <div style="height: 5px;"></div>
-        <app-message-input [roomId]="room.roomId"></app-message-input>
-    </div>
+        <div>
+            <app-message-input [roomId]="room.roomId"></app-message-input>
+        </div>
+    </div> 
     
 </div>
 

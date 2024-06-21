@@ -1,7 +1,5 @@
 .chat-container {
     display: flex;
-    height: 95.2vh;
-    /* Full height of the viewport */
 }
 
 .user-list {
