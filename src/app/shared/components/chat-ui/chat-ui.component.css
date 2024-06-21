@@ -5,9 +5,11 @@
     margin: 0 auto;
     border-radius: 8px;
     padding: 10px;
-    background-color: #cfcfcf; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Medium';
+    backdrop-filter: blur(14px);
+    background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%);
+    background-color: rgba(81, 81, 94, 0.21);
 }
 
 .chat-container p {
@@ -26,7 +28,7 @@
     height: 100%;
     overflow-y: auto;
     padding: 1%;
-    background-color: #fafafa;
+    background-color: hsla(0, 0%, 100%, .3);
 }
 
 /* For webkit-based browsers */
@@ -69,4 +71,11 @@
 
 .example-item {
     height: 50px;
+}
+.room-name{
+    color: #000000;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
 }

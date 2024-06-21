@@ -2,9 +2,11 @@
     display: flex;
     justify-content: left;
     padding: 10px 20px;
-    background-color: #333;
     color: white;
     font-family: 'Medium';
+    backdrop-filter: blur(14px);
+    background-color: rgba(37, 38, 40, .21);
+    background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, .2), rgba(50, 50, 50, .2) 80%);
 }
 
 .header .nav-links {
@@ -31,9 +33,9 @@
 }
 
 .header .nav-links a:hover {
-    background-color: #575757;
+    background-color: hsla(0, 0%, 100%, .3);
 }
 
 .header .nav-links .selected {
-    background-color: #575757;
+    background-color: hsla(0, 0%, 100%, .3);
 }

@@ -2,7 +2,7 @@
 <div class="chat-container ">
     
     <div  *ngIf="room$ | async as room" >
-        <p>{{room.roomName}}</p>
+        <div class="room-name">{{room.roomName}}</div>
 
         <div #scrollframe class="messages  md:max-h-[540px] xl:max-h-[520px] md:min-h-[540px] xl:min-h-[520px] " >
             <div  *ngFor="let item of room?.messages || []; let i = index" >

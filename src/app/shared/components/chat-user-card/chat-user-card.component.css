@@ -3,17 +3,19 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2px;
     font-family: 'Medium';
+    
+    backdrop-filter: blur(14px);
+    background-color: hsla(0, 0%, 100%, .3);
     /* Add margin bottom for spacing */
 }
 
 .selected {
-    background-color: #f3e7e7;
+    background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%);
+    background-color: rgba(81, 81, 94, 0.21);
     /* Light gray background color */
 }
 
@@ -50,7 +52,7 @@
 }
 
 .chat-user-card__info__status__indicator.online {
-    background-color: #4caf50;
+    background-color: #32a335;
     /* Green for online */
 }
 
@@ -62,7 +64,7 @@
 .chat-user-card__info__status {
     margin-left: 10px;
     font-size: 14px;
-    color: #888;
+    color: #f5eded;
 }
 
 .chat-user-card__info__last-message {
