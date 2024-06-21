@@ -83,7 +83,7 @@ export class ChatListState
     async selectUser(ctx: StateContext<chatListStateModel>, action: UserAction.SelectUser) {
         let state = ctx.getState();
 
-        if (state.current && state.current.id === action.user.id) {
+        if (state.current && state.current.id === action.userId) {
             return;
         }
 
@@ -94,15 +94,18 @@ export class ChatListState
                 user.isSelected = false;
             }
         }
+        const actionUser = state.chatList.users.find( x => x.id === action.userId);
+        if(actionUser)
+        {
+            actionUser.isSelected = true;
+            const temp = state.current;
 
-        action.user.isSelected = true;
-        const temp = state.current;
-
-        ctx.setState({
-            ...state,
-            current: action.user,
-            pev: temp
-        });
+            ctx.setState({
+                ...state,
+                current: actionUser,
+                pev: temp
+            });
+        }
     }
     //#endregion Actions
 }

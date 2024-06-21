@@ -14,7 +14,7 @@ export const routes: Routes = [
         children: 
         [
             {
-                path: 'chatList',
+                path: 'chatList/:roomId',
                 component: UserListAndchatUiComponent,
                 data: 
                 {

@@ -7,11 +7,12 @@ import { RoomsAction } from '../../../store/rooms/rooms.action';
 import { RoomSate } from '../../../store/rooms/rooms.state';
 import { Observable, map, takeWhile, tap } from 'rxjs';
 import { Room } from '../../models/message.model';
+import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-chat-user-card',
   standalone: true,
-  imports: [NgClass, AsyncPipe, NgIf],
+  imports: [NgClass, AsyncPipe, NgIf,RouterModule],
   templateUrl: './chat-user-card.component.html',
   styleUrl: './chat-user-card.component.css'
 })
@@ -21,8 +22,9 @@ export class ChatUserCardComponent implements OnInit {
   @Input() user!: User;
   lastMessage : string = "";
   isAlive: boolean = true;
+  route :string ='';
 
-  constructor(private store: Store) {
+  constructor(private store: Store,private router:Router,private activeRouter:ActivatedRoute) {
     
   }
 
@@ -31,18 +33,13 @@ export class ChatUserCardComponent implements OnInit {
   }
 
   onSelect(): void {
-    this.store.dispatch(new UserAction.SelectUser(this.user));
-    this.store.dispatch(new RoomsAction.SelectRoom(this.user.id));
+    this.router.navigate(['../', this.user.id], { relativeTo: this.activeRouter });
   }
 
   ngOnInit() {
 
     if(this.user)
     {
-      if(this.user.isSelected)
-      {
-        this.onSelect();
-      }
 
       this.store.select(RoomSate.getRoomById)
         .pipe(
