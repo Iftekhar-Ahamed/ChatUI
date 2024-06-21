@@ -1,16 +1,19 @@
 .chat-container {
     display: flex;
+    height: 100%;
 }
 
 .user-list {
     width: 30%;
     overflow-y: auto;
+    height: 100%;
     padding: 10px;
     background-color: hsla(0, 0%, 100%, .3);
 }
 
 .chat-content {
     flex: 1;
+    height: 100%;
     /* Takes up the remaining space */
     overflow-y: auto;
     /* Enable vertical scrolling for chat content */

@@ -42,10 +42,12 @@ export class MessageInputComponent
 
   send() 
   {
-    this.msg.messageDateTime = new Date();
-    let tmp = cloneDeep(this.msg);
-    this.store.dispatch(new RoomsAction.AddMessageRoomById(this.roomId, tmp));
-    this.msg.message = "";
+    if (this.msg.message && this.msg.message.trim()){
+      this.msg.messageDateTime = new Date();
+      let tmp = cloneDeep(this.msg);
+      this.store.dispatch(new RoomsAction.AddMessageRoomById(this.roomId, tmp));
+      this.msg.message = "";
+    }
   }
 
   ngDistroy() 
