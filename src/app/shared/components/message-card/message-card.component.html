@@ -1,6 +1,6 @@
 <div [ngClass]="{'message-card self': msg.author === loggedInUser, 'message-card other': msg.author !== loggedInUser}">
     <div class="message-header">
-        <span class="author">{{ msg.author }}</span>
+        <!-- <span class="author">{{ msg.author }}</span> -->
         <span class="date-time">{{ msg.messageDateTime | date:'short' }}</span>
     </div>
     <div class="message-body">
