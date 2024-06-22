@@ -19,12 +19,12 @@ export interface itemLinkStateModel
                 key: "home/chatList",
                 name: "All Chat",
                 isSelected: false,
-                url: "chatList"
+                path: "chatList/0"
             }, {
                 key: "home/profile",
                 name: "Profile",
                 isSelected: false,
-                url: "profile"
+                path : "profile"
             },
         ],
         pev: null,
@@ -60,6 +60,19 @@ export class itemLinkState {
         );
 
     }
+
+    @Action(ItemLinkAction.UpdateUrl)
+    async updateChatListUrl(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.UpdateUrl)
+    {
+        let state = ctx.getState();
+
+        const item = state.items.find( x => x.key === action.key);
+
+        if(item){
+            item.path = action.url;
+        }
+    }
+
 
     @Action(ItemLinkAction.SelectItemLink)
     async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink)

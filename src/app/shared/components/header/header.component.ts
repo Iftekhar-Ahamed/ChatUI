@@ -15,9 +15,15 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  
   @Select(itemLinkState.itemList) itemLinks$!: Observable<ItemLinkModel[]>;
+
   constructor(private store: Store) { }
+  
   trackfn(index: number, item: ItemLinkModel): string {
     return `${item.key}${item.isSelected}`;
+  }
+  select(){
+    console.log('[routerLink]="item.url"');
   }
 }

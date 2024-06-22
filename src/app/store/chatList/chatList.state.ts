@@ -86,6 +86,7 @@ export class ChatListState
         if (state.current && state.current.id === action.userId) {
             return;
         }
+        const actionUser = state.chatList.users.find( x => x.id === action.userId);
 
         if (state.current) {
             state.current.isSelected = false;
@@ -94,7 +95,7 @@ export class ChatListState
                 user.isSelected = false;
             }
         }
-        const actionUser = state.chatList.users.find( x => x.id === action.userId);
+        
         if(actionUser)
         {
             actionUser.isSelected = true;
@@ -103,6 +104,14 @@ export class ChatListState
             ctx.setState({
                 ...state,
                 current: actionUser,
+                pev: temp
+            });
+        }else{
+            const temp = state.current;
+
+            ctx.setState({
+                ...state,
+                current: null,
                 pev: temp
             });
         }

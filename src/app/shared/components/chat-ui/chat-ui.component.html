@@ -2,20 +2,22 @@
 <div class="chat-container ">
     
     <div  *ngIf="room$ | async as room" >
-        <div class="room-name">{{room.roomName}}</div>
+        <div *ngIf="room">
+            <div class="room-name">{{room.roomName}}</div>
 
-        <div #scrollframe class="messages  md:max-h-[540px] xl:max-h-[520px] md:min-h-[540px] xl:min-h-[520px] " >
-            <div  *ngFor="let item of room?.messages || []; let i = index" >
-                <app-message-card [msg]="item"></app-message-card>
+            <div #scrollframe class="messages  md:max-h-[540px] xl:max-h-[520px] md:min-h-[540px] xl:min-h-[520px] " >
+                <div  *ngFor="let item of room?.messages || []; let i = index" >
+                    <app-message-card [msg]="item"></app-message-card>
+                </div>
+            </div>
+
+            <div style="height: 5px;"></div>
+            <div>
+                <app-message-input [roomId]="room.roomId"></app-message-input>
             </div>
         </div>
-
-        <div style="height: 5px;"></div>
-        <div>
-            <app-message-input [roomId]="room.roomId"></app-message-input>
-        </div>
     </div> 
-    
+
 </div>
 
 

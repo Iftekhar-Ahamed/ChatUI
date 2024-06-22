@@ -14,4 +14,10 @@ export namespace ItemLinkAction
         static readonly type = '[SelectItemLink] Item Selected';
         constructor(public key: string) { }
     }
+
+    export class UpdateUrl 
+    {
+        static readonly type = '[UpdateUrl] UpdateUrl';
+        constructor(public key: string,public url:string) { }
+    }
 }       

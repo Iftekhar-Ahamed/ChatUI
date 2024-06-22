@@ -1,5 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 import { RoomSate } from '../../../store/rooms/rooms.state';
@@ -33,7 +33,8 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store
+    private store: Store,
+    private router: Router
   ) 
   {
     const data = this.route.snapshot.data;
@@ -53,9 +54,8 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
         (
           (x: Room | null) => 
           {
-            if(x){
-              this.store.dispatch(new UserAction.SelectUser(x.roomId));
-            }
+            this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.router.url));
+            this.store.dispatch(new UserAction.SelectUser(this.roomId));
             return x;
           }
         )
@@ -69,7 +69,9 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
   }
   ngAfterViewChecked(): void 
   {
-    this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
+    if(this.roomId != '0'){
+      this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
+    }
   }
   ngDistroy() 
   {

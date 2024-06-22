@@ -7,7 +7,7 @@ import { UserListAndchatUiComponent } from './component/user-list-andchat-ui/use
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home/chatList', pathMatch: 'full' },
+    { path: '', redirectTo: '/home/chatList/0', pathMatch: 'full' },
     {
         path: 'home',
         component: HomelayoutComponent,
