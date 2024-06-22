@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { ItemLinkModel } from '../../models/itemLink.model';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 import { RouterModule } from '@angular/router';
+import { LogedInUserState } from '../../../store/logedInUser/logedInUser.state';
+import { LogedInUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +19,7 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
   
   @Select(itemLinkState.itemList) itemLinks$!: Observable<ItemLinkModel[]>;
+  @Select(LogedInUserState.user) user$!: Observable<LogedInUser>;
 
   constructor(private store: Store) { }
   

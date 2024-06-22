@@ -1,6 +1,7 @@
 .header {
     display: flex;
-    justify-content: left;
+    justify-content: space-between; /* Ensure space between nav links and user info */
+    align-items: center; /* Vertically center items */
     padding: 10px 20px;
     color: white;
     font-family: 'Medium';
@@ -38,4 +39,25 @@
 
 .header .nav-links .selected {
     background-color: hsla(0, 0%, 100%, .3);
+}
+
+.user-info {
+    display: flex;
+    align-items: center; /* Center user info vertically */
+    background-color: hsla(0, 0%, 100%, .3);
+    border-radius: 30px; /* Adjust the value as needed for desired roundness */
+}
+
+
+.user-info .user-image {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.user-info .user-name {
+    font-size: 1em;
+    font-weight: normal;
+    margin-left: 10px;
 }
