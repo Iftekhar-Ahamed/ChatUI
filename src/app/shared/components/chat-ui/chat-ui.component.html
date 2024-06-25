@@ -5,7 +5,7 @@
         <div *ngIf="room">
             <div class="room-name">{{room.roomName}}</div>
 
-            <div #scrollframe class="messages  md:max-h-[540px] xl:max-h-[520px] md:min-h-[540px] xl:min-h-[520px] " >
+            <div #scrollframe class="messages" >
                 <div  *ngFor="let item of room?.messages || []; let i = index" >
                     <app-message-card [msg]="item"></app-message-card>
                 </div>

@@ -1,4 +1,4 @@
 .home {
     background-image: url(../../../assets/images/wallpaper.webp);
-    height: 100%;
+    min-height: 100vh;
 }

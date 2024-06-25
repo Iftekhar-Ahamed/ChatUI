@@ -4,14 +4,17 @@
 }
 
 .user-list {
+    min-height: calc(100vh - 45px);
+
     width: 30%;
     overflow-y: auto;
-    height: 100%;
     padding: 10px;
     background-color: hsla(0, 0%, 100%, .3);
 }
 
 .chat-content {
+    min-height: calc(100vh - 45px);
+
     flex: 1;
     height: 100%;
     /* Takes up the remaining space */

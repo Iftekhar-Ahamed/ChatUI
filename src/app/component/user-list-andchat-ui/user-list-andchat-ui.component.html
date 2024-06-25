@@ -1,8 +1,8 @@
-    <div class="chat-container md:max-h-[500px] xl:max-h-[200px] md:min-h-[662px] xl:min-h-[650px] ">
+    <div class="chat-container ">
         <div class="user-list">
             <app-chat-user-list></app-chat-user-list>
         </div>
-        <div class="chat-content md:max-h-[500px] xl:max-h-[200px] md:min-h-[662px] xl:min-h-[650px] ">
+        <div class="chat-content ">
             <div  *ngIf="roomId$ | async as roomId" >
                 <app-chat-ui [roomId]="roomId"></app-chat-ui>
             </div>
