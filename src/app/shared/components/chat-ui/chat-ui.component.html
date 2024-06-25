@@ -20,17 +20,27 @@
 
 </div>
 
+<!-- 
+<div style="height: 10px;"></div>
+<div class="chat-container ">
+    
+    <div  *ngIf="room$ | async as room" >
+        <div *ngIf="room">
+            <div class="room-name">{{room.roomName}}</div>
 
-<!-- <div style="height: 10px;"></div>
-<div class="chat-container">
-    <p>Chat UI</p>
-    <cdk-virtual-scroll-viewport itemSize="50" class="messages md:max-h-[650px] xl:max-h-[700px] max-h-[77vh]">
-        <div *ngIf="room$ | async as room">
-            <div *cdkVirtualFor="let item of room?.messages || []; let i = index">
-                <app-message-card [msg]="item"></app-message-card>
+            <div #scrollframe  >
+                <cdk-virtual-scroll-viewport itemSize="50" class="messages" >
+                    <div *cdkVirtualFor="let item of room?.messages || []; let i = index">
+                        <app-message-card [msg]="item"></app-message-card>
+                    </div>
+                </cdk-virtual-scroll-viewport>
+            </div>
+
+
+            <div style="height: 5px;"></div>
+            <div>
+                <app-message-input [roomId]="room.roomId"></app-message-input>
             </div>
         </div>
-    </cdk-virtual-scroll-viewport>
-    <div style="height: 5px;"></div>
-    <app-message-input></app-message-input>
+    </div> 
 </div> -->
