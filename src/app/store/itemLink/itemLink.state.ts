@@ -25,7 +25,7 @@ export interface itemLinkStateModel
                 name: "Profile",
                 isSelected: false,
                 path : "profile"
-            },
+            }
         ],
         pev: null,
         current: null
