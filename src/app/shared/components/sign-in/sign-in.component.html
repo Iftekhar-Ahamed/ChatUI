@@ -1,6 +1,7 @@
-<h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
     <div class="form-group">
+        
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" autocomplete="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
         <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">

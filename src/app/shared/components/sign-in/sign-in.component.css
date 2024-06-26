@@ -1,7 +1,9 @@
 /* General styling for the form container */
 form {
     min-width: 60vh;
+    min-height: 60vh;
     margin: 0 auto;
+    font-family: 'Medium';
     padding: 20px;
     border-radius: 8px;
     background-color: hsla(0, 0%, 100%, .3);
@@ -16,6 +18,7 @@ form {
   label {
     display: block;
     margin-bottom: 5px;
+    font-family: 'Medium';
     font-weight: bold;
   }
   
@@ -73,6 +76,5 @@ form {
   }
   
   .btn-link:hover {
-    text-decoration: underline;
   }
   
