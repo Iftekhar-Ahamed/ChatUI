@@ -4,13 +4,13 @@ import { ChatUserListComponent } from './shared/components/chat-user-list/chat-u
 import { ProfileComponent } from './shared/components/profile/profile.component';
 import { ChatUIComponent } from './shared/components/chat-ui/chat-ui.component';
 import { UserListAndchatUiComponent } from './component/user-list-andchat-ui/user-list-andchat-ui.component';
-import { LogInLayoutComponent } from './layout/log-in-layout/log-in-layout.component';
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
+import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.component';
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home/chatList/0', pathMatch: 'full' },
+    { path: '', redirectTo: '/welcome/signInAccount', pathMatch: 'full' },
     {
         path: 'home',
         component: HomelayoutComponent,
@@ -33,8 +33,8 @@ export const routes: Routes = [
             }
         ]
     },{
-        path: 'logIn',
-        component: LogInLayoutComponent,
+        path: 'welcome',
+        component: WelcomeLayoutComponent,
         children: 
         [
             {
