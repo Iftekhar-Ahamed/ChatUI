@@ -1,0 +1,78 @@
+/* General styling for the form container */
+form {
+    min-width: 60vh;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: hsla(0, 0%, 100%, .3);
+  }
+  
+  /* Styling for form-group to add some spacing */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Label styling */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Styling for form control elements */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styling for buttons */
+  .btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+  }
+  
+  /* Disabled button styling */
+  .btn:disabled {
+    background-color: #cccccc;
+  }
+  
+  /* Styling for invalid input fields */
+  .is-invalid {
+    border-color: #dc3545;
+  }
+  
+  /* Styling for invalid feedback */
+  .invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 5px;
+  }
+  
+  /* Styling for the spinner */
+  .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 5px;
+  }
+  
+  /* Link styling */
+  .btn-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  

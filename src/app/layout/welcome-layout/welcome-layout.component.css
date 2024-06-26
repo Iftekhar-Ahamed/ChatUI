@@ -5,7 +5,8 @@
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Makes the background image fixed while scrolling */
     min-height: 100vh; /* Ensures the element takes up at least the full height of the viewport */
-    width: 100%; /* Ensures the element takes up the full width of the viewport */
+    min-width: 100vh; /* Ensures the element takes up the full width of the viewport */
+
 }
 
 .welcome-Container {
@@ -13,5 +14,5 @@
     justify-content: center; /* Centers items horizontally */
     align-items: center; /* Centers items vertically */
     min-height: 100vh; /* Ensures the container takes up at least the full height of the viewport */
-    width: 100%; /* Ensures the container takes up the full width of the viewport */
+    min-width: 100vh; /* Ensures the container takes up the full width of the viewport */
 }
