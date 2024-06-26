@@ -35,7 +35,7 @@ export class SignInComponent implements OnInit  {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'signUpAccount';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
   }
 
   get f() { return this.loginForm.controls; }
@@ -49,6 +49,7 @@ export class SignInComponent implements OnInit  {
     }
 
     this.loading = true;
+    this.router.navigate([this.returnUrl]);
     // this.authenticationService.login(this.f.username.value, this.f.password.value)
     //     .pipe(first())
     //     .subscribe(
