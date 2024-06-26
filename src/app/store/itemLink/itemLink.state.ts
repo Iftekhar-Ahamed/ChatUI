@@ -16,6 +16,12 @@ export interface itemLinkStateModel
     {
         items: [
             {
+                key: "home",
+                name: "Home",
+                isSelected: false,
+                path: "/home"
+            },
+            {
                 key: "home/chatList",
                 name: "All Chat",
                 isSelected: false,
@@ -77,7 +83,6 @@ export class itemLinkState {
     @Action(ItemLinkAction.SelectItemLink)
     async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink)
     {
-
         let state = ctx.getState();
 
 

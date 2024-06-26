@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ChatUserListComponent } from '../../shared/components/chat-user-list/chat-user-list.component';
@@ -16,7 +16,7 @@ import { ItemLinkAction } from '../../store/itemLink/itemLink.action';
     styleUrl: './homelayout.component.css'
   }
 )
-export class HomelayoutComponent 
+export class HomelayoutComponent implements OnInit
 {
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +24,9 @@ export class HomelayoutComponent
   )
   {
     const data = this.route.snapshot.data;
-    store.dispatch(new ItemLinkAction.SelectItemLink(data['path']))
+    
+  }
+  ngOnInit(){
+    this.store.dispatch(new ItemLinkAction.SelectItemLink("home"))
   }
 }

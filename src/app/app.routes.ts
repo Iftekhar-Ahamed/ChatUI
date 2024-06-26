@@ -14,6 +14,11 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomelayoutComponent,
+        
+        data: 
+        {
+            path: 'home'
+        },
         children: 
         [
             {
