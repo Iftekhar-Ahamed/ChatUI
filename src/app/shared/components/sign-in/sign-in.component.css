@@ -1,7 +1,7 @@
 /* General styling for the form container */
 form {
     min-width: 60vh;
-    min-height: 60vh;
+    min-height: 40vh;
     margin: 0 auto;
     font-family: 'Medium';
     padding: 20px;
