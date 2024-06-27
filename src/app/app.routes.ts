@@ -11,6 +11,7 @@ import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.c
 
 export const routes: Routes = [
     { path: '', redirectTo: '/welcome/signInAccount', pathMatch: 'full' },
+    { path: 'welcome', redirectTo: '/welcome/signInAccount', pathMatch: 'full' },
     {
         path: 'home',
         component: HomelayoutComponent,
