@@ -1,5 +1,12 @@
 <div class="profile-container">
     <div class="profile-info">
-        <p>profile works!</p>
+        <div *ngIf="user$ | async as user">
+            <div class="profile-pic">
+                <img [src]="'assets/'+user.avatar" alt="{{ user.name }}" class="user-image">
+            </div>
+            <div class="profile-details">
+
+            </div>
+        </div>
     </div>
 </div>
