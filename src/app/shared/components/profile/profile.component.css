@@ -14,7 +14,7 @@
     width: 90%;
     height: 80%;
     margin: 40px;
-    padding: 95px;
+    padding: 90px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Medium';
@@ -50,3 +50,44 @@
     height: auto;
     border-radius: 50%;
 }
+.form-group {
+    margin-bottom: 15px;
+}
+form {
+    min-width:400px;
+    margin: 0 auto;
+    font-family: 'Medium';
+    padding: 20px;
+    border-radius: 8px;
+    background-color: hsla(0, 0%, 100%, .3);
+  }
+  
+
+.actions {
+    margin-top: 20px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Medium';
+    font-weight: bold;
+  }
+  
+  /* Styling for form control elements */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
