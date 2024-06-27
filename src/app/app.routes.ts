@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomelayoutComponent } from './layout/homelayout/homelayout.component';
-import { ChatUserListComponent } from './shared/components/chat-user-list/chat-user-list.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
-import { ChatUIComponent } from './shared/components/chat-ui/chat-ui.component';
 import { UserListAndchatUiComponent } from './component/user-list-andchat-ui/user-list-andchat-ui.component';
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
