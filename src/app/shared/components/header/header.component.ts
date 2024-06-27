@@ -5,7 +5,7 @@ import { itemLinkState } from '../../../store/itemLink/itemLink.state';
 import { Observable } from 'rxjs';
 import { ItemLinkModel } from '../../models/itemLink.model';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { LogedInUserState } from '../../../store/logedInUser/logedInUser.state';
 import { LogedInUser } from '../../models/user.model';
 
@@ -21,7 +21,24 @@ export class HeaderComponent {
   @Select(itemLinkState.itemList) itemLinks$!: Observable<ItemLinkModel[]>;
   @Select(LogedInUserState.user) user$!: Observable<LogedInUser>;
 
-  constructor(private store: Store) { }
+
+  constructor(private store: Store,private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.setSelectedMenu(event.urlAfterRedirects);
+      }
+    });
+  }
+
+  setSelectedMenu(url: string): void {
+    if (url.includes('chatList')) {
+      this.store.dispatch(new ItemLinkAction.SelectItemLink("home/chatList"));
+    }else if (url.includes('profile')) {
+      this.store.dispatch(new ItemLinkAction.SelectItemLink("home/profile"))
+    }else{
+      this.store.dispatch(new ItemLinkAction.SelectItemLink("home"))
+    }
+  }
   
   trackfn(index: number, item: ItemLinkModel): string {
     return `${item.key}${item.isSelected}`;

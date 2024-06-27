@@ -37,13 +37,10 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
   @Input() roomId! : string;
 
   constructor(
-    private route: ActivatedRoute,
     private store: Store,
     private router: Router
   ) 
   {
-    const data = this.route.snapshot.data;
-    store.dispatch(new ItemLinkAction.SelectItemLink(data['path']));
   }
 
   ngOnInit(){

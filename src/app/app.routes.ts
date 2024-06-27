@@ -24,16 +24,9 @@ export const routes: Routes = [
             {
                 path: 'chatList/:roomId',
                 component: UserListAndchatUiComponent,
-                data: 
-                {
-                    path: 'home/chatList'
-                }
             },
             {
                 path: 'profile',
-                data: {
-                    path: 'home/profile'
-                },
                 component: ProfileComponent
             }
         ]

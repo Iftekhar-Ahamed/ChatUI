@@ -85,7 +85,6 @@ export class itemLinkState {
     {
         let state = ctx.getState();
 
-
         if (state.current && state.current.key === action.key) 
         {
             return;

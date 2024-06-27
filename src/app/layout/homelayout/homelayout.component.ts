@@ -27,6 +27,5 @@ export class HomelayoutComponent implements OnInit
     
   }
   ngOnInit(){
-    this.store.dispatch(new ItemLinkAction.SelectItemLink("home"))
   }
 }

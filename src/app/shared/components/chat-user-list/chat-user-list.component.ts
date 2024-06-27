@@ -21,11 +21,8 @@ export class ChatUserListComponent {
   @Select(ChatListState.chatLists) chatList$!: Observable<ChatListModel>;
 
   constructor(
-    private route: ActivatedRoute,
     private store: Store
   ) {
-    const data = this.route.snapshot.data;
-    store.dispatch(new ItemLinkAction.SelectItemLink(data['path']))
   }
 
   trackfn(index: number, user: User): string {

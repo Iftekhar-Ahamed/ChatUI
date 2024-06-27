@@ -12,10 +12,6 @@ import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 })
 export class ProfileComponent {
   constructor(
-    private route: ActivatedRoute,
-    private store: Store
   ) {
-    const data = this.route.snapshot.data;
-    store.dispatch(new ItemLinkAction.SelectItemLink(data['path']))
   }
 }
