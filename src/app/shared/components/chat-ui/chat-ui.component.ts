@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
@@ -26,10 +26,11 @@ type Position = 'start' | 'mid' | 'end';
   }
 )
 
-export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
+export class ChatUIComponent implements AfterViewChecked,OnChanges
 {
   
   @ViewChild('scrollframe') private scrollFrame!: ElementRef;
+  @ViewChild('chatContainer') chatContainer!: ElementRef;
   @ViewChild(CdkVirtualScrollViewport) viewPort: CdkVirtualScrollViewport;
   room$: Observable<Room | null>;
   room : Room;
@@ -38,7 +39,8 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
 
   constructor(
     private store: Store,
-    private router: Router
+    private router: Router,
+    private renderer:Renderer2
   ) 
   {
   }
@@ -64,7 +66,16 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
         )
       );
   }
+  triggerAnimation() {
 
+    if(this.chatContainer != undefined){
+      this.renderer.addClass(this.chatContainer.nativeElement, 'fadeIn-Animation');
+      setTimeout(() => {
+        this.renderer.removeClass(this.chatContainer.nativeElement, 'fadeIn-Animation');
+      }, 1000);
+    }
+    
+  }
   scroll(position: Position) {
     let scrollIndex: number;
     switch (position) {
@@ -83,7 +94,9 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['roomId']) {
+
       this.loadRoom();
+      this.triggerAnimation();
     }
   }
   ngAfterViewChecked(): void 

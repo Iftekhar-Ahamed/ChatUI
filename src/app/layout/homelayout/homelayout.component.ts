@@ -23,8 +23,6 @@ export class HomelayoutComponent implements OnInit
     private store: Store
   )
   {
-    const data = this.route.snapshot.data;
-    
   }
   ngOnInit(){
   }

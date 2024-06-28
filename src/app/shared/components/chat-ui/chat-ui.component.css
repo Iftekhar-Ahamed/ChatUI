@@ -20,6 +20,14 @@
     text-align: center;
 }
 
+.fadeIn-Animation{
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 .messages {
     display: flex;
     flex-direction: column;

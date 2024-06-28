@@ -2,8 +2,11 @@
     min-height: calc(100vh - 45px);
     min-width: 100vw;
     display: flex;
+    
+    backdrop-filter: blur(14px);
     justify-content: center;
     align-items: center;
+    animation: fadeIn 1s;
 }
 
 
@@ -23,7 +26,6 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Medium';
-    backdrop-filter: blur(14px);
     background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%);
     background-color: rgba(81, 81, 94, 0.21);
 }
@@ -132,3 +134,7 @@ form {
   .fa-eye-slash {
         background-image: url('https://cdn-icons-png.flaticon.com/512/10812/10812267.png');
   }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
