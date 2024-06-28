@@ -23,7 +23,7 @@ export namespace ItemLinkAction
 
     export class ClearState 
     {
-        static readonly type = '[ItemLink] Clear State';
+        static readonly type = '[ClearState] Clear State';
         constructor() { }
     }
 }       

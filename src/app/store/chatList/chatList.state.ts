@@ -1,6 +1,6 @@
 import { Action, Select, Selector, State, StateContext, Store } from "@ngxs/store";
 import { Injectable } from '@angular/core';
-import { UserAction } from './chatList.action';
+import { ChatListAction } from './chatList.action';
 import { User } from "../../shared/models/user.model";
 import { UserStatus, UserType } from "../../shared/enums/user.enum";
 import { ChatListModel } from "../../shared/models/chatList.model";
@@ -65,8 +65,8 @@ export class ChatListState
 
     //#region  Actions
 
-    @Action(UserAction.SetUserData)
-    async setUserData(ctx: StateContext<chatListStateModel>, action: UserAction.SetUserData)
+    @Action(ChatListAction.SetUserData)
+    async setUserData(ctx: StateContext<chatListStateModel>, action: ChatListAction.SetUserData)
     {
         let state = ctx.getState();
 
@@ -79,7 +79,7 @@ export class ChatListState
         );
     }
 
-    @Action(UserAction.ClearState)
+    @Action(ChatListAction.ClearState)
     async clearState(ctx: StateContext<chatListStateModel>) 
     {
         let state = ctx.getState();
@@ -95,18 +95,17 @@ export class ChatListState
         );
     }
 
-    @Action(UserAction.SelectUser)
-    async selectUser(ctx: StateContext<chatListStateModel>, action: UserAction.SelectUser) {
+    @Action(ChatListAction.SelectUser)
+    async selectUser(ctx: StateContext<chatListStateModel>, action: ChatListAction.SelectUser) {
         let state = ctx.getState();
-
         if (state.current && state.current.id === action.userId) {
             return;
         }
-        const actionUser = state.chatList?.users.find( x => x.id === action.userId);
+        const actionUser = state.chatList.users.find( x => x.id === action.userId);
 
         if (state.current) {
             state.current.isSelected = false;
-            const user = state.chatList?.users.find(user => user.id === state.current?.id);
+            const user = state.chatList.users.find(user => user.id === state.current?.id);
             if (user) {
                 user.isSelected = false;
             }

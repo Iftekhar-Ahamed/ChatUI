@@ -10,7 +10,7 @@ import { MessageInputComponent } from '../message-input/message-input.component'
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import { UserAction } from '../../../store';
+import { ChatListAction } from '../../../store';
 
 type Position = 'start' | 'mid' | 'end';
 
@@ -57,7 +57,7 @@ export class ChatUIComponent implements AfterViewChecked,OnInit,OnChanges
           (x: Room | null) => 
           {
             this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.router.url));
-            this.store.dispatch(new UserAction.SelectUser(this.roomId));
+            this.store.dispatch(new ChatListAction.SelectUser(this.roomId));
             if(x) this.room = x;
             return x;
           }

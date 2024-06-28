@@ -1,7 +1,7 @@
 import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { UserAction } from '../../../store';
+import { ChatListAction } from '../../../store';
 import { User } from '../../models/user.model';
 import { RoomsAction } from '../../../store/rooms/rooms.action';
 import { RoomSate } from '../../../store/rooms/rooms.state';

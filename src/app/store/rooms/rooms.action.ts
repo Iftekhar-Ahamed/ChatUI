@@ -27,7 +27,7 @@ export namespace RoomsAction {
     }
     export class ClearState {
 
-        static readonly type = '[AddMessageIntoCurrentRoom] Message Added';
+        static readonly type = '[ClearState] room celared';
 
         constructor() { }
 

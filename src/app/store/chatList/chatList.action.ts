@@ -1,7 +1,7 @@
 import { ChatListModel } from "../../shared/models/chatList.model";
 import { LogedInUser, User } from "../../shared/models/user.model";
 
-export namespace UserAction 
+export namespace ChatListAction 
 {
     export class SetUserData 
     {
@@ -16,7 +16,7 @@ export namespace UserAction
     }
     export class ClearState 
     {
-        static readonly type = '[SelectUser] User Selected';
+        static readonly type = '[ClearState] ClearState called';
         constructor() { }
     }
 }       
