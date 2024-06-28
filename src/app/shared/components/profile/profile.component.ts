@@ -19,6 +19,7 @@ export class ProfileComponent {
   profileForm: FormGroup;
   user$: Observable<LogedInUser|null>;
   isEditable: boolean = false;
+  passwordFieldType = 'password';
   // @Select(LogedInUserState.user) user$!: Observable<LogedInUser>;
 
   constructor(
@@ -44,6 +45,9 @@ export class ProfileComponent {
     this.profileForm.controls['name'][method]();
     this.profileForm.controls['username'][method]();
     this.profileForm.controls['password'][method]();
+  }
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
   onUpdate(): void {

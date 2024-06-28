@@ -88,6 +88,10 @@ form {
     background-color: #007bff;
     cursor: pointer;
   }
+  .btn:hover {
+    background-color: #2563eb;
+    /* Tailwind's blue-600 */
+  }
   label {
     display: block;
     margin-bottom: 5px;
@@ -101,4 +105,30 @@ form {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+  }
+  .password-wrapper {
+    position: relative; /* Make the wrapper relative for absolute positioning of the icon */
+  }
+  
+  .password-wrapper .form-control {
+    padding-right: 30px; /* Add padding to make space for the icon */
+  }
+  
+  .password-icon {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      right: 10px; /* Position the icon inside the input */
+      transform: translateY(-50%);
+      width: 20px; /* Adjust width as necessary */
+      height: 20px; /* Adjust height as necessary */
+      background-size: contain; /* Ensure the icon fits */
+  }
+  
+  .fa-eye {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159604.png');
+  }
+  
+  .fa-eye-slash {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/10812/10812267.png');
   }

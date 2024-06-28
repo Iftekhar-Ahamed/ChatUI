@@ -42,6 +42,10 @@ form {
     background-color: #007bff;
     cursor: pointer;
   }
+  .btn:hover {
+    background-color: #2563eb;
+    /* Tailwind's blue-600 */
+  }
   
   /* Disabled button styling */
   .btn:disabled {
