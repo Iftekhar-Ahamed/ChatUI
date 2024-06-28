@@ -1,6 +1,5 @@
 <div class="profile-container">
-    <div class="profile-info">
-      <div *ngIf="user$ | async as user">
+      <div class="profile-info" *ngIf="user$ | async as user">
         <div class="profile-pic">
           <img [src]="'assets/' + user.avatar" alt="{{ user.name }}" class="user-image">
         </div>
@@ -20,12 +19,11 @@
             </div>
             <div class="actions">
               <button type="button" class="btn btn-primary" (click)="toggleEdit()">Update</button>
-              <button type="button" class="btn btn-secondary" (click)="onLogout()">Logout</button>
               <button type="submit" class="btn btn-success" *ngIf="isEditable" (click)="onUpdate()">Save</button>
+              <button type="button" class="btn btn-secondary" (click)="onLogout()">Logout</button>
             </div>
           </form>
         </div>
-      </div>
     </div>
   </div>
   
