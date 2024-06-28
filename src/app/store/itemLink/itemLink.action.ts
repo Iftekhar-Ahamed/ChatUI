@@ -20,4 +20,10 @@ export namespace ItemLinkAction
         static readonly type = '[UpdateUrl] UpdateUrl';
         constructor(public key: string,public url:string) { }
     }
+
+    export class ClearState 
+    {
+        static readonly type = '[ItemLink] Clear State';
+        constructor() { }
+    }
 }       

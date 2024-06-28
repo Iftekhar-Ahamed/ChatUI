@@ -14,4 +14,9 @@ export namespace UserAction
         static readonly type = '[SelectUser] User Selected';
         constructor(public userId: string) { }
     }
+    export class ClearState 
+    {
+        static readonly type = '[SelectUser] User Selected';
+        constructor() { }
+    }
 }       

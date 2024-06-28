@@ -7,7 +7,7 @@ import { ChatListModel } from "../../shared/models/chatList.model";
 
 export interface chatListStateModel 
 {
-    chatList: ChatListModel;
+    chatList: ChatListModel ;
     pev: User | null;
     current: User | null;
 }
@@ -79,6 +79,22 @@ export class ChatListState
         );
     }
 
+    @Action(UserAction.ClearState)
+    async clearState(ctx: StateContext<chatListStateModel>) 
+    {
+        let state = ctx.getState();
+        state.chatList.users = [];
+
+        ctx.setState
+        (
+            {
+                ...state,
+                current:null,
+                pev: null,
+            }
+        );
+    }
+
     @Action(UserAction.SelectUser)
     async selectUser(ctx: StateContext<chatListStateModel>, action: UserAction.SelectUser) {
         let state = ctx.getState();
@@ -86,11 +102,11 @@ export class ChatListState
         if (state.current && state.current.id === action.userId) {
             return;
         }
-        const actionUser = state.chatList.users.find( x => x.id === action.userId);
+        const actionUser = state.chatList?.users.find( x => x.id === action.userId);
 
         if (state.current) {
             state.current.isSelected = false;
-            const user = state.chatList.users.find(user => user.id === state.current?.id);
+            const user = state.chatList?.users.find(user => user.id === state.current?.id);
             if (user) {
                 user.isSelected = false;
             }

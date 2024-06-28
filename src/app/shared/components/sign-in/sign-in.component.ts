@@ -17,6 +17,7 @@ export class SignInComponent implements OnInit  {
   submitted = false;
   returnUrl: string;
   
+  
 
   constructor( 
     private formBuilder: FormBuilder,
@@ -27,7 +28,6 @@ export class SignInComponent implements OnInit  {
     //   this.router.navigate(['/']);
     // }
   }
-
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -40,6 +40,7 @@ export class SignInComponent implements OnInit  {
 
   get f() { return this.loginForm.controls; }
 
+  
   onSubmit() {
     this.submitted = true;
 
@@ -48,6 +49,7 @@ export class SignInComponent implements OnInit  {
     }
 
     this.loading = true;
+
     this.router.navigate([this.returnUrl]);
     // this.authenticationService.login(this.f.username.value, this.f.password.value)
     //     .pipe(first())

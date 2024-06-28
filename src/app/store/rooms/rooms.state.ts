@@ -145,6 +145,21 @@ export class RoomSate {
         private store: Store
     ) { }
     
+    @Action(RoomsAction.ClearState)
+    async clearState(ctx: StateContext<RoomsStateModel>) 
+    {
+        let state = ctx.getState();
+
+        ctx.setState
+        (
+            {
+                ...state,
+                current:null,
+                pev: null,
+                rooms : []
+            }
+        );
+    }
 
     @Action(RoomsAction.SetRoomsData)
     async setItemListData(ctx: StateContext<RoomsStateModel>, action: RoomsAction.SetRoomsData) 

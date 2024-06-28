@@ -51,6 +51,24 @@ export class itemLinkState {
         private store: Store
     ) { }
 
+    @Action(ItemLinkAction.ClearState)
+    async clearState(ctx: StateContext<itemLinkStateModel>) 
+    {
+
+        let state = ctx.getState();
+
+        ctx.setState
+        (
+            {
+                ...state,
+                current:null,
+                pev: null,
+                items : []
+            }
+        );
+
+    }
+
     @Action(ItemLinkAction.SetItemLinkData)
     async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData) 
     {

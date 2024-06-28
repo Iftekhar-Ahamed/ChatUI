@@ -25,4 +25,11 @@ export namespace RoomsAction {
         constructor(public key: string, public msg: Message) { }
 
     }
+    export class ClearState {
+
+        static readonly type = '[AddMessageIntoCurrentRoom] Message Added';
+
+        constructor() { }
+
+    }
 }       
