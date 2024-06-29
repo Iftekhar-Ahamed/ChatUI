@@ -72,7 +72,7 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
       this.renderer.addClass(this.chatContainer.nativeElement, 'fadeIn-Animation');
       setTimeout(() => {
         this.renderer.removeClass(this.chatContainer.nativeElement, 'fadeIn-Animation');
-      }, 1000);
+      }, 500);
     }
     
   }
