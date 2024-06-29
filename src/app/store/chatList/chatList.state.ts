@@ -39,6 +39,14 @@ export interface chatListStateModel
                         status: UserStatus.Offline,
                         type: UserType.OtherUser,
                         isSelected: false
+                    },{
+                        id: "3",
+                        name: "Nirjhor",
+                        email: "nirjhor@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false
                     }
                 ]
             },

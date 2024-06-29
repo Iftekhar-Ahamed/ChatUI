@@ -98,6 +98,27 @@ export interface RoomsStateModel {
                     lastMessage: "Hi",
                     lastMessageTime: new Date(),
                     isRead: true
+                },{
+                    roomId: "3",
+                    roomName: "Nirjhor",
+                    messages: 
+                    [
+                        {
+                            author: "Nirjhor",
+                            message: "Hello",
+                            messageDateTime: new Date(),
+                            id: "1"
+                        }, 
+                        {
+                            author: "Iftekhar Ahamed",
+                            message: "Heyy",
+                            messageDateTime: new Date(),
+                            id: "2"
+                        }
+                    ],
+                    lastMessage: "Heyy",
+                    lastMessageTime: new Date(),
+                    isRead: true
                 },
             ],
             pev: null,
