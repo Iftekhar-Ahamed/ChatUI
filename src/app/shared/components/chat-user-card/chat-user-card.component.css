@@ -50,12 +50,14 @@
 }
 
 .chat-user-card__info__status__indicator.online {
-    background-color: #0ffe17;
+    background-color: #1ce623;
+    border: #000000 1px solid;
     /* Green for online */
 }
 
 .chat-user-card__info__status__indicator.offline {
     background-color: #f44336;
+    border: #000000 1px solid;
     /* Red for offline */
 }
 
