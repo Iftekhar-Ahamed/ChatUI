@@ -8,13 +8,15 @@
     margin-bottom: 2px;
     font-family: 'Medium';
     user-select: none;
-    background-color: hsla(0, 0%, 100%, .3);
+    background-color: hsla(0, 0%, 100%, 0.266);
     /* Add margin bottom for spacing */
 }
 
 .selected {
+    border: #000000 2px solid;
     /* background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%); */
-    background-color:hsla(237, 95%, 25%, 0.3);
+    background-color: hsla(0, 0%, 0%, 0.234);
+    backdrop-filter: blur(14px);
 }
 
 .chat-user-card__avatar {
