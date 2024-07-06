@@ -5,6 +5,7 @@ import { UserListAndchatUiComponent } from './component/user-list-andchat-ui/use
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.component';
+import { SearchUserComponent } from './shared/components/search-user/search-user.component';
 
 
 export const routes: Routes = [
@@ -43,5 +44,5 @@ export const routes: Routes = [
                 component: SignUpComponent
             }
         ]
-    },
+    }
 ];

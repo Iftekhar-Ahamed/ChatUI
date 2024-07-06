@@ -4,11 +4,12 @@ import { ChatUIComponent } from '../../shared/components/chat-ui/chat-ui.compone
 import { ActivatedRoute } from '@angular/router';
 import { Observable, tap,map, takeWhile } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { SearchUserComponent } from '../../shared/components/search-user/search-user.component';
 
 @Component({
   selector: 'app-user-list-andchat-ui',
   standalone: true,
-  imports: [ChatUserListComponent,ChatUIComponent,CommonModule],
+  imports: [ChatUserListComponent,ChatUIComponent,CommonModule,SearchUserComponent],
   templateUrl: './user-list-andchat-ui.component.html',
   styleUrl: './user-list-andchat-ui.component.css'
 })

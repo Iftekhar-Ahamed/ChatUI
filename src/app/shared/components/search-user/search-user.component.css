@@ -1,0 +1,30 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2px;
+    font-family: 'Medium'; /* Assuming 'Medium' is your custom font */
+    user-select: none;
+    background-color: hsla(0, 0%, 100%, 0.266);
+}
+
+.search-title {
+    flex: 1; 
+    margin-right: 10px; 
+}
+
+.search-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.search-button::after {
+    content: '\1F50E'; /* Unicode for the search emoji */
+    margin-left: 5px; /* Adjust spacing between text and emoji */
+}
+
