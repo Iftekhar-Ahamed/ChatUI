@@ -66,6 +66,7 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
         )
       );
   }
+
   triggerAnimation() {
 
     if(this.chatContainer != undefined){
@@ -76,6 +77,7 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
     }
     
   }
+
   scroll(position: Position) {
     let scrollIndex: number;
     switch (position) {
@@ -99,12 +101,14 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
       this.triggerAnimation();
     }
   }
+
   ngAfterViewChecked(): void 
   {
     if(this.roomId != '0'){
       this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
     }
   }
+  
   ngDistroy() 
   {
     this.isAlive = false;

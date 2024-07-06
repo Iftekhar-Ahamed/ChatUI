@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-list-andchat-ui.component.html',
   styleUrl: './user-list-andchat-ui.component.css'
 })
+
 export class UserListAndchatUiComponent 
 {
   roomId$:Observable<string>;
@@ -29,6 +30,7 @@ export class UserListAndchatUiComponent
       )
     );
   }
+  
   ngDistroy() 
   {
     this.isAlive = false;
