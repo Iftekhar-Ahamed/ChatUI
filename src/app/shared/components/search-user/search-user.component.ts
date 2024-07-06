@@ -20,7 +20,7 @@ export class SearchUserComponent {
   }
 
   onSelect(): void {
-    // this.router.navigate(['../', ""], { relativeTo: this.activeRouter });
+    this.router.navigate(['../', "search"], { relativeTo: this.activeRouter });
   }
 
   ngOnInit() {

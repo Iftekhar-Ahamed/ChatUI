@@ -5,7 +5,9 @@
         </div>
         <div class="chat-content ">
             <div  *ngIf="roomId$ | async as roomId" >
-                <app-chat-ui [roomId]="roomId"></app-chat-ui>
+                <ng-container *ngIf = "roomId !== 'search'">
+                    <app-chat-ui [roomId]="roomId"></app-chat-ui>
+                </ng-container>
             </div>
         </div>
     </div>

@@ -99,6 +99,7 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
 
       this.loadRoom();
       this.triggerAnimation();
+      
     }
   }
 
