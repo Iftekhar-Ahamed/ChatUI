@@ -26,7 +26,7 @@ type Position = 'start' | 'mid' | 'end';
   }
 )
 
-export class ChatUIComponent implements AfterViewChecked,OnChanges
+export class ChatUIComponent implements OnInit,AfterViewChecked
 {
   
   @ViewChild('scrollframe') private scrollFrame!: ElementRef;
@@ -35,17 +35,22 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
   room$: Observable<Room | null>;
   room : Room;
   isAlive: boolean = true;
-  @Input() roomId! : string;
+  roomId: string;
 
   constructor(
     private store: Store,
     private router: Router,
-    private renderer:Renderer2
+    private renderer:Renderer2,
+    private route:ActivatedRoute
   ) 
   {
   }
 
   ngOnInit(){
+    this.route.paramMap.subscribe(params => {
+      this.roomId = params.get('roomId')??"";
+      this.loadRoom();
+    });
   }
 
   loadRoom(){
@@ -58,8 +63,8 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
         (
           (x: Room | null) => 
           {
+            this.triggerAnimation();
             this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.router.url));
-            this.store.dispatch(new ChatListAction.SelectUser(this.roomId));
             if(x) this.room = x;
             return x;
           }
@@ -92,15 +97,6 @@ export class ChatUIComponent implements AfterViewChecked,OnChanges
         break;
     }
     this.viewPort.scrollToIndex(scrollIndex, 'smooth');
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['roomId']) {
-
-      this.loadRoom();
-      this.triggerAnimation();
-      
-    }
   }
 
   ngAfterViewChecked(): void 
