@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { NgClass, AsyncPipe, NgIf } from '@angular/common';
+import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 
 @Component({
   selector: 'app-search-user',
