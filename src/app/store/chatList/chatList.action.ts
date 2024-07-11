@@ -14,6 +14,13 @@ export namespace ChatListAction
         static readonly type = '[SelectUser] User Selected';
         constructor(public userId: string) { }
     }
+
+    export class SelectNewChat
+    {
+        static readonly type = '[SelectNewChat] Start new chat Selected'
+        constructor(){}
+    }
+
     export class ClearState 
     {
         static readonly type = '[ClearState] ClearState called';

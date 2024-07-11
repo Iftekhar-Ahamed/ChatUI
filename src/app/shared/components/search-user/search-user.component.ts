@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { NgClass, AsyncPipe, NgIf } from '@angular/common';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
+import { ChatListAction } from '../../../store';
 
 @Component({
   selector: 'app-search-user',
@@ -20,8 +21,10 @@ export class SearchUserComponent {
     
   }
 
-  onSelect(): void {
+  onSelect(): void 
+  {
     this.router.navigate(["search"], { relativeTo: this.activeRouter });
+    this.store.dispatch( new ChatListAction.SelectNewChat);
   }
 
   ngOnInit() {
