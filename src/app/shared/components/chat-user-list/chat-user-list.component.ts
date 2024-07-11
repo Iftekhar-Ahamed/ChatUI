@@ -7,7 +7,6 @@ import { User } from '../../models/user.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ChatListModel } from '../../models/chatList.model';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 
 @Component({
   selector: 'app-chat-user-list',
@@ -22,7 +21,7 @@ export class ChatUserListComponent {
 
   constructor(
     private store: Store
-  ) {
+  ){
   }
 
   trackfn(index: number, user: User): string {
