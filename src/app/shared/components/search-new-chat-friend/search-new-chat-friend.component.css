@@ -1,0 +1,12 @@
+.search-container{
+    width: 90%;
+    min-height: calc(100vh - 70px);
+    margin: 10px auto 0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Medium';
+    backdrop-filter: blur(14px);
+    background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%);
+    background-color: rgba(81, 81, 94, 0.21);
+}
