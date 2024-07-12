@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { NgClass, AsyncPipe, NgIf } from '@angular/common';
-import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
-import { ChatListAction } from '../../../store';
+import { ChatListAction, ChatListState } from '../../../store';
+import { map, Observable, takeWhile, tap } from 'rxjs';
+import { StartNewChatProperty } from '../../models/chatList.model';
 
 @Component({
   selector: 'app-search-user',
@@ -12,26 +13,32 @@ import { ChatListAction } from '../../../store';
   templateUrl: './search-user.component.html',
   styleUrl: './search-user.component.css'
 })
-export class SearchUserComponent {
-  lastMessage : string = "";
+export class SearchUserComponent implements OnInit{
   isAlive: boolean = true;
-  route :string ='';
+  newChat : StartNewChatProperty;
+  @Select(ChatListState.newChat) newChat$! : Observable<StartNewChatProperty>;
 
   constructor(private store: Store,private router:Router,private activeRouter:ActivatedRoute) {
-    
   }
 
   onSelect(): void 
   {
+    this.store.dispatch( new ChatListAction.SelectNewChat());
     this.router.navigate(["search"], { relativeTo: this.activeRouter });
-    this.store.dispatch( new ChatListAction.SelectNewChat);
   }
-
-  ngOnInit() {
+  ngOnInit(){
+    this.newChat$
+      .pipe(
+        takeWhile(() => this.isAlive)
+      )
+      .subscribe((newChat: StartNewChatProperty) => {
+        this.newChat = newChat;
+      });
   }
 
   ngDistroy() 
   {
+    console.log("Called");
     this.isAlive = false;
   }
 }

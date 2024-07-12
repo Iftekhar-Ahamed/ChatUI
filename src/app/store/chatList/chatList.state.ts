@@ -69,6 +69,11 @@ export class ChatListState
     {
         return state.chatList;
     }
+    @Selector()
+    static newChat(state: chatListStateModel): StartNewChatProperty 
+    {
+        return state.chatList.startNewChat;
+    }
 
     
     constructor(
@@ -162,7 +167,8 @@ export class ChatListState
         
         if (state.current && state.current.isSelected) 
         {
-            state.current.isSelected = false;
+            let user = state.chatList.users.find( x => x.id === state.current?.id);
+            if(user){user.isSelected = false;}
             const temp = state.current;
 
             ctx.setState({
