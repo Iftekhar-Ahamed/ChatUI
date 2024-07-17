@@ -19,6 +19,7 @@ export class SearchUserComponent implements OnInit{
   @Select(ChatListState.newChat) newChat$! : Observable<StartNewChatProperty>;
 
   constructor(private store: Store,private router:Router,private activeRouter:ActivatedRoute) {
+    this.newChat = { isSelected : false};
   }
 
   onSelect(): void 
