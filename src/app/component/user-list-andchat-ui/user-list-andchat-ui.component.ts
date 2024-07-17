@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ChatUserListComponent } from '../../shared/components/chat-user-list/chat-user-list.component';
 import { ChatUIComponent } from '../../shared/components/chat-ui/chat-ui.component';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Observable, tap,map, takeWhile } from 'rxjs';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SearchUserComponent } from '../../shared/components/search-user/search-user.component';
 
