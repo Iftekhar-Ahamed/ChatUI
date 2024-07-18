@@ -1,1 +1,16 @@
-<p>search-user-card works!</p>
+<ng-container>
+    <div (click)="onSelect()"   class="chat-user-card"
+        [ngClass]="{'selected': user.isSelected === true,'': user.isSelected === false}">
+        <div class="chat-user-card__avatar">
+            <img [src]="avatar" alt="avatar" />
+        </div>
+        <div class="chat-user-card__info">
+            <div class="chat-user-card__info__header">
+                <span class="chat-user-card__info__status__indicator"
+                    [ngClass]="{ 'online': user.status === 'online', 'offline': user.status === 'offline' }"></span>
+                <span class="chat-user-card__info__name">{{ user.name }}</span>
+                <span class="chat-user-card__info__status">{{ user.status }}</span>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,1 +1,8 @@
-<p>search-result works!</p>
+<div style="height: 5px;"></div>
+<ng-container *ngIf="searchResult$ | async as SearchedUserResult">
+    <ng-container *ngFor="let item of SearchedUserResult; trackBy: trackfn">
+        <app-search-user-card [user]="item"></app-search-user-card>
+        <div style="height: 5px;"></div>
+    </ng-container>
+</ng-container>
+    
