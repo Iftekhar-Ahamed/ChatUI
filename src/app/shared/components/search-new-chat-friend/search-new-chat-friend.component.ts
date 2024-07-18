@@ -5,6 +5,7 @@ import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SearchResultComponent } from '../search-result/search-result.component';
 import { CommonModule } from '@angular/common';
+import { ChatListAction } from '../../../store';
 
 @Component({
   selector: 'app-search-new-chat-friend',
@@ -18,6 +19,7 @@ export class SearchNewChatFriendComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.store.dispatch( new ChatListAction.SelectNewChat());
     this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.route.url));
   }
 }

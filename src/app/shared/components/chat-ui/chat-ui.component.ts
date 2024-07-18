@@ -64,6 +64,8 @@ export class ChatUIComponent implements OnInit,AfterViewChecked
           (x: Room | null) => 
           {
             this.triggerAnimation();
+            
+            this.store.dispatch(new ChatListAction.SelectUser(this.roomId));
             this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.router.url));
             if(x) this.room = x;
             return x;

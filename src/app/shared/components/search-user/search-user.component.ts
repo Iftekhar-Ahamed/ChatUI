@@ -24,7 +24,6 @@ export class SearchUserComponent implements OnInit{
 
   onSelect(): void 
   {
-    this.store.dispatch( new ChatListAction.SelectNewChat());
     this.router.navigate(["search"], { relativeTo: this.activeRouter });
   }
   ngOnInit(){
