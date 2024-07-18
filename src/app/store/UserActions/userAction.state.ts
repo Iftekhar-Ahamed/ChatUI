@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { State, Store } from "@ngxs/store";
-import { UserActionModel } from "../../shared/models/userAction.model";
+import { Selector, State, Store } from "@ngxs/store";
+import { SearchedUserResult, UserActionModel } from "../../shared/models/userAction.model";
 import { GlobalUserStatus, UserStatus, UserType } from "../../shared/enums/user.enum";
 export interface userActionStateModel
 {
@@ -41,7 +41,11 @@ export interface userActionStateModel
 @Injectable()
 export class userActionState{
 
-
+    @Selector()
+    static searchedResult( state : userActionStateModel):SearchedUserResult[]
+    {
+        return state.userActions.searchResult;
+    }
 
     constructor( private store : Store){}
 
