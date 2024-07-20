@@ -1,0 +1,77 @@
+/* chat-user-card.component.css */
+.chat-user-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2px;
+    font-family: 'Medium';
+    user-select: none;
+    background-color: hsla(0, 0%, 100%, 0.266);
+    /* Add margin bottom for spacing */
+}
+
+.selected {
+    border: #000000 2px solid;
+    /* background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%); */
+    background-color: hsla(0, 0%, 0%, 0.234);
+    backdrop-filter: blur(14px);
+}
+
+.chat-user-card__avatar {
+    margin-right: 15px;
+}
+
+.chat-user-card__avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-user-card__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.chat-user-card__info__header {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.chat-user-card__info__status__indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.chat-user-card__info__status__indicator.online {
+    background-color: #1ce623;
+    border: #000000 1px solid;
+    /* Green for online */
+}
+
+.chat-user-card__info__status__indicator.offline {
+    background-color: #f44336;
+    border: #000000 1px solid;
+    /* Red for offline */
+}
+
+.chat-user-card__info__status {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #f5eded;
+}
+
+.chat-user-card__info__last-message {
+    font-family: 'Thin';
+    color: #000000;
+    margin-top: 5px;
+    /* Add margin-top for spacing */
+}

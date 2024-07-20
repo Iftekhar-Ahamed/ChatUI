@@ -7,8 +7,8 @@ import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.component';
 import { SearchUserComponent } from './shared/components/search-user/search-user.component';
 import { Component } from '@angular/core';
-import { ChatUIComponent } from './shared/components/chat-ui/chat-ui.component';
-import { SearchNewChatFriendComponent } from './shared/components/search-new-chat-friend/search-new-chat-friend.component';
+import { ChatUIComponent } from './component/chat-ui/chat-ui.component';
+import { SearchNewChatFriendComponent } from './component/search-new-chat-friend/search-new-chat-friend.component';
 
 
 export const routes: Routes = [

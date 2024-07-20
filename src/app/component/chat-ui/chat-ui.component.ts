@@ -1,17 +1,16 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
-import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
-import { RoomSate } from '../../../store/rooms/rooms.state';
 import { Observable, Subscription, map, takeUntil, takeWhile, tap } from 'rxjs';
-import { Room } from '../../models/message.model';
-import { MessageCardComponent } from '../message-card/message-card.component';
-import { MessageInputComponent } from '../message-input/message-input.component';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import { ChatListAction } from '../../../store';
-
+import { MessageCardComponent } from '../../shared/components/message-card/message-card.component';
+import { MessageInputComponent } from '../../shared/components/message-input/message-input.component';
+import { Room } from '../../shared/models/message.model';
+import { ChatListAction } from '../../store';
+import { ItemLinkAction } from '../../store/itemLink/itemLink.action';
+import { RoomSate } from '../../store/rooms/rooms.state';
 type Position = 'start' | 'mid' | 'end';
 
 @Component
