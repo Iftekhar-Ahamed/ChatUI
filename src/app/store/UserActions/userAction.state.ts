@@ -29,6 +29,78 @@ export interface UserActionStateModel
                         type: UserType.OtherUser,
                         isSelected: false,
                         actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
+                    },{
+                        id: "1",
+                        name: "Al-Amin",
+                        email: "alamin@email.com",
+                        avatar: "avater.jpg",
+                        status: UserStatus.Online,
+                        type: UserType.OtherUser,
+                        isSelected: false,
+                        actionStatus : GlobalUserStatus.NotConnected
                     }
                 ]
             },

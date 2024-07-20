@@ -18,6 +18,13 @@
 
 /* Search Result */
 .search-result {
-    padding: 20px;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1%;
+    min-height: calc(100vh - 200px);
+    max-height: calc(100vh - 200px);
 }
