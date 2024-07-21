@@ -91,7 +91,7 @@ export interface UserActionStateModel
                         status: UserStatus.Online,
                         type: UserType.OtherUser,
                         isSelected: false,
-                        actionStatus : GlobalUserStatus.NotConnected
+                        actionStatus : GlobalUserStatus.Connected
                     },{
                         id: "1",
                         name: "Al-Amin",
@@ -100,7 +100,7 @@ export interface UserActionStateModel
                         status: UserStatus.Online,
                         type: UserType.OtherUser,
                         isSelected: false,
-                        actionStatus : GlobalUserStatus.NotConnected
+                        actionStatus : GlobalUserStatus.Connected
                     }
                 ]
             },
