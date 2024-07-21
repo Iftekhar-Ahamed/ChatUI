@@ -13,18 +13,10 @@
     align-items: center;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 /* Search Result */
 .search-result {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 8px;
-    height: 100%;
-    overflow-y: auto;
-    padding: 1%;
-    min-height: calc(100vh - 200px);
-    max-height: calc(100vh - 200px);
+    padding: 10px;
 }

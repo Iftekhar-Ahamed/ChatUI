@@ -8,6 +8,14 @@
 
 .search-result {
     background-color: hsla(0, 0%, 100%, .3);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    min-height: calc(100vh - 190px);
+    max-height: calc(100vh - 190px);
 }
 
 /* For webkit-based browsers */

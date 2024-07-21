@@ -1,15 +1,15 @@
 <ng-container>
-    <div (click)="onSelect()"   class="chat-user-card"
+    <div (click)="onSelect()"   class="search-user-card"
         [ngClass]="{'selected': user.isSelected === true,'': user.isSelected === false}">
-        <div class="chat-user-card__avatar">
+        <div class="search-user-card__avatar">
             <img [src]="avatar" alt="avatar" />
         </div>
-        <div class="chat-user-card__info">
-            <div class="chat-user-card__info__header">
-                <span class="chat-user-card__info__status__indicator"
+        <div class="search-user-card__info">
+            <div class="search-user-card__info__header">
+                <span class="search-user-card__info__status__indicator"
                     [ngClass]="{ 'online': user.status === 'online', 'offline': user.status === 'offline' }"></span>
-                <span class="chat-user-card__info__name">{{ user.name }}</span>
-                <span class="chat-user-card__info__status">{{ user.status }}</span>
+                <span class="search-user-card__info__name">{{ user.name }}</span>
+                <span class="search-user-card__info__status">{{ user.status }}</span>
             </div>
         </div>
     </div>
