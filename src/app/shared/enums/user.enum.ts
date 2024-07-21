@@ -8,5 +8,6 @@ export enum UserType {
 }
 export enum GlobalUserStatus{
     Connected = 1,
-    NotConnected = 2
+    NotConnected = 2,
+    Requested = 3
 }

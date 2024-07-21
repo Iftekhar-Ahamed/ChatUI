@@ -11,7 +11,9 @@
             <span class="search-user-card__info__status">{{ user.status }}</span>
         </div>
         <div>
-            <button type="button" class="btn btn-primary" *ngIf="true" (click)="sendFriendRequest()">{{actionName}}</button>
+            <button type="button" class="btn btn-primary" *ngIf="actionType === 1" (click)="sendFriendRequest()">{{actionName}}</button>
+            <button type="button" class="btn btn-primary" *ngIf="actionType === 2" (click)="sendFriendRequest()">{{actionName}}</button>
+            <button type="button" class="btn btn-primary" *ngIf="actionType === 3" (click)="sendFriendRequest()">{{actionName}}</button>
         </div>
     </div>
 </ng-container>

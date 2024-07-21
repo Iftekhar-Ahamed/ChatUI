@@ -15,30 +15,37 @@ import { GlobalUserStatus } from '../../enums/user.enum';
 export class SearchUserCardComponent {
 
   @Input() user!: SearchedUserResult;
-  actionName : string = "Default";
+  actionName: string = "Default";
+  actionType: number = 0;
 
-  constructor(private store: Store,private router:Router,private activeRouter:ActivatedRoute) 
-  {
+  constructor(private store: Store, private router: Router, private activeRouter: ActivatedRoute) {
   }
 
-  get avatar(): string 
-  {
+  get avatar(): string {
     return `assets/${this.user.avatar}`;
   }
-  sendFriendRequest():void
-  {
+  sendFriendRequest(): void {
 
   }
 
   onSelect(): void {
     //this.router.navigate([this.user.id], { relativeTo: this.activeRouter });
   }
-  
+
   ngOnInit() {
-    this.actionName = this.user.actionStatus === GlobalUserStatus.Connected ? "Remove User":"Add User";
+    this.actionType = this.user.actionStatus;
+
+    if (this.user.actionStatus == GlobalUserStatus.Connected) {
+      this.actionName = "Remove";
+    }
+    else if (this.user.actionStatus == GlobalUserStatus.NotConnected) {
+      this.actionName = "Send Request";
+    }
+    else if (this.user.actionStatus == GlobalUserStatus.Requested) {
+      this.actionName = "Cancel Request";
+    }
   }
 
-  ngDistroy() 
-  {
+  ngDistroy() {
   }
 }
