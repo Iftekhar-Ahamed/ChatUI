@@ -8,6 +8,7 @@
     font-family: 'Medium';
     user-select: none;
     background-color: hsla(0, 0%, 100%, 0.266);
+    justify-content: space-between;
 }
 
 .selected {
