@@ -7,13 +7,13 @@ import { map, Observable, takeWhile, tap } from 'rxjs';
 import { StartNewChatProperty } from '../../models/chatList.model';
 
 @Component({
-  selector: 'app-search-user',
+  selector: 'app-start-new-chat-card',
   standalone: true,
   imports: [NgClass, AsyncPipe, NgIf,RouterModule],
-  templateUrl: './search-user.component.html',
-  styleUrl: './search-user.component.css'
+  templateUrl: './start-new-chat-card.component.html',
+  styleUrl: './start-new-chat-card.component.css'
 })
-export class SearchUserComponent implements OnInit{
+export class StartNewChatCardComponent implements OnInit{
   isAlive: boolean = true;
   newChat : StartNewChatProperty;
   @Select(ChatListState.newChat) newChat$! : Observable<StartNewChatProperty>;

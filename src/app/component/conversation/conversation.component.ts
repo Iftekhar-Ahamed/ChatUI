@@ -1,7 +1,8 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
-import { Observable, Subscription, map, takeUntil, takeWhile, tap } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { Observable, map, takeWhile, tap } from 'rxjs';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -13,19 +14,15 @@ import { ItemLinkAction } from '../../store/itemLink/itemLink.action';
 import { RoomSate } from '../../store/rooms/rooms.state';
 type Position = 'start' | 'mid' | 'end';
 
-@Component
-(
-  {
-    selector: 'app-chat-ui',
-    standalone: true,
-    imports: [ MessageCardComponent, MessageInputComponent, CommonModule,ScrollingModule ],
-    templateUrl: './chat-ui.component.html',
-    styleUrl: './chat-ui.component.css',
-    providers: [],
-  }
-)
 
-export class ChatUIComponent implements OnInit,AfterViewChecked
+@Component({
+  selector: 'app-conversation',
+  standalone: true,
+  imports: [MessageCardComponent, MessageInputComponent, CommonModule,ScrollingModule ],
+  templateUrl: './conversation.component.html',
+  styleUrl: './conversation.component.css'
+})
+export class ConversationComponent implements OnInit,AfterViewChecked
 {
   
   @ViewChild('scrollframe') private scrollFrame!: ElementRef;
