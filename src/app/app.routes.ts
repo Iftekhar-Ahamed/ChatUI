@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 import { HomelayoutComponent } from './layout/homelayout/homelayout.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
-import { UserListAndchatUiComponent } from './component/user-list-andchat-ui/user-list-andchat-ui.component';
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.component';
-import { SearchUserComponent } from './shared/components/search-user/search-user.component';
+import { Component } from '@angular/core';
+import { SearchNewChatFriendComponent } from './component/search-new-chat-friend/search-new-chat-friend.component';
+import { ChatComponent } from './component/chat/chat.component';
+import { ConversationComponent } from './component/conversation/conversation.component';
 
 
 export const routes: Routes = [
@@ -14,16 +16,21 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomelayoutComponent,
-        
-        data: 
-        {
-            path: 'home'
-        },
         children: 
         [
             {
-                path: 'chatList/:roomId',
-                component: UserListAndchatUiComponent,
+                path: 'chatList',
+                component: ChatComponent,
+                children:[
+                    {
+                        path:'search',
+                        component:SearchNewChatFriendComponent
+                    },
+                    {
+                        path:":roomId",
+                        component: ConversationComponent
+                    }
+                ]
             },
             {
                 path: 'profile',

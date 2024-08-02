@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ChatListAction } from './chatList.action';
 import { User } from "../../shared/models/user.model";
 import { UserStatus, UserType } from "../../shared/enums/user.enum";
-import { ChatListModel } from "../../shared/models/chatList.model";
+import { ChatListModel, StartNewChatProperty } from "../../shared/models/chatList.model";
 
 export interface chatListStateModel 
 {
@@ -48,7 +48,11 @@ export interface chatListStateModel
                         type: UserType.OtherUser,
                         isSelected: false
                     }
-                ]
+                ],
+                startNewChat : 
+                {
+                    isSelected : false,
+                }
             },
             pev: null,
             current: null
@@ -64,6 +68,11 @@ export class ChatListState
     static chatLists(state: chatListStateModel): ChatListModel 
     {
         return state.chatList;
+    }
+    @Selector()
+    static newChat(state: chatListStateModel): StartNewChatProperty 
+    {
+        return state.chatList.startNewChat;
     }
 
     
@@ -118,6 +127,11 @@ export class ChatListState
                 user.isSelected = false;
             }
         }
+
+        if(state.chatList.startNewChat.isSelected === true)
+        {
+            state.chatList.startNewChat.isSelected = false;
+        }
         
         if(actionUser)
         {
@@ -138,6 +152,34 @@ export class ChatListState
                 pev: temp
             });
         }
+    }
+    
+    @Action(ChatListAction.SelectNewChat)
+    async selectNewChat(ctx: StateContext<chatListStateModel>, action: ChatListAction.SelectNewChat)
+    {
+        
+        let state = ctx.getState();
+
+        if(state.chatList.startNewChat.isSelected)
+        {
+            return;
+        }
+        
+        if (state.current && state.current.isSelected) 
+        {
+            let user = state.chatList.users.find( x => x.id === state.current?.id);
+            if(user){user.isSelected = false;}
+            const temp = state.current;
+
+            ctx.setState({
+                ...state,
+                current: null,
+                pev: temp
+            });
+
+        }
+
+        state.chatList.startNewChat.isSelected = true;
     }
     //#endregion Actions
 }

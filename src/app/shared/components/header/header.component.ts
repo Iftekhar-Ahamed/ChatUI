@@ -31,13 +31,20 @@ export class HeaderComponent {
   }
 
   setSelectedMenu(url: string): void {
-    if (url.includes('chatList')) {
+
+    if (url.includes('chatList')) 
+    {
       this.store.dispatch(new ItemLinkAction.SelectItemLink("home/chatList"));
-    }else if (url.includes('profile')) {
+    }
+    else if (url.includes('profile')) 
+    {
       this.store.dispatch(new ItemLinkAction.SelectItemLink("home/profile"))
-    }else{
+    }
+    else
+    {
       this.store.dispatch(new ItemLinkAction.SelectItemLink("home"))
     }
+
   }
   
   trackfn(index: number, item: ItemLinkModel): string {

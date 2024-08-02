@@ -5,6 +5,7 @@ import { ItemLinkModel } from "../../shared/models/itemLink.model";
 
 export interface itemLinkStateModel 
 {
+    
     items: ItemLinkModel[];
     pev: ItemLinkModel | null;
     current: ItemLinkModel | null;

@@ -33,7 +33,7 @@ export class ChatUserCardComponent implements OnInit {
   }
 
   onSelect(): void {
-    this.router.navigate(['../', this.user.id], { relativeTo: this.activeRouter });
+    this.router.navigate([this.user.id], { relativeTo: this.activeRouter });
   }
 
   ngOnInit() {
