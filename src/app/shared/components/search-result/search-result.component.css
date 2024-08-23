@@ -8,16 +8,15 @@
 
 .search-result {
     background-color: hsla(0, 0%, 100%, .3);
-    padding: 10px;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
     min-height: calc(100vh - 190px);
     max-height: calc(100vh - 190px);
     overflow: auto;
 }
 .search-item {
-    margin-bottom: 10px; /* Gap between items */
+    padding: 7px;
   }
 /* For webkit-based browsers */
 .search-result::-webkit-scrollbar {
