@@ -1,10 +1,9 @@
-<div *ngIf="searchResult$ | async as SearchedUserResult">
+<div  *ngIf="searchResult$ | async as SearchedUserResult" >
     <div *ngIf="SearchedUserResult">
-      <cdk-virtual-scroll-viewport itemSize="5" class="search-result">
-        <div *cdkVirtualFor="let item of SearchedUserResult; let i = index">
-          <app-search-user-card [user]="item"></app-search-user-card>
+        <div #scrollframe class="search-result" >
+            <div  *ngFor="let item of SearchedUserResult || []; let i = index" >
+                <app-search-user-card [user]="item"></app-search-user-card>
+            </div>
         </div>
-      </cdk-virtual-scroll-viewport>
     </div>
-</div>
-  
+</div> 
