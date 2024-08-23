@@ -12,12 +12,13 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     min-height: calc(100vh - 190px);
     max-height: calc(100vh - 190px);
-    overflow: auto; /* Allows scrolling */
+    overflow: auto;
 }
-
+.search-item {
+    margin-bottom: 10px; /* Gap between items */
+  }
 /* For webkit-based browsers */
 .search-result::-webkit-scrollbar {
     width: 0px;
