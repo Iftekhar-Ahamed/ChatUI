@@ -5,12 +5,11 @@ import { Select, Store } from '@ngxs/store';
 import { UserActionState } from '../../../store/UserActions/userAction.state';
 import { Observable } from 'rxjs';
 import { SearchedUserResult } from '../../models/userAction.model';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-search-result',
   standalone: true,
-  imports: [CommonModule,SearchUserCardComponent,ScrollingModule],
+  imports: [CommonModule,SearchUserCardComponent],
   templateUrl: './search-result.component.html',
   styleUrl: './search-result.component.css'
 })

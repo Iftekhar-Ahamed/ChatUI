@@ -30,7 +30,7 @@
     border-radius: 4px;
     /* Rounded corners for the scrollbar thumb */
 }
-  
+
 .search-result::-webkit-scrollbar-thumb:hover {
     background: #555;
     /* Color of the scrollbar thumb on hover */
