@@ -8,16 +8,16 @@
 
 .search-result {
     background-color: hsla(0, 0%, 100%, .3);
-    padding: 10px;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
+    border-radius: 8px;
     min-height: calc(100vh - 190px);
     max-height: calc(100vh - 190px);
+    overflow: auto;
 }
-
+.search-item {
+    padding: 7px;
+  }
 /* For webkit-based browsers */
 .search-result::-webkit-scrollbar {
     width: 0px;
