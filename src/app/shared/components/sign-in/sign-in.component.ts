@@ -10,7 +10,9 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
-export class SignInComponent implements OnInit  {
+
+export class SignInComponent implements OnInit
+{
 
   loginForm: FormGroup;
   loading = false;
@@ -23,25 +25,31 @@ export class SignInComponent implements OnInit  {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ){
+  )
+  {
     // if (this.authenticationService.currentUserValue) { 
     //   this.router.navigate(['/']);
     // }
   }
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+
+  ngOnInit() 
+  {
+    this.loginForm = this.formBuilder.group
+    (
+      {
         username: ['', Validators.required],
         password: ['', Validators.required]
-    });
+      }
+    );
 
-    // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
   }
 
   get f() { return this.loginForm.controls; }
 
   
-  onSubmit() {
+  onSubmit() 
+  {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -61,5 +69,6 @@ export class SignInComponent implements OnInit  {
     //             this.alertService.error(error);
     //             this.loading = false;
     //         });
-}
+  }
+
 }
