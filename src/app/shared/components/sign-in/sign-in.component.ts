@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule,RouterLink],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, NgOptimizedImage],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -18,21 +18,21 @@ export class SignInComponent implements OnInit
   loading = false;
   submitted = false;
   returnUrl: string;
-  
-  
 
-  constructor( 
+
+
+  constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
   )
   {
-    // if (this.authenticationService.currentUserValue) { 
+    // if (this.authenticationService.currentUserValue) {
     //   this.router.navigate(['/']);
     // }
   }
 
-  ngOnInit() 
+  ngOnInit()
   {
     this.loginForm = this.formBuilder.group
     (
@@ -47,8 +47,8 @@ export class SignInComponent implements OnInit
 
   get f() { return this.loginForm.controls; }
 
-  
-  onSubmit() 
+
+  onSubmit()
   {
     this.submitted = true;
 
