@@ -2,11 +2,14 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {Store} from "@ngxs/store";
+import {LogInRequestDto} from "../../models/user-log-in/user-log-in-request.model";
+import {UserInfoAction} from "../../../store/user-info/user-info.action";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, NgOptimizedImage],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -15,8 +18,6 @@ export class SignInComponent implements OnInit
 {
 
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
   returnUrl: string;
 
 
@@ -24,7 +25,8 @@ export class SignInComponent implements OnInit
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store : Store,
   )
   {
     // if (this.authenticationService.currentUserValue) {
@@ -48,27 +50,15 @@ export class SignInComponent implements OnInit
   get f() { return this.loginForm.controls; }
 
 
-  onSubmit()
+  async onSubmit()
   {
-    this.submitted = true;
+    const userLogInReq: LogInRequestDto = this.loginForm.value;
+    console.log(userLogInReq);
 
-    if (this.loginForm.invalid) {
-        return;
-    }
+    await this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)).toPromise();
 
-    this.loading = true;
+    //this.router.navigate([this.returnUrl]);
 
-    this.router.navigate([this.returnUrl]);
-    // this.authenticationService.login(this.f.username.value, this.f.password.value)
-    //     .pipe(first())
-    //     .subscribe(
-    //         data => {
-    //             this.router.navigate([this.returnUrl]);
-    //         },
-    //         error => {
-    //             this.alertService.error(error);
-    //             this.loading = false;
-    //         });
   }
 
 }

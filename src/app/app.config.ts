@@ -16,15 +16,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    //JwtHelperService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     provideRouter(routes),
     provideClientHydration(),
-    // provideHttpClient(withInterceptorsFromDi()),
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   //useClass: JwtInterceptor,
-    //   multi: true
-    // },
+    provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
       NgxsModule.forRoot(AppState, {
         developmentMode: !environment.production,

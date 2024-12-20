@@ -3,7 +3,8 @@ import { Message } from '../../models/message.model';
 import { CommonModule } from '@angular/common';
 import { Select } from '@ngxs/store';
 import { Observable, takeWhile, tap } from 'rxjs';
-import { LogedInUserState } from '../../../store/logedInUser/logedInUser.state';
+import {UserInfoState} from "../../../store/user-info/user-info.state";
+import {UserInfoModel} from "../../models/user.model";
 
 @Component({
   selector: 'app-message-card',
@@ -15,19 +16,19 @@ import { LogedInUserState } from '../../../store/logedInUser/logedInUser.state';
 export class MessageCardComponent {
 
   @Input() msg!: Message;
-  @Select(LogedInUserState.userNameOrEmail) user$!: Observable<string>;
+  @Select(UserInfoState.getUserInfo) user$!: Observable<UserInfoModel>;
   isAlive: boolean = true;
 
   loggedInUser: string = "";
   constructor() {
     this.user$.pipe(
       takeWhile(() => this.isAlive),
-      tap((x: string) => {
-        this.loggedInUser = x;
+      tap((x: UserInfoModel) => {
+        this.loggedInUser = x.email;
       })
     ).subscribe();
   }
-  ngDistroy() 
+  ngDistroy()
   {
     this.isAlive = false;
   }

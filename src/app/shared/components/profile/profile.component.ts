@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
-import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
-import { LogedInUserState } from '../../../store/logedInUser/logedInUser.state';
-import { LogedInUser } from '../../models/user.model';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {UserInfoModel} from "../../models/user.model";
+import {UserInfoState} from "../../../store/user-info/user-info.state";
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +16,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class ProfileComponent {
   profileForm: FormGroup;
-  user$: Observable<LogedInUser|null>;
+  user$: Observable<UserInfoModel|null>;
   isEditable: boolean = false;
   passwordFieldType = 'password';
   // @Select(LogedInUserState.user) user$!: Observable<LogedInUser>;
@@ -27,7 +26,7 @@ export class ProfileComponent {
     private fb: FormBuilder,
     private router:Router
   ) {
-    this.user$ = this.store.select(LogedInUserState.user);
+    this.user$ = this.store.select(UserInfoState.getUserInfo);
   }
   ngOnInit(): void {
     this.user$.subscribe(user => {

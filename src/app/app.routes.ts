@@ -4,7 +4,6 @@ import { ProfileComponent } from './shared/components/profile/profile.component'
 import { SignInComponent } from './shared/components/sign-in/sign-in.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.component';
-import { Component } from '@angular/core';
 import { SearchNewChatFriendComponent } from './component/search-new-chat-friend/search-new-chat-friend.component';
 import { ChatComponent } from './component/chat/chat.component';
 import { ConversationComponent } from './component/conversation/conversation.component';
@@ -16,7 +15,7 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomelayoutComponent,
-        children: 
+        children:
         [
             {
                 path: 'chatList',
@@ -40,7 +39,7 @@ export const routes: Routes = [
     },{
         path: 'welcome',
         component: WelcomeLayoutComponent,
-        children: 
+        children:
         [
             {
                 path: 'signInAccount',
