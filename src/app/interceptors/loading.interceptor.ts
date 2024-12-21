@@ -6,11 +6,11 @@ import {NgxSpinnerService} from "ngx-spinner";
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
-  constructor(
-    private spinner: NgxSpinnerService
-  ) { }
+  constructor( private  spinner: NgxSpinnerService ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    console.log("Loading interceptor");
 
     this.spinner.show();
 

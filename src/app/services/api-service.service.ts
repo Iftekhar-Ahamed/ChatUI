@@ -5,13 +5,14 @@ import {ApiResponseDto} from "../shared/models/common/api-response.model";
 import {LogInResponseDto} from "../shared/models/user-log-in/user-log-in-response.model";
 import {LogInRequestDto} from "../shared/models/user-log-in/user-log-in-request.model";
 import {UserInformationDto} from "../shared/models/user-info/user-info-response.model";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  baseUrl : string = 'http://localhost:5147';
+  baseUrl : string = environment.baseUrl;
 
   constructor(private httpClient : HttpClient) { }
 
