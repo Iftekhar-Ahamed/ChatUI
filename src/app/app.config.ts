@@ -17,6 +17,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {LoadingInterceptor} from "./interceptors/loading.interceptor";
 import {NgxSpinnerModule} from "ngx-spinner";
+import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 
 
 export const appConfig: ApplicationConfig = {
@@ -25,6 +26,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true,
+    },{
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
       multi: true,
     },
     provideClientHydration(),

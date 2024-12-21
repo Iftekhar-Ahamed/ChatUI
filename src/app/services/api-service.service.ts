@@ -52,9 +52,9 @@ export class ApiService {
 
   }
 
-  getUserInfo(id : number): Observable<UserInformationDto | null>
+  getUserInfo(): Observable<UserInformationDto | null>
   {
-    return this.getData('/api/User/GetUserById/UserId=${{id}}').pipe(
+    return this.getData('/api/User/GetUser').pipe(
       map((response: ApiResponseDto<UserInformationDto>) => response.data),
       catchError(this.handleError)
     );

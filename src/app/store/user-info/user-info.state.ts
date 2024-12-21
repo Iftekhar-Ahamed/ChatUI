@@ -60,7 +60,17 @@ export class UserInfoState{
 
       let data = tokenRes.data;
 
-      const userInfoRsp = await lastValueFrom(this.apiService.getUserInfo(data.userId));
+      ctx.setState
+      (
+        {
+          ...state,
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+          isLoggedIn : tokenRes.success
+        }
+      );
+
+      const userInfoRsp = await lastValueFrom(this.apiService.getUserInfo());
 
       if(userInfoRsp != null){
 

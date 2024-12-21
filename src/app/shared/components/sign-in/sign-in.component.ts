@@ -60,14 +60,14 @@ export class SignInComponent implements OnInit
 
       this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
         if (isLoggedIn) {
-          const returnUrl = this.returnUrl || '/dashboard';
+          const returnUrl = this.returnUrl || '/home';
           this.router.navigate([returnUrl]);
         }
       });
+
     } catch (error) {
       console.error('An error occurred during login', error);
     }
   }
-
 
 }
