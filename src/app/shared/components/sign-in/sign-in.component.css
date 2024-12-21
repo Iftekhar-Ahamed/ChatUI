@@ -1,31 +1,28 @@
 form {
-    min-width: 60vh;
-    min-height: 40vh;
+    min-width: 30vh;
+    min-height: 20vh;
     margin: 0 auto;
-    font-family: 'Medium';
-    padding: 20px;
     border-radius: 8px;
     background-color: hsla(0, 0%, 100%, .3);
   }
-  
+
   .form-group {
     margin-bottom: 15px;
   }
-  
+
   label {
     display: block;
     margin-bottom: 5px;
-    font-family: 'Medium';
     font-weight: bold;
   }
-  
+
   .form-control {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   .btn {
     width: 100%;
     padding: 10px;
@@ -36,7 +33,7 @@ form {
     background-color: #007bff;
     cursor: pointer;
   }
-  
+
   .btn:hover {
     background-color: #2563eb;
   }
@@ -44,23 +41,23 @@ form {
   .btn:disabled {
     background-color: #cccccc;
   }
-  
+
   .is-invalid {
     border-color: #dc3545;
   }
-  
+
   .invalid-feedback {
     color: #dc3545;
     font-size: 0.875em;
     margin-top: 5px;
   }
-  
+
   .spinner-border {
     width: 1rem;
     height: 1rem;
     margin-right: 5px;
   }
-  
+
   .btn-link {
     display: block;
     text-align: center;
@@ -68,4 +65,3 @@ form {
     color: #ffffff;
     text-decoration: none;
   }
-  

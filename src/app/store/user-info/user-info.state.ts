@@ -10,6 +10,7 @@ export interface UserInfoStateModel
   user: UserInfoModel | null;
   accessToken: string;
   refreshToken: string;
+  isLoggedIn: boolean;
 }
 
 @State<UserInfoStateModel>
@@ -20,6 +21,7 @@ export interface UserInfoStateModel
       user: null,
       accessToken: "Not found",
       refreshToken: "Not found",
+      isLoggedIn: false
     }
   }
 )
@@ -39,6 +41,12 @@ export class UserInfoState{
     return state.accessToken ?? "";
   }
 
+  @Selector()
+  static isUserLogIn(state: UserInfoStateModel): boolean
+  {
+    return state.isLoggedIn;
+  }
+
   constructor(private apiService: ApiService){}
 
   @Action(UserInfoAction.userLogInAsync)
@@ -48,11 +56,14 @@ export class UserInfoState{
 
     const tokenRes = await lastValueFrom(this.apiService.userLogin(action.payload));
 
-    if(tokenRes != null){
+    if(tokenRes != null && tokenRes.data != null){
 
-      const userInfoRsp = await lastValueFrom(this.apiService.getUserInfo(tokenRes.userId));
+      let data = tokenRes.data;
+
+      const userInfoRsp = await lastValueFrom(this.apiService.getUserInfo(data.userId));
 
       if(userInfoRsp != null){
+
         let userInformation : UserInfoModel = {
           id : userInfoRsp.userId,
           name : userInfoRsp.name,
@@ -65,8 +76,9 @@ export class UserInfoState{
           {
             ...state,
             user : userInformation,
-            accessToken: tokenRes.accessToken,
-            refreshToken: tokenRes.refreshToken,
+            accessToken: data.accessToken,
+            refreshToken: data.refreshToken,
+            isLoggedIn : tokenRes.success
           }
         );
       }
@@ -90,6 +102,7 @@ export class UserInfoState{
         user: null,
         accessToken: "",
         refreshToken: "",
+        isLoggedIn: false
       }
     );
   }

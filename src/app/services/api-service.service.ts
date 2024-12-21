@@ -43,10 +43,10 @@ export class ApiService {
     return this.httpClient.post<any>(`${this.baseUrl}${url}`, data, { headers });
   }
 
-  userLogin(payload : LogInRequestDto): Observable<LogInResponseDto | null>
+  userLogin(payload : LogInRequestDto): Observable<ApiResponseDto<LogInResponseDto> | null>
   {
     return this.postData(`/api/Auth/LogIn`, payload).pipe(
-      map((response: ApiResponseDto<LogInResponseDto>) => response.data),
+      map((response: ApiResponseDto<LogInResponseDto>) => response),
       catchError(this.handleError)
     );
 

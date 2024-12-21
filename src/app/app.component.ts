@@ -12,13 +12,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'ChatUI';
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor() {}
 
-  }
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId))
-      initFlowbite();
-  }
 }

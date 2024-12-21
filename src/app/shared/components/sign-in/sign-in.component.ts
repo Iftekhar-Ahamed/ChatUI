@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {Store} from "@ngxs/store";
 import {LogInRequestDto} from "../../models/user-log-in/user-log-in-request.model";
 import {UserInfoAction} from "../../../store/user-info/user-info.action";
+import {UserInfoState} from "../../../store/user-info/user-info.state";
 
 @Component({
   selector: 'app-sign-in',
@@ -16,49 +17,57 @@ import {UserInfoAction} from "../../../store/user-info/user-info.action";
 
 export class SignInComponent implements OnInit
 {
-
   loginForm: FormGroup;
   returnUrl: string;
-
-
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private store : Store,
-  )
-  {
-    // if (this.authenticationService.currentUserValue) {
-    //   this.router.navigate(['/']);
-    // }
+  ){}
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      remember: [false]
+    });
   }
 
-  ngOnInit()
-  {
-    this.loginForm = this.formBuilder.group
-    (
-      {
-        username: ['', Validators.required],
-        password: ['', Validators.required]
-      }
-    );
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
+  get email() {
+    return this.loginForm.get('email');
   }
 
-  get f() { return this.loginForm.controls; }
-
-
-  async onSubmit()
-  {
-    const userLogInReq: LogInRequestDto = this.loginForm.value;
-    console.log(userLogInReq);
-
-    await this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)).toPromise();
-
-    //this.router.navigate([this.returnUrl]);
-
+  get password() {
+    return this.loginForm.get('password');
   }
+
+  async onSubmit() {
+
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+    const userLogInReq: LogInRequestDto = {
+      userName: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value
+    };
+
+    try {
+      const result = await this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)).toPromise();
+
+      this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
+        if (isLoggedIn) {
+          const returnUrl = this.returnUrl || '/dashboard';
+          this.router.navigate([returnUrl]);
+        }
+      });
+    } catch (error) {
+      console.error('An error occurred during login', error);
+    }
+  }
+
 
 }
