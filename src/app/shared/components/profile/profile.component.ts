@@ -31,9 +31,9 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.user$.subscribe(user => {
       this.profileForm = this.fb.group({
-        name: [{ value: user?.name, disabled: true }],
+        name: [{ value: `${user?.name.firstName} ${user?.name.middleName} ${user?.name.lastName}`, disabled: true }],
         username: [{ value: user?.email, disabled: true }],
-        password: [{ value: user?.name, disabled: true }]
+        password: [{ value: `NONE`, disabled: true }]
       });
     });
   }

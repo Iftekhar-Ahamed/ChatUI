@@ -1,8 +1,11 @@
-import { CommonModule, NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import {
+  Select,
+  Store
+} from '@ngxs/store';
 import { itemLinkState } from '../../../store/itemLink/itemLink.state';
-import {map, Observable} from 'rxjs';
+import { Observable} from 'rxjs';
 import { ItemLinkModel } from '../../models/itemLink.model';
 import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
@@ -48,17 +51,12 @@ export class HeaderComponent {
 
   }
 
-  trackfn(index: number, item: ItemLinkModel): string {
-    return `${item.key}${item.isSelected}`;
+  trackFn(index :number,item: ItemLinkModel): string {
+    return `${index}${item.key}${item.isSelected}`;
   }
 
   userFullName(nameElement:NameElementDto): string {
     console.log(nameElement);
     return  `${nameElement.firstName} ${nameElement.middleName}  ${nameElement.lastName}`;
   }
-
-  select(){
-    console.log('[routerLink]="item.url"');
-  }
-
 }

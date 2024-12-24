@@ -1,7 +1,7 @@
 <header class="header">
   <nav>
       <ul class="nav-links">
-          <li *ngFor="let item of (itemLinks$ | async); trackBy: trackfn">
+          <li *ngFor="let item of (itemLinks$ | async); trackBy: trackFn">
               <a [routerLink]="item.path" [ngClass]="{'selected': item.isSelected}">
                   {{ item.name }}
               </a>
