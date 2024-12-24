@@ -1,65 +1,73 @@
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {Store} from "@ngxs/store";
+import {LogInRequestDto} from "../../models/user-log-in/user-log-in-request.model";
+import {UserInfoAction} from "../../../store/user-info/user-info.action";
+import {UserInfoState} from "../../../store/user-info/user-info.state";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule,RouterLink],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
-export class SignInComponent implements OnInit  {
 
+export class SignInComponent implements OnInit
+{
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
   returnUrl: string;
-  
-  
 
-  constructor( 
+  constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
-  ){
-    // if (this.authenticationService.currentUserValue) { 
-    //   this.router.navigate(['/']);
-    // }
-  }
-  ngOnInit() {
+    private router: Router,
+    private store : Store,
+  ){}
+
+  ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      remember: [false]
     });
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
   }
 
-  get f() { return this.loginForm.controls; }
+  get email() {
+    return this.loginForm.get('email');
+  }
 
-  
-  onSubmit() {
-    this.submitted = true;
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  async onSubmit() {
 
     if (this.loginForm.invalid) {
-        return;
+      this.loginForm.markAllAsTouched();
+      return;
     }
 
-    this.loading = true;
+    const userLogInReq: LogInRequestDto = {
+      userName: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value
+    };
 
-    this.router.navigate([this.returnUrl]);
-    // this.authenticationService.login(this.f.username.value, this.f.password.value)
-    //     .pipe(first())
-    //     .subscribe(
-    //         data => {
-    //             this.router.navigate([this.returnUrl]);
-    //         },
-    //         error => {
-    //             this.alertService.error(error);
-    //             this.loading = false;
-    //         });
-}
+    try {
+      const result = await this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)).toPromise();
+
+      this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
+        if (isLoggedIn) {
+          const returnUrl = this.returnUrl || '/home';
+          this.router.navigate([returnUrl]);
+        }
+      });
+
+    } catch (error) {
+      console.error('An error occurred during login', error);
+    }
+  }
+
 }

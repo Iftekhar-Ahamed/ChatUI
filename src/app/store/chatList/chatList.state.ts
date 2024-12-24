@@ -4,8 +4,9 @@ import { ChatListAction } from './chatList.action';
 import { User } from "../../shared/models/user.model";
 import { UserStatus, UserType } from "../../shared/enums/user.enum";
 import { ChatListModel, StartNewChatProperty } from "../../shared/models/chatList.model";
+import {NameElementDto} from "../../shared/models/user-info/user-info-response.model";
 
-export interface chatListStateModel 
+export interface chatListStateModel
 {
     chatList: ChatListModel ;
     pev: User | null;
@@ -16,40 +17,13 @@ export interface chatListStateModel
 (
     {
         name: 'chatList',
-        defaults: 
+        defaults:
         {
-            chatList: 
+            chatList:
             {
-                users: 
-                [
-                    {
-                        id: "1",
-                        name: "Al-Amin",
-                        email: "alamin@email.com",
-                        avatar: "avater.jpg",
-                        status: UserStatus.Online,
-                        type: UserType.OtherUser,
-                        isSelected: false
-                    }, 
-                    {
-                        id: "2",
-                        name: "Sihab",
-                        email: "sihab@email.com",
-                        avatar: "avater.jpg",
-                        status: UserStatus.Offline,
-                        type: UserType.OtherUser,
-                        isSelected: false
-                    },{
-                        id: "3",
-                        name: "Nirjhor",
-                        email: "nirjhor@email.com",
-                        avatar: "avater.jpg",
-                        status: UserStatus.Online,
-                        type: UserType.OtherUser,
-                        isSelected: false
-                    }
-                ],
-                startNewChat : 
+                users:
+                [],
+                startNewChat :
                 {
                     isSelected : false,
                 }
@@ -61,21 +35,21 @@ export interface chatListStateModel
 )
 
 @Injectable()
-export class ChatListState 
+export class ChatListState
 {
 
     @Selector()
-    static chatLists(state: chatListStateModel): ChatListModel 
+    static chatLists(state: chatListStateModel): ChatListModel
     {
         return state.chatList;
     }
     @Selector()
-    static newChat(state: chatListStateModel): StartNewChatProperty 
+    static newChat(state: chatListStateModel): StartNewChatProperty
     {
         return state.chatList.startNewChat;
     }
 
-    
+
     constructor(
         private store: Store
     ) { }
@@ -97,7 +71,7 @@ export class ChatListState
     }
 
     @Action(ChatListAction.ClearState)
-    async clearState(ctx: StateContext<chatListStateModel>) 
+    async clearState(ctx: StateContext<chatListStateModel>)
     {
         let state = ctx.getState();
         state.chatList.users = [];
@@ -132,7 +106,7 @@ export class ChatListState
         {
             state.chatList.startNewChat.isSelected = false;
         }
-        
+
         if(actionUser)
         {
             actionUser.isSelected = true;
@@ -153,19 +127,19 @@ export class ChatListState
             });
         }
     }
-    
+
     @Action(ChatListAction.SelectNewChat)
     async selectNewChat(ctx: StateContext<chatListStateModel>, action: ChatListAction.SelectNewChat)
     {
-        
+
         let state = ctx.getState();
 
         if(state.chatList.startNewChat.isSelected)
         {
             return;
         }
-        
-        if (state.current && state.current.isSelected) 
+
+        if (state.current && state.current.isSelected)
         {
             let user = state.chatList.users.find( x => x.id === state.current?.id);
             if(user){user.isSelected = false;}

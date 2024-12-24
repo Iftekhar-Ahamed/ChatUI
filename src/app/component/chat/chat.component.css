@@ -16,10 +16,9 @@
 
     flex: 1;
     height: 100%;
-    /* Takes up the remaining space */
     overflow-y: auto;
-    /* Enable vertical scrolling for chat content */
 }
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }

@@ -2,12 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { RoomsAction } from '../../../store/rooms/rooms.action';
 import { Message } from '../../models/message.model';
-import { CommonModule } from '@angular/common';
 import { cloneDeep } from 'lodash';
 import { FormsModule } from '@angular/forms';
-import { LogedInUserState } from '../../../store/logedInUser/logedInUser.state';
-import { LogedInUser, User } from '../../models/user.model';
-import { Observable, map, takeUntil, takeWhile, tap } from 'rxjs';
+import { Observable, takeWhile, tap } from 'rxjs';
+import {UserInfoState} from "../../../store/user-info/user-info.state";
+import {UserInfoModel} from "../../models/user.model";
 
 @Component({
   selector: 'app-message-input',
@@ -16,13 +15,13 @@ import { Observable, map, takeUntil, takeWhile, tap } from 'rxjs';
   templateUrl: './message-input.component.html',
   styleUrl: './message-input.component.css'
 })
-export class MessageInputComponent 
+export class MessageInputComponent
 {
-  @Select(LogedInUserState.userNameOrEmail) user$!: Observable<string>;
+  @Select(UserInfoState.getUserInfo) user$!: Observable<UserInfoModel>;
   @Input() roomId!:string;
   isAlive: boolean = true;
-  
-  msg: Message = 
+
+  msg: Message =
   {
     author: "",
     message: "",
@@ -30,17 +29,17 @@ export class MessageInputComponent
     id: ""
   }
 
-  constructor(private store: Store) 
+  constructor(private store: Store)
   {
       this.user$.pipe(
         takeWhile(() => this.isAlive),
-        tap((x: string) => {
-          this.msg.author = x;
+        tap((x: UserInfoModel) => {
+          this.msg.author = x.email;
         })
       ).subscribe();
   }
 
-  send() 
+  send()
   {
     if (this.msg.message && this.msg.message.trim()){
       this.msg.messageDateTime = new Date();
@@ -50,7 +49,7 @@ export class MessageInputComponent
     }
   }
 
-  ngDistroy() 
+  ngDistroy()
   {
     this.isAlive = false;
   }

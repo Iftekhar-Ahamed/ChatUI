@@ -1,8 +1,9 @@
 import { UserStatus, UserType } from "../enums/user.enum";
+import {NameElementDto} from "./user-info/user-info-response.model";
 
 export interface User {
     id: string;
-    name: string;
+    name: NameElementDto;
     email: string;
     avatar: string;
     status: UserStatus;
@@ -10,10 +11,9 @@ export interface User {
     isSelected: boolean;
 }
 
-export interface LogedInUser {
-    id: string;
-    name: string;
+export interface UserInfoModel {
+    id: number;
+    name: NameElementDto;
     email: string;
     avatar: string;
-    token: string;
 }
