@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SearchUserCardComponent } from '../search-user-card/search-user-card.component';
 import { Select, Store } from '@ngxs/store';
-import { UserActionState } from '../../../store/UserActions/userAction.state';
+import { UserActionsState } from '../../../store/user-actions/user-actions.state';
 import { Observable } from 'rxjs';
-import { SearchedUserResult } from '../../models/userAction.model';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {SearchResultModel} from "../../models/search-result/search-result.model";
 
 @Component({
   selector: 'app-search-result',
@@ -15,7 +15,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   styleUrl: './search-result.component.css'
 })
 export class SearchResultComponent {
-  @Select(UserActionState.searchedResult) searchResult$!:Observable<SearchedUserResult[]>;
+  @Select(UserActionsState.searchedResult) searchResult$!:Observable<SearchResultModel[]>;
 
   constructor(
     private store : Store
@@ -23,7 +23,7 @@ export class SearchResultComponent {
 
   }
 
-  trackfn(index: number, result: SearchedUserResult): string {
+  trackfn(index: number, result: SearchResultModel): string {
     return `${result.id}${result.isSelected}${Math.random()}`;
   }
 }

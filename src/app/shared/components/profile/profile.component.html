@@ -1,7 +1,7 @@
 <div class="profile-container">
   <div class="profile-info" *ngIf="user$ | async as user">
     <div class="profile-pic">
-      <img [src]="'assets/' + user.avatar" alt="{{ user.name }}" class="user-image">
+      <img [src]="'assets/avatar.jpg'" alt="{{ user.name }}" class="user-image">
     </div>
     <div class="profile-details">
       <form [formGroup]="profileForm">
@@ -17,7 +17,7 @@
           <label for="password">Password</label>
           <div class="password-wrapper">
             <input id="password" [type]="passwordFieldType" formControlName="password" class="form-control" />
-            <i class="password-icon" 
+            <i class="password-icon"
                [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
                (click)="togglePasswordVisibility()">
             </i>

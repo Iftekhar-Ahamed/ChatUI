@@ -1,7 +1,7 @@
 export interface UserInformationDto {
   userId: number;
   name: NameElementDto;
-  dob: Date ;
+  dob: Date;
   email: string;
   contactNumberCountryCode: string;
   contactNumber: string;

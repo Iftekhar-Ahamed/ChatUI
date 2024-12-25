@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {UserInfoModel} from "../../models/user.model";
 import {UserInfoState} from "../../../store/user-info/user-info.state";
+import {UserInfoAction} from "../../../store/user-info/user-info.action";
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +15,11 @@ import {UserInfoState} from "../../../store/user-info/user-info.state";
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   user$: Observable<UserInfoModel|null>;
   isEditable: boolean = false;
   passwordFieldType = 'password';
-  // @Select(LogedInUserState.user) user$!: Observable<LogedInUser>;
 
   constructor(
     private store : Store,
@@ -28,12 +28,13 @@ export class ProfileComponent {
   ) {
     this.user$ = this.store.select(UserInfoState.getUserInfo);
   }
+
   ngOnInit(): void {
     this.user$.subscribe(user => {
       this.profileForm = this.fb.group({
         name: [{ value: `${user?.name.firstName} ${user?.name.middleName} ${user?.name.lastName}`, disabled: true }],
         username: [{ value: user?.email, disabled: true }],
-        password: [{ value: `NONE`, disabled: true }]
+        //password: [{ value: `NONE`, disabled: true }]
       });
     });
   }
@@ -58,8 +59,8 @@ export class ProfileComponent {
   }
 
   onLogout(): void {
+
+    this.store.dispatch(UserInfoAction.userLogOutAsync);
     this.router.navigate(['../',]);
-    // Dispatch an action to log out the user
-    // this.store.dispatch(new Logout());
   }
 }

@@ -6,6 +6,7 @@ import {LogInResponseDto} from "../shared/models/user-log-in/user-log-in-respons
 import {LogInRequestDto} from "../shared/models/user-log-in/user-log-in-request.model";
 import {UserInformationDto} from "../shared/models/user-info/user-info-response.model";
 import {environment} from "../environments/environment";
+import {SearchResultModel} from "../shared/models/search-result/search-result.model";
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,16 @@ export class ApiService {
   {
     return this.getData('/api/User/GetUser').pipe(
       map((response: ApiResponseDto<UserInformationDto>) => response.data),
+      catchError(this.handleError)
+    );
+
+  }
+
+  searchUserAsync(searchTerm: string): Observable<SearchResultModel[] | null> {
+
+    return this.getData(`/api/User/SearchUser/SearchTerm=${searchTerm}`).pipe
+    (
+      map((response: ApiResponseDto<SearchResultModel[]>) => response.data),
       catchError(this.handleError)
     );
 

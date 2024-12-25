@@ -78,7 +78,7 @@ export class UserInfoState{
           id : userInfoRsp.userId,
           name : userInfoRsp.name,
           email: userInfoRsp.email,
-          avatar : 'avater.jpg'
+          avatar : 'avatar.jpg'
         };
 
         ctx.setState
