@@ -3,4 +3,5 @@ export interface ItemLinkModel {
     name: string;
     path: string;
     isSelected: boolean;
+    isViewInHeader: boolean;
 }

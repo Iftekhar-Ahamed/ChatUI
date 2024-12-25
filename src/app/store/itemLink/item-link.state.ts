@@ -16,23 +16,34 @@ export interface itemLinkStateModel
     defaults:
     {
         items: [
-            {
-                key: "/home",
-                name: "Home",
-                isSelected: false,
-                path: "/home"
-            },
-            {
-                key: "/all-chat",
-                name: "All Chat",
-                isSelected: false,
-                path: "/all-chat"
-            }, {
-                key: "/message-request",
-                name: "Message Request",
-                isSelected: false,
-                path : "/message-request"
-            }
+          {
+            key: "/home",
+            name: "Home",
+            isSelected: false,
+            path: "/home",
+            isViewInHeader : true,
+          },
+          {
+            key: "/all-chat",
+            name: "All Chat",
+            isSelected: false,
+            path: "/all-chat",
+            isViewInHeader : true,
+          },
+          {
+            key: "/message-request",
+            name: "Message Request",
+            isSelected: false,
+            path : "/message-request",
+            isViewInHeader: true,
+          },
+          {
+            key: "/profile",
+            name: "profile",
+            isSelected: false,
+            path : "/profile",
+            isViewInHeader : false,
+          }
         ],
         pev: null,
         current: null

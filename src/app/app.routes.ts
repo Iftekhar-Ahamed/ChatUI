@@ -5,10 +5,10 @@ import { WelcomeLayoutComponent } from './layout/welcome-layout/welcome-layout.c
 import { SearchNewChatFriendComponent } from './component/search-new-chat-friend/search-new-chat-friend.component';
 import { ConversationComponent } from './component/conversation/conversation.component';
 import {authGuard} from "./guards/auth-guard.guard";
-import {MessageRequestComponent} from "./component/message-request/message-request.component";
 import {ChatLayoutComponent} from "./layout/chat-layout/chat-layout.component";
 import {HomeLayoutComponent} from "./layout/home-layout/home-layout.component";
 import {MessageRequestLayoutComponent} from "./layout/message-request-layout/message-request-layout.component";
+import {ProfileLayoutComponent} from "./layout/profile-layout/profile-layout.component";
 
 
 export const routes: Routes = [
@@ -36,6 +36,11 @@ export const routes: Routes = [
   {
     path: 'message-request',
     component: MessageRequestLayoutComponent,
+    canActivate : [authGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileLayoutComponent,
     canActivate : [authGuard]
   },
   {
