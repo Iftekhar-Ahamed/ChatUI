@@ -10,7 +10,7 @@ import { MessageCardComponent } from '../../shared/components/message-card/messa
 import { MessageInputComponent } from '../../shared/components/message-input/message-input.component';
 import { Room } from '../../shared/models/message.model';
 import { ChatListAction } from '../../store';
-import { ItemLinkAction } from '../../store/itemLink/itemLink.action';
+import { ItemLinkAction } from '../../store/itemLink/item-link.action';
 import { RoomSate } from '../../store/rooms/rooms.state';
 type Position = 'start' | 'mid' | 'end';
 

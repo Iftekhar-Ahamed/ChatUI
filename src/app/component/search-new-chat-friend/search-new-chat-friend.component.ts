@@ -5,7 +5,7 @@ import { SearchResultComponent } from './../../shared/components/search-result/s
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from '../../shared/components/search-bar/search-bar.component';
 import { ChatListAction } from '../../store';
-import { ItemLinkAction } from '../../store/itemLink/itemLink.action';
+import { ItemLinkAction } from '../../store/itemLink/item-link.action';
 
 @Component({
   selector: 'app-search-new-chat-friend',

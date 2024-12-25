@@ -4,10 +4,10 @@ import {
   Select,
   Store
 } from '@ngxs/store';
-import { itemLinkState } from '../../../store/itemLink/itemLink.state';
+import { itemLinkState } from '../../../store/itemLink/item-link.state';
 import { Observable} from 'rxjs';
 import { ItemLinkModel } from '../../models/itemLink.model';
-import { ItemLinkAction } from '../../../store/itemLink/itemLink.action';
+import { ItemLinkAction } from '../../../store/itemLink/item-link.action';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import {UserInfoState} from "../../../store/user-info/user-info.state";
 import {UserInfoModel} from "../../models/user.model";
@@ -40,20 +40,7 @@ export class HeaderComponent implements OnInit {
   setSelectedMenu(url: string): void {
 
     console.log(url);
-
-    if (url.includes('chatList'))
-    {
-      this.store.dispatch(new ItemLinkAction.SelectItemLink("home/chatList"));
-    }
-    else if (url.includes('profile'))
-    {
-      this.store.dispatch(new ItemLinkAction.SelectItemLink("home/profile"))
-    }
-    else
-    {
-      this.store.dispatch(new ItemLinkAction.SelectItemLink("home"))
-    }
-
+    this.store.dispatch(new ItemLinkAction.SelectItemLink(url));
   }
 
   trackFn(index :number,item: ItemLinkModel): string {
