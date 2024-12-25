@@ -24,7 +24,7 @@ type Position = 'start' | 'mid' | 'end';
 })
 export class ConversationComponent implements OnInit,AfterViewChecked
 {
-  
+
   @ViewChild('scrollframe') private scrollFrame!: ElementRef;
   @ViewChild('chatContainer') chatContainer!: ElementRef;
   @ViewChild(CdkVirtualScrollViewport) viewPort: CdkVirtualScrollViewport;
@@ -38,7 +38,7 @@ export class ConversationComponent implements OnInit,AfterViewChecked
     private router: Router,
     private renderer:Renderer2,
     private route:ActivatedRoute
-  ) 
+  )
   {
   }
 
@@ -57,12 +57,13 @@ export class ConversationComponent implements OnInit,AfterViewChecked
         takeWhile(() => this.isAlive),
         tap
         (
-          (x: Room | null) => 
+          (x: Room | null) =>
           {
             this.triggerAnimation();
-            
+
             this.store.dispatch(new ChatListAction.SelectUser(this.roomId));
             this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.router.url));
+
             if(x) this.room = x;
             return x;
           }
@@ -78,7 +79,7 @@ export class ConversationComponent implements OnInit,AfterViewChecked
         this.renderer.removeClass(this.chatContainer.nativeElement, 'fadeIn-Animation');
       }, 500);
     }
-    
+
   }
 
   scroll(position: Position) {
@@ -97,14 +98,14 @@ export class ConversationComponent implements OnInit,AfterViewChecked
     this.viewPort.scrollToIndex(scrollIndex, 'smooth');
   }
 
-  ngAfterViewChecked(): void 
+  ngAfterViewChecked(): void
   {
     if(this.roomId != '0'){
       this.scrollFrame.nativeElement.scrollTop = this.scrollFrame.nativeElement.scrollHeight;
     }
   }
-  
-  ngDistroy() 
+
+  ngDistroy()
   {
     this.isAlive = false;
   }

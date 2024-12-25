@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { ItemLinkAction } from './itemLink.action';
 import { ItemLinkModel } from "../../shared/models/itemLink.model";
 
-export interface itemLinkStateModel 
+export interface itemLinkStateModel
 {
-    
+
     items: ItemLinkModel[];
     pev: ItemLinkModel | null;
     current: ItemLinkModel | null;
@@ -13,7 +13,7 @@ export interface itemLinkStateModel
 
 @State<itemLinkStateModel>({
     name: 'itemLink',
-    defaults: 
+    defaults:
     {
         items: [
             {
@@ -43,7 +43,7 @@ export interface itemLinkStateModel
 export class itemLinkState {
 
     @Selector()
-    static itemList(state: itemLinkStateModel): ItemLinkModel[] 
+    static itemList(state: itemLinkStateModel): ItemLinkModel[]
     {
         return state.items;
     }
@@ -53,7 +53,7 @@ export class itemLinkState {
     ) { }
 
     @Action(ItemLinkAction.ClearState)
-    async clearState(ctx: StateContext<itemLinkStateModel>) 
+    async clearState(ctx: StateContext<itemLinkStateModel>)
     {
 
         let state = ctx.getState();
@@ -71,7 +71,7 @@ export class itemLinkState {
     }
 
     @Action(ItemLinkAction.SetItemLinkData)
-    async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData) 
+    async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData)
     {
 
         let state = ctx.getState();
@@ -86,74 +86,56 @@ export class itemLinkState {
 
     }
 
-    @Action(ItemLinkAction.UpdateUrl)
-    async updateChatListUrl(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.UpdateUrl)
-    {
-        let state = ctx.getState();
+  @Action(ItemLinkAction.UpdateUrl)
+  async updateChatListUrl(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.UpdateUrl) {
+    const state = ctx.getState();
 
-        const item = state.items.find( x => x.key === action.key);
+    const updatedItems = state.items.map(item => {
+      if (item.key === action.key) {
+        return { ...item, path: action.url };
+      }
+      return item;
+    });
 
-        if(item){
-            item.path = action.url;
-        }
+
+    ctx.setState({
+      ...state,
+      items: updatedItems
+    });
+  }
+
+
+
+  @Action(ItemLinkAction.SelectItemLink)
+  async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink) {
+
+      const state = ctx.getState();
+
+    if (state.current?.key === action.key) {
+      return;
     }
 
+    const actionItem = state.items.find(x => x.key === action.key);
 
-    @Action(ItemLinkAction.SelectItemLink)
-    async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink)
-    {
-        let state = ctx.getState();
+    const updatedItems = state.items.map(item => {
 
-        if (state.current && state.current.key === action.key) 
-        {
-            return;
-        }
+      if (state.current && item.key === state.current.key) {
+        return { ...item, isSelected: false };
+      }
 
-        const actionItem = state.items.find(x => x.key == action.key);
-
-        if (state.current) 
-        {
-
-            state.current.isSelected = false;
-            const item = state.items.find(item => item.key === state.current?.key);
-
-            if (item)
-            {
-                item.isSelected = false;
-            }
-
-        }
-
-        const temp = state.current;
-
-        if (actionItem) 
-        {
-
-            actionItem.isSelected = true;
+      if (item.key === action.key) {
+        return { ...item, isSelected: true };
+      }
+      return item;
+    });
 
 
-            ctx.setState
-            (
-                {
-                    ...state,
-                    current: actionItem,
-                    pev: temp
-                }
-            );
+    ctx.setState({
+      ...state,
+      items: updatedItems,
+      pev: state.current || null,
+      current: actionItem || null
+    });
+  }
 
-        } 
-        else 
-        {
-
-            ctx.setState
-            (
-                {
-                    ...state,
-                    current: null,
-                    pev: temp
-                }
-            );
-
-        }
-    }
 }

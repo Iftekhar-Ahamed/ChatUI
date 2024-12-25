@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   Select,
   Store
@@ -20,13 +20,16 @@ import {NameElementDto} from "../../models/user-info/user-info-response.model";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   @Select(itemLinkState.itemList) itemLinks$!: Observable<ItemLinkModel[]>;
   @Select(UserInfoState.getUserInfo) user$!: Observable<UserInfoModel>;
 
 
-  constructor(private store: Store,private router: Router) {
+  constructor(private store: Store,private router: Router) {}
+
+  ngOnInit()
+  {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.setSelectedMenu(event.urlAfterRedirects);
@@ -35,6 +38,8 @@ export class HeaderComponent {
   }
 
   setSelectedMenu(url: string): void {
+
+    console.log(url);
 
     if (url.includes('chatList'))
     {
@@ -56,7 +61,8 @@ export class HeaderComponent {
   }
 
   userFullName(nameElement:NameElementDto): string {
-    console.log(nameElement);
+
     return  `${nameElement.firstName} ${nameElement.middleName}  ${nameElement.lastName}`;
+
   }
 }
