@@ -2,7 +2,7 @@
   <nav>
       <ul class="nav-links">
           <li *ngFor="let item of (itemLinks$ | async); trackBy: trackFn">
-              <a *ngIf="item.isViewInHeader" [routerLink]="item.basePath" [ngClass]="{'selected': item.isSelected}">
+              <a *ngIf="item.isViewInHeader" [routerLink]="item.currentPath??item.basePath" [ngClass]="{'selected': item.isSelected}">
                   {{ item.name }}
               </a>
           </li>
