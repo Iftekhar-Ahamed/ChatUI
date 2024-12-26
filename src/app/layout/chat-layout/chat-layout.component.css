@@ -1,0 +1,9 @@
+.chat {
+  background-image: url('../../../assets/images/wallpaper.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  min-width:  100vh;
+}
