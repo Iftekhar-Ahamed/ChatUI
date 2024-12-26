@@ -1,18 +1,18 @@
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { Injectable } from '@angular/core';
-import { ItemLinkAction } from './item-link.action';
-import { ItemLinkModel } from "../../shared/models/itemLink.model";
+import {MenuNavigationAction} from './menu-navigation.action';
+import { MenuConfigModel} from "../../shared/models/menu-config.model";
 
-export interface itemLinkStateModel
+export interface NavigationStateModel
 {
 
-    items: ItemLinkModel[];
-    pev: ItemLinkModel | null;
-    current: ItemLinkModel | null;
+    items: MenuConfigModel[];
+    pev: MenuConfigModel | null;
+    current: MenuConfigModel | null;
 }
 
-@State<itemLinkStateModel>({
-    name: 'itemLink',
+@State<NavigationStateModel>({
+    name: 'menuConfig',
     defaults:
     {
         items: [
@@ -20,28 +20,36 @@ export interface itemLinkStateModel
             key: "/home",
             name: "Home",
             isSelected: false,
-            path: "/home",
+            basePath: "/home",
+            currentPath : null,
+            pevPath:null,
             isViewInHeader : true,
           },
           {
             key: "/all-chat",
             name: "All Chat",
             isSelected: false,
-            path: "/all-chat",
+            basePath: "/all-chat",
+            currentPath : null,
+            pevPath:null,
             isViewInHeader : true,
           },
           {
             key: "/message-request",
             name: "Message Request",
             isSelected: false,
-            path : "/message-request",
+            basePath : "/message-request",
+            currentPath : null,
+            pevPath:null,
             isViewInHeader: true,
           },
           {
             key: "/profile",
             name: "profile",
             isSelected: false,
-            path : "/profile",
+            basePath : "/profile",
+            currentPath : null,
+            pevPath:null,
             isViewInHeader : false,
           }
         ],
@@ -51,10 +59,10 @@ export interface itemLinkStateModel
 })
 
 @Injectable()
-export class itemLinkState {
+export class MenuNavigationState {
 
     @Selector()
-    static itemList(state: itemLinkStateModel): ItemLinkModel[]
+    static getMenuList(state: NavigationStateModel): MenuConfigModel[]
     {
         return state.items;
     }
@@ -63,8 +71,8 @@ export class itemLinkState {
         private store: Store
     ) { }
 
-  @Action(ItemLinkAction.ClearState)
-  async clearState(ctx: StateContext<itemLinkStateModel>)
+  @Action(MenuNavigationAction.ClearState)
+  async clearState(ctx: StateContext<NavigationStateModel>)
   {
 
       let state = ctx.getState();
@@ -81,8 +89,8 @@ export class itemLinkState {
 
   }
 
-  @Action(ItemLinkAction.SetItemLinkData)
-  async setItemListData(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SetItemLinkData)
+  @Action(MenuNavigationAction.SetMenuData)
+  async setMenuListData(ctx: StateContext<NavigationStateModel>, action: MenuNavigationAction.SetMenuData)
   {
 
       let state = ctx.getState();
@@ -97,13 +105,13 @@ export class itemLinkState {
 
   }
 
-  @Action(ItemLinkAction.UpdateUrl)
-  async updateChatListUrl(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.UpdateUrl) {
+  @Action(MenuNavigationAction.UpdateMenuCurrentUrl)
+  async updateMenuPevUrl(ctx: StateContext<NavigationStateModel>, action: MenuNavigationAction.UpdateMenuCurrentUrl) {
     const state = ctx.getState();
 
     const updatedItems = state.items.map(item => {
       if (item.key === action.key) {
-        return { ...item, path: action.url };
+        return { ...item, currentPath: action.url };
       }
       return item;
     });
@@ -115,16 +123,16 @@ export class itemLinkState {
     });
   }
 
-  @Action(ItemLinkAction.SelectItemLink)
-  async selectItem(ctx: StateContext<itemLinkStateModel>, action: ItemLinkAction.SelectItemLink) {
+  @Action(MenuNavigationAction.SelectMenu)
+  async selectMenu(ctx: StateContext<NavigationStateModel>, action: MenuNavigationAction.SelectMenu) {
 
     const state = ctx.getState();
 
-    if (state.current?.key === action.key) {
+    if (state.current?.key === action.item.key) {
       return;
     }
 
-    const actionItem = state.items.find(x => x.key === action.key);
+    const actionItem = state.items.find(x => x.key === action.item.key);
 
     if(actionItem != undefined)
     {
@@ -134,7 +142,7 @@ export class itemLinkState {
           return { ...item, isSelected: false };
         }
 
-        if (item.key === action.key) {
+        if (item.key === action.item.key) {
           return { ...item, isSelected: true };
         }
         return item;

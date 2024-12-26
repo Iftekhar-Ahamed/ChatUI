@@ -1,7 +1,6 @@
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { Injectable } from '@angular/core';
 import { RoomsAction } from './rooms.action';
-import { ItemLinkModel } from "../../shared/models/itemLink.model";
 import { Room } from "../../shared/models/message.model";
 
 export interface RoomsStateModel {
@@ -14,14 +13,14 @@ export interface RoomsStateModel {
 (
     {
         name: 'rooms',
-        defaults: 
+        defaults:
         {
-            rooms: 
+            rooms:
             [
                 {
                     roomId: "1",
                     roomName: "Al-Amin",
-                    messages: 
+                    messages:
                     [
                         {
                             author: "Iftekhar Ahamed",
@@ -76,18 +75,18 @@ export interface RoomsStateModel {
                     lastMessage: "Yess!!",
                     lastMessageTime: new Date(),
                     isRead: false
-                }, 
+                },
                 {
                     roomId: "2",
                     roomName: "Sihab",
-                    messages: 
+                    messages:
                     [
                         {
                             author: "Sihab",
                             message: "Hello",
                             messageDateTime: new Date(),
                             id: "1"
-                        }, 
+                        },
                         {
                             author: "Iftekhar Ahamed",
                             message: "Hi",
@@ -101,14 +100,14 @@ export interface RoomsStateModel {
                 },{
                     roomId: "3",
                     roomName: "Nirjhor",
-                    messages: 
+                    messages:
                     [
                         {
                             author: "Nirjhor",
                             message: "Hello",
                             messageDateTime: new Date(),
                             id: "1"
-                        }, 
+                        },
                         {
                             author: "Iftekhar Ahamed",
                             message: "Heyy",
@@ -125,7 +124,7 @@ export interface RoomsStateModel {
             current: {
                 roomId: "",
                 roomName: "",
-                messages: 
+                messages:
                 [
                 ],
                 lastMessage: "",
@@ -139,16 +138,16 @@ export interface RoomsStateModel {
 export class RoomSate {
 
     @Selector()
-    static getRoomList(state: RoomsStateModel): Room[] 
+    static getRoomList(state: RoomsStateModel): Room[]
     {
         return state.rooms;
     }
 
     @Selector()
-    static getRoomById(state: RoomsStateModel): (roomId: string) => Room | null 
+    static getRoomById(state: RoomsStateModel): (roomId: string) => Room | null
     {
 
-        return (roomId: string) => 
+        return (roomId: string) =>
         {
             return state.rooms.find(x => x.roomId == roomId) || null;
         };
@@ -156,7 +155,7 @@ export class RoomSate {
     }
 
     @Selector()
-    static getCurrentRoom(state: RoomsStateModel): Room | null 
+    static getCurrentRoom(state: RoomsStateModel): Room | null
     {
         return state.current;
     }
@@ -165,9 +164,9 @@ export class RoomSate {
     constructor(
         private store: Store
     ) { }
-    
+
     @Action(RoomsAction.ClearState)
-    async clearState(ctx: StateContext<RoomsStateModel>) 
+    async clearState(ctx: StateContext<RoomsStateModel>)
     {
         let state = ctx.getState();
 
@@ -183,7 +182,7 @@ export class RoomSate {
     }
 
     @Action(RoomsAction.SetRoomsData)
-    async setItemListData(ctx: StateContext<RoomsStateModel>, action: RoomsAction.SetRoomsData) 
+    async setItemListData(ctx: StateContext<RoomsStateModel>, action: RoomsAction.SetRoomsData)
     {
         let state = ctx.getState();
         ctx.setState
@@ -196,7 +195,7 @@ export class RoomSate {
     }
 
     @Action(RoomsAction.SelectRoom)
-    async selectRoom(ctx: StateContext<RoomsStateModel>, action: RoomsAction.SelectRoom) 
+    async selectRoom(ctx: StateContext<RoomsStateModel>, action: RoomsAction.SelectRoom)
     {
 
         let state = ctx.getState();
@@ -205,7 +204,7 @@ export class RoomSate {
 
         const temp = state.current;
 
-        if (actionItem) 
+        if (actionItem)
         {
 
             ctx.setState
@@ -217,8 +216,8 @@ export class RoomSate {
                 }
             );
 
-        } 
-        else 
+        }
+        else
         {
 
             ctx.setState
@@ -233,7 +232,7 @@ export class RoomSate {
     }
 
     @Action(RoomsAction.AddMessageRoomById)
-    async AddMessage(ctx: StateContext<RoomsStateModel>, action: RoomsAction.AddMessageRoomById) 
+    async AddMessage(ctx: StateContext<RoomsStateModel>, action: RoomsAction.AddMessageRoomById)
     {
 
         let state = ctx.getState();

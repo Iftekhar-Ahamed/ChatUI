@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AfterViewChecked, AfterViewInit, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewChecked, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Observable, map, takeWhile, tap } from 'rxjs';
@@ -10,7 +10,7 @@ import { MessageCardComponent } from '../../shared/components/message-card/messa
 import { MessageInputComponent } from '../../shared/components/message-input/message-input.component';
 import { Room } from '../../shared/models/message.model';
 import { ChatListAction } from '../../store';
-import { ItemLinkAction } from '../../store/itemLink/item-link.action';
+import { MenuNavigationAction } from '../../store/menu-navigation/menu-navigation.action';
 import { RoomSate } from '../../store/rooms/rooms.state';
 type Position = 'start' | 'mid' | 'end';
 
@@ -62,7 +62,7 @@ export class ConversationComponent implements OnInit,AfterViewChecked
             this.triggerAnimation();
 
             this.store.dispatch(new ChatListAction.SelectUser(this.roomId));
-            this.store.dispatch(new ItemLinkAction.UpdateUrl("home/chatList",this.router.url));
+            this.store.dispatch(new MenuNavigationAction.UpdateMenuCurrentUrl("home/chatList",this.router.url));
 
             if(x) this.room = x;
             return x;

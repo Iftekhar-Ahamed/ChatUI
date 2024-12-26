@@ -1,17 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {Component, OnInit} from '@angular/core';
-import {
-  Select,
-  Store
-} from '@ngxs/store';
-import { itemLinkState } from '../../../store/itemLink/item-link.state';
+import {Component} from '@angular/core';
+import { Store } from '@ngxs/store';
 import { Observable} from 'rxjs';
-import { ItemLinkModel } from '../../models/itemLink.model';
-import { ItemLinkAction } from '../../../store/itemLink/item-link.action';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import {UserInfoState} from "../../../store/user-info/user-info.state";
-import {UserInfoModel} from "../../models/user.model";
-import {NameElementDto} from "../../models/user-info/user-info-response.model";
+import { MenuConfigModel } from '../../models/menu-config.model';
+import { Router, RouterModule} from '@angular/router';
+import { UserInfoState } from "../../../store/user-info/user-info.state";
+import { UserInfoModel } from "../../models/user.model";
+import { NameElementDto } from "../../models/user-info/user-info-response.model";
+import { MenuNavigationState } from "../../../store/menu-navigation/menu-navigation.state";
 
 @Component({
   selector: 'app-header',
@@ -20,34 +16,24 @@ import {NameElementDto} from "../../models/user-info/user-info-response.model";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent
+{
 
-  @Select(itemLinkState.itemList) itemLinks$!: Observable<ItemLinkModel[]>;
-  @Select(UserInfoState.getUserInfo) user$!: Observable<UserInfoModel>;
+  itemLinks$: Observable<MenuConfigModel[]> = this.store.select(MenuNavigationState.getMenuList);
+  userInfo$: Observable<UserInfoModel | null> = this.store.select(UserInfoState.getUserInfo);
 
 
-  constructor(private store: Store,private router: Router) {}
-
-  ngOnInit()
+  constructor(private store: Store,private router: Router)
   {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.setSelectedMenu(event.urlAfterRedirects);
-      }
-    });
   }
 
-  setSelectedMenu(url: string): void {
-
-    console.log(url);
-    this.store.dispatch(new ItemLinkAction.SelectItemLink(url));
-  }
-
-  trackFn(index :number,item: ItemLinkModel): string {
+  trackFn(index :number,item: MenuConfigModel): string
+  {
     return `${index}${item.key}${item.isSelected}`;
   }
 
-  userFullName(nameElement:NameElementDto): string {
+  userFullName(nameElement:NameElementDto): string
+  {
 
     return  `${nameElement.firstName} ${nameElement.middleName}  ${nameElement.lastName}`;
 
