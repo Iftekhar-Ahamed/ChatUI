@@ -7,15 +7,24 @@ import {lastValueFrom} from "rxjs";
 
 export interface UserActionsStateModel
 {
-    userActions : UserActionModel | null,
-    pev : null,
-    cur : null
+  searchActions: SearchResultSateModel | null,
+  messageActions: MessageRequestResultModel | null,
+  pev : null,
+  cur : null
 }
-export interface UserActionModel
+
+
+export interface SearchResultSateModel
 {
   searchResult : SearchResultModel[],
-  searchKey : string
+  searchKey : string,
 }
+export interface MessageRequestResultModel
+{
+  searchResult : SearchResultModel[],
+  searchKey : string,
+}
+
 
 @State<UserActionsStateModel>
 (
@@ -23,14 +32,10 @@ export interface UserActionModel
         name:'userAction',
         defaults:
         {
-            userActions:
-            {
-                searchKey : 'a',
-                searchResult :
-                []
-            },
-            cur : null,
-            pev : null
+          searchActions : null,
+          messageActions : null,
+          cur : null,
+          pev : null
         }
     }
 )
@@ -41,13 +46,13 @@ export class UserActionsState {
   @Selector()
   static searchedResult( state : UserActionsStateModel):SearchResultModel[]
   {
-      return state.userActions?.searchResult ?? [];
+      return state.searchActions?.searchResult ?? [];
   }
 
   @Selector()
   static searchKey( state : UserActionsStateModel):string
   {
-    return state.userActions?.searchKey ?? "";
+    return state.searchActions?.searchKey ?? "";
   }
 
   constructor( private store : Store,private apiService : ApiService ) {}
@@ -61,21 +66,45 @@ export class UserActionsState {
 
       if(result != null)
       {
-        let userAction =
+        let searchAction =
         {
           searchKey : action.searchTerm,
-          searchResult : result
+          searchResult : result,
         }
-
 
         ctx.setState
         (
           {
             ...state,
-            userActions: userAction,
+            searchActions : searchAction
           }
         );
       }
+
+  }
+
+  @Action(UserActions.getAllMessageRequestsAsync)
+  async getAllMessageRequestsAsync(
+    ctx : StateContext<UserActionsStateModel>,
+    action : UserActions.getAllMessageRequestsAsync
+  ){
+
+    const state = ctx.getState();
+
+    const result = await lastValueFrom(this.apiService.getAllMessageRequests());
+
+    if(result != null)
+    {
+
+
+      ctx.setState
+      (
+        {
+          ...state,
+          messageActions: null,
+        }
+      );
+    }
 
   }
 

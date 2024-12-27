@@ -72,4 +72,14 @@ export class ApiService {
 
   }
 
+  getAllMessageRequests(): Observable<SearchResultModel[] | null> {
+
+    return this.getData(`/api/User/SearchUser/`).pipe
+    (
+      map((response: ApiResponseDto<SearchResultModel[]>) => response.data),
+      catchError(this.handleError)
+    );
+
+  }
+
 }

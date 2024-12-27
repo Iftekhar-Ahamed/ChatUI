@@ -5,6 +5,11 @@ export namespace UserActions
     static readonly type = 'searchUserAsync';
 
     constructor(public searchTerm: string){}
+  }
+  export class getAllMessageRequestsAsync
+  {
+    static readonly type = 'getAllMessageRequestsAsync';
 
+    constructor(){}
   }
 }

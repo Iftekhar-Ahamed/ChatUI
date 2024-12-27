@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { SearchResultComponent } from '../../shared/components/search-result/search-result.component';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from '../../shared/components/search-bar/search-bar.component';
 import { ChatListAction } from '../../store';
 import { MenuNavigationAction } from '../../store/menu-navigation/menu-navigation.action';
+import {SearchResultComponent} from "../../shared/components/search-result/search-result.component";
 
 @Component({
   selector: 'app-search-new-chat-friend',
