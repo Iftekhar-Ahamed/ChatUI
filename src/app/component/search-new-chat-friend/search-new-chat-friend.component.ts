@@ -14,10 +14,11 @@ import { MenuNavigationAction } from '../../store/menu-navigation/menu-navigatio
   templateUrl: './search-new-chat-friend.component.html',
   styleUrl: './search-new-chat-friend.component.css'
 })
-export class SearchNewChatFriendComponent implements OnInit {
-  constructor(private route:Router,private store:Store){
+export class SearchNewChatFriendComponent implements OnInit
+{
+  constructor(private route:Router,private store:Store)
+  {}
 
-  }
   ngOnInit(): void {
     this.store.dispatch( new ChatListAction.SelectNewChat());
     this.store.dispatch(new MenuNavigationAction.UpdateMenuCurrentUrl("home/chatList",this.route.url));

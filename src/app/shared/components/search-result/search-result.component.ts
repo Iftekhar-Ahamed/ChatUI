@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SearchUserCardComponent } from '../search-user-card/search-user-card.component';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { UserActionsState } from '../../../store/user-actions/user-actions.state';
 import { Observable } from 'rxjs';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -15,11 +15,12 @@ import {SearchResultModel} from "../../models/search-result/search-result.model"
   styleUrl: './search-result.component.css'
 })
 export class SearchResultComponent {
-  @Select(UserActionsState.searchedResult) searchResult$!:Observable<SearchResultModel[]>;
+  searchResult$:Observable<SearchResultModel[]> = this.store.select(UserActionsState.searchedResult);
 
   constructor(
     private store : Store
-  ){
+  )
+  {
 
   }
 

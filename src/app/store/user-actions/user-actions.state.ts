@@ -38,13 +38,19 @@ export interface UserActionModel
 @Injectable()
 export class UserActionsState {
 
-    @Selector()
-    static searchedResult( state : UserActionsStateModel):SearchResultModel[]
-    {
-        return state.userActions?.searchResult ?? [];
-    }
+  @Selector()
+  static searchedResult( state : UserActionsStateModel):SearchResultModel[]
+  {
+      return state.userActions?.searchResult ?? [];
+  }
 
-    constructor( private store : Store,private apiService : ApiService ) {}
+  @Selector()
+  static searchKey( state : UserActionsStateModel):string
+  {
+    return state.userActions?.searchKey ?? "";
+  }
+
+  constructor( private store : Store,private apiService : ApiService ) {}
 
   @Action(UserActions.searchUserAsync)
   async searchUserAsync(ctx : StateContext<UserActionsStateModel>, action : UserActions.searchUserAsync){

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { NgClass, AsyncPipe, NgIf } from '@angular/common';
 import { ChatListAction, ChatListState } from '../../../store';
-import { map, Observable, takeWhile, tap } from 'rxjs';
+import {map, Observable, take, takeWhile, tap} from 'rxjs';
 import { StartNewChatProperty } from '../../models/chatList.model';
 
 @Component({
@@ -16,29 +16,25 @@ import { StartNewChatProperty } from '../../models/chatList.model';
 export class StartNewChatCardComponent implements OnInit{
   isAlive: boolean = true;
   newChat : StartNewChatProperty;
-  @Select(ChatListState.newChat) newChat$! : Observable<StartNewChatProperty>;
+  newChat$ : Observable<StartNewChatProperty> = this.store.select(ChatListState.newChat);
 
   constructor(private store: Store,private router:Router,private activeRouter:ActivatedRoute) {
     this.newChat = { isSelected : false};
   }
 
-  onSelect(): void 
+  onSelect(): void
   {
     this.router.navigate(["search"], { relativeTo: this.activeRouter });
   }
-  ngOnInit(){
+
+  ngOnInit()
+  {
     this.newChat$
       .pipe(
-        takeWhile(() => this.isAlive)
+        take(1)
       )
       .subscribe((newChat: StartNewChatProperty) => {
         this.newChat = newChat;
       });
-  }
-
-  ngDistroy() 
-  {
-    console.log("Called");
-    this.isAlive = false;
   }
 }
