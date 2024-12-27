@@ -52,4 +52,16 @@ export class MenuService
         }
       });
   }
+
+  public resolveMenuUrl(menu : MenuConfigModel):string
+  {
+    let currentRoute = this.router.url;
+
+    if(currentRoute.includes(menu.key))
+    {
+      return menu.basePath;
+    }
+
+    return menu.currentPath ?? menu.basePath;
+  }
 }

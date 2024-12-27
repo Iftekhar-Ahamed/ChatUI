@@ -8,6 +8,7 @@ import { UserInfoState } from "../../../store/user-info/user-info.state";
 import { UserInfoModel } from "../../models/user.model";
 import { NameElementDto } from "../../models/user-info/user-info-response.model";
 import { MenuNavigationState } from "../../../store/menu-navigation/menu-navigation.state";
+import {MenuService} from "../../../services/menu.service";
 
 @Component({
   selector: 'app-header',
@@ -23,8 +24,13 @@ export class HeaderComponent
   userInfo$: Observable<UserInfoModel | null> = this.store.select(UserInfoState.getUserInfo);
 
 
-  constructor(private store: Store,private router: Router)
+  constructor(private store: Store,private menuService:MenuService)
   {
+  }
+
+  resolveUrl(menu : MenuConfigModel):string
+  {
+    return this.menuService.resolveMenuUrl(menu);
   }
 
   trackFn(index :number,item: MenuConfigModel): string
