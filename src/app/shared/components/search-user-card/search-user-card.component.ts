@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FriendshipStatus } from '../../enums/user.enum';
 import { SearchResultModel } from "../../models/search-result/search-result.model";
+import {UserInfoState} from "../../../store/user-info/user-info.state";
+import {map, take} from "rxjs";
+import {UserActions} from "../../../store/user-actions/user-actions.action";
 
 @Component({
   selector: 'app-search-user-card',
@@ -15,9 +18,16 @@ import { SearchResultModel } from "../../models/search-result/search-result.mode
 export class SearchUserCardComponent{
 
   @Input() user!: SearchResultModel;
+  selfUserId:number;
 
   constructor(private store: Store, private router: Router, private activeRouter: ActivatedRoute)
   {
+    this.store.select(UserInfoState.getUserInfo).pipe
+    (
+      take(1),
+      map( x => this.selfUserId = x?.id ?? 0)
+    ).subscribe();
+
   }
 
   get avatar(): string
@@ -27,7 +37,8 @@ export class SearchUserCardComponent{
 
   sendFriendRequest(): void
   {
-    console.log(this.user);
+    console.log("OK");
+    this.store.dispatch(new UserActions.sentMessageRequestAsync(this.selfUserId,this.user.id));
   }
 
   onSelect(): void

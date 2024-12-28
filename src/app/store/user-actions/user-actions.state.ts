@@ -4,6 +4,7 @@ import {SearchResultModel} from "../../shared/models/search-result/search-result
 import {UserActions} from "./user-actions.action";
 import {ApiService} from "../../services/api-service.service";
 import {lastValueFrom} from "rxjs";
+import {SendMessageRequest} from "../../shared/models/chat/message-request.model";
 
 export interface UserActionsStateModel
 {
@@ -106,6 +107,19 @@ export class UserActionsState {
       );
     }
 
+  }
+
+  @Action(UserActions.sentMessageRequestAsync)
+  async  sentMessageRequestAsync(
+    ctx : StateContext<UserActionsStateModel>,
+    action : UserActions.sentMessageRequestAsync
+  ){
+
+    let payload : SendMessageRequest = {
+      selfUserId : action.selfUserId,
+      requestedUserId : action.otherUserId,
+    }
+     let res = await lastValueFrom(this.apiService.sentMessageRequest(payload));
   }
 
 }

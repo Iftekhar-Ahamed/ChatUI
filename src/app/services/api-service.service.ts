@@ -7,6 +7,7 @@ import {LogInRequestDto} from "../shared/models/user-log-in/user-log-in-request.
 import {UserInformationDto} from "../shared/models/user-info/user-info-response.model";
 import {environment} from "../environments/environment";
 import {SearchResultModel} from "../shared/models/search-result/search-result.model";
+import {SendMessageRequest} from "../shared/models/chat/message-request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +65,7 @@ export class ApiService {
 
   searchUserAsync(searchTerm: string): Observable<SearchResultModel[] | null> {
 
-    return this.getData(`/api/User/SearchUser/SearchTerm=${searchTerm}`).pipe
+    return this.getData(`/api/Chat/SearchChatUser/SearchTerm=${searchTerm}&PageNo=1&PageSize=10`).pipe
     (
       map((response: ApiResponseDto<SearchResultModel[]>) => response.data),
       catchError(this.handleError)
@@ -74,9 +75,19 @@ export class ApiService {
 
   getAllMessageRequests(): Observable<SearchResultModel[] | null> {
 
-    return this.getData(`/api/User/SearchUser/`).pipe
+    return this.getData(`/api/User/SearchChatUser/`).pipe
     (
       map((response: ApiResponseDto<SearchResultModel[]>) => response.data),
+      catchError(this.handleError)
+    );
+
+  }
+
+  sentMessageRequest(payload:SendMessageRequest): Observable<string | null> {
+    console.log(payload);
+    return this.postData(`/api/Chat/SentChatFriendRequest`,payload).pipe
+    (
+      map(rsp => rsp.data as string),
       catchError(this.handleError)
     );
 

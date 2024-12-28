@@ -12,4 +12,10 @@ export namespace UserActions
 
     constructor(){}
   }
+  export class sentMessageRequestAsync
+  {
+    static readonly type = 'sentMessageRequestAsync';
+
+    constructor(public selfUserId:number,public otherUserId:number){}
+  }
 }
