@@ -1,85 +1,119 @@
-/* General styling for the form container */
-form {
-    min-width: 50vh;
-    min-height: 40vh;
-    min-height: 50vh;
-    margin: 0 auto;
-    font-family: 'Medium';
-    padding: 20px;
-    border-radius: 8px;
-    background-color: hsla(0, 0%, 100%, .3);
+.sign-up {
+  flex-grow: 1;
+  background-color: hsla(0, 0%, 100%, 0.3);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sign-up h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.name-input {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.title-first-name
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.middle-name-last-name
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.title-ddl, .text-input, .password-input {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.title-ddl
+{
+  max-width: 150px;
+}
+
+.title-ddl select,
+.text-input input,
+.password-input input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-cancel{
+  background-color: red;
+  color: white;
+}
+
+.btn-primary:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.btn-link {
+  background: none;
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.spinner-border {
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .name-input {
+    flex-direction: column;
   }
-  
-  /* Styling for form-group to add some spacing */
-  .form-group {
-    margin-bottom: 15px;
+
+  .middle-name-last-name{
+    flex-direction: column;
   }
-  
-  /* Label styling */
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-family: 'Medium';
-    font-weight: bold;
+
+  .title-first-name{
+    flex-direction: column;
   }
-  
-  /* Styling for form control elements */
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Styling for buttons */
+
   .btn {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #007bff;
-    cursor: pointer;
+    margin-bottom: 10px;
   }
-  .btn:hover {
-    background-color: #2563eb;
-    /* Tailwind's blue-600 */
+
+  .form-group {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  /* Disabled button styling */
-  .btn:disabled {
-    background-color: #cccccc;
-  }
-  
-  /* Styling for invalid input fields */
-  .is-invalid {
-    border-color: #dc3545;
-  }
-  
-  /* Styling for invalid feedback */
-  .invalid-feedback {
-    color: #dc3545;
-    font-size: 0.875em;
-    margin-top: 5px;
-  }
-  
-  /* Styling for the spinner */
-  .spinner-border {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 5px;
-  }
-  
-  /* Link styling */
-  .btn-link {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #ffffff;
-    text-decoration: none;
-  }
-  
-  .btn-link:hover {
-  }
-  
+}

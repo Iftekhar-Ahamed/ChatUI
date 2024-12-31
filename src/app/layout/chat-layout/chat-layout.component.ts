@@ -8,7 +8,6 @@ import {ChatComponent} from "../../component/chat/chat.component";
   standalone: true,
   imports: [
     HeaderComponent,
-    RouterOutlet,
     ChatComponent
   ],
   templateUrl: './chat-layout.component.html',
