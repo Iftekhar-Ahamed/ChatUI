@@ -1,20 +1,19 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
-import { NgClass, AsyncPipe, NgIf } from '@angular/common';
-import { ChatListAction, ChatListState } from '../../../store';
-import {map, Observable, take, takeWhile, tap} from 'rxjs';
+import { Store } from '@ngxs/store';
+import { NgClass, NgIf } from '@angular/common';
+import { ChatListState } from '../../../store';
+import { Observable, take} from 'rxjs';
 import { StartNewChatProperty } from '../../models/chatList.model';
 
 @Component({
   selector: 'app-start-new-chat-card',
   standalone: true,
-  imports: [NgClass, AsyncPipe, NgIf,RouterModule],
+  imports: [NgClass, NgIf,RouterModule],
   templateUrl: './start-new-chat-card.component.html',
   styleUrl: './start-new-chat-card.component.css'
 })
 export class StartNewChatCardComponent implements OnInit{
-  isAlive: boolean = true;
   newChat : StartNewChatProperty;
   newChat$ : Observable<StartNewChatProperty> = this.store.select(ChatListState.newChat);
 
@@ -24,7 +23,7 @@ export class StartNewChatCardComponent implements OnInit{
 
   onSelect(): void
   {
-    this.router.navigate(["search"], { relativeTo: this.activeRouter });
+    this.router.navigate(["search"], {relativeTo: this.activeRouter}).then(r => console.log(r));
   }
 
   ngOnInit()

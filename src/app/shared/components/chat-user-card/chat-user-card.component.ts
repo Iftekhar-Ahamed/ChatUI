@@ -1,18 +1,16 @@
-import { AsyncPipe, NgClass, NgIf } from '@angular/common';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { ChatListAction } from '../../../store';
+import { NgClass } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { User } from '../../models/user.model';
-import { RoomsAction } from '../../../store/rooms/rooms.action';
 import { RoomSate } from '../../../store/rooms/rooms.state';
-import { Observable, map, takeWhile, tap } from 'rxjs';
+import {  map, takeWhile, tap } from 'rxjs';
 import { Room } from '../../models/message.model';
-import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-chat-user-card',
   standalone: true,
-  imports: [NgClass, AsyncPipe, NgIf,RouterModule],
+  imports: [NgClass, RouterModule],
   templateUrl: './chat-user-card.component.html',
   styleUrl: './chat-user-card.component.css'
 })
@@ -22,10 +20,9 @@ export class ChatUserCardComponent implements OnInit {
   @Input() user!: User;
   lastMessage : string = "";
   isAlive: boolean = true;
-  route :string ='';
 
   constructor(private store: Store,private router:Router,private activeRouter:ActivatedRoute) {
-    
+
   }
 
   get avatar(): string {
@@ -56,7 +53,7 @@ export class ChatUserCardComponent implements OnInit {
     }
   }
 
-  ngDistroy() 
+  ngDistroy()
   {
     this.isAlive = false;
   }
