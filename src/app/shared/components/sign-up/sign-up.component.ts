@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Router } from 'express';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,11 +20,18 @@ export class SignUpComponent implements OnInit{
     ) { }
 
     ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            name: ['', Validators.required],
+        this.registerForm = this.formBuilder.group
+        (
+          {
+            title: ['', [Validators.required]],
+            firstName: ['', Validators.required],
+            middleName: [''],
+            lastName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
+            dob: ['', [Validators.required]],
             password: ['', Validators.required]
-        });
+          }
+        );
     }
 
     // convenience getter for easy access to form fields

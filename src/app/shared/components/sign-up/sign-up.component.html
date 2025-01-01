@@ -7,7 +7,7 @@
       <div class="title-first-name">
         <div class="title-ddl">
 
-          <label for="title">Title</label>
+          <label>Title</label>
 
           <select formControlName="title"  [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
             <option value="">Select Title</option>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="text-input">
-          <label for="firstName">First Name</label>
+          <label>First Name</label>
           <input type="text" formControlName="firstName"  [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
           <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
             <div *ngIf="f['firstName'].errors?.['required']">First Name is required</div>
@@ -31,12 +31,12 @@
 
       <div class="middle-name-last-name">
         <div class="text-input">
-          <label for="middleName">Middle Name</label>
+          <label>Middle Name</label>
           <input type="text" formControlName="middleName"  />
         </div>
 
         <div class="text-input">
-          <label for="lastName">Last Name</label>
+          <label>Last Name</label>
           <input type="text" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
           <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
             <div *ngIf="f['lastName'].errors?.['required']">Last Name is required</div>
@@ -47,7 +47,7 @@
 
     <div class="email-dob">
       <div class="text-input">
-        <label for="email">Email</label>
+        <label>Email</label>
         <input type="email" formControlName="email"  autocomplete="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
         <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
           <div *ngIf="f['email'].errors?.['required']">Email is required</div>
@@ -56,7 +56,7 @@
       </div>
 
       <div class="date-input">
-        <label for="email">DOB</label>
+        <label>DOB</label>
         <input type="date" formControlName="dob"  autocomplete="dob" [ngClass]="{ 'is-invalid': submitted && f['dob'].errors }" />
         <div *ngIf="submitted && f['dob'].errors" class="invalid-feedback">
           <div *ngIf="f['dob'].errors?.['required']">Email is required</div>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="password-input">
-      <label for="password">Password</label>
+      <label>Password</label>
       <input type="password" formControlName="password" autocomplete="new-password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
       <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
         <div *ngIf="f['password'].errors?.['required']">Password is required</div>
