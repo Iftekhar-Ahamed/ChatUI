@@ -9,6 +9,7 @@ import {ChatLayoutComponent} from "./layout/chat-layout/chat-layout.component";
 import {HomeLayoutComponent} from "./layout/home-layout/home-layout.component";
 import {MessageRequestLayoutComponent} from "./layout/message-request-layout/message-request-layout.component";
 import {ProfileLayoutComponent} from "./layout/profile-layout/profile-layout.component";
+import {TextInputComponent} from "./shared/components/text-input/text-input.component";
 
 
 export const routes: Routes = [
@@ -57,6 +58,10 @@ export const routes: Routes = [
               component: SignUpComponent
           }
       ]
+  },
+  {
+    path:'test',
+    component : TextInputComponent
   },
   {
     path: '**',
