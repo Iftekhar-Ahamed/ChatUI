@@ -1,13 +1,18 @@
-.welcome-layout
-{
+.welcome-layout {
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  overflow: auto;         /* Allow scrolling if content overflows */
 }
-.sign-in-sign-up
-{
+
+.sign-in-sign-up {
   display: flex;
-  flex-direction: column;
+  overflow: auto;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Optional: aligns inner items vertically */
+  align-items: center;     /* Center content horizontally */
+  max-width: 100%;         /* Ensure responsive layout */
+  padding: 1rem;           /* Add padding to avoid content touching edges */
 }
