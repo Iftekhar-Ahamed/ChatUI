@@ -1,1 +1,8 @@
-<p>text-input works!</p>
+<div class="text-input">
+  <input
+    [ngClass]="{ 'is-invalid': data.hasErrors }"
+    [placeholder]="placeHolder"
+    [value]="data.value"
+    type="text"
+  />
+</div>
