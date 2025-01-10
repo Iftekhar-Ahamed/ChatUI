@@ -3,11 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {TextInputModel} from "../../models/common/ui-models";
 import {TextInputComponent} from "../text-input/text-input.component";
+import {DropDownListComponent} from "../drop-down-list/drop-down-list.component";
+import {DateTimePickerComponent} from "../date-time-picker/date-time-picker.component";
+import {PasswordInputComponent} from "../password-input/password-input.component";
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, TextInputComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TextInputComponent, DropDownListComponent, DateTimePickerComponent, PasswordInputComponent],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
@@ -36,6 +39,24 @@ export class SignUpComponent implements OnInit
     hasErrors : false
   };
 
+  dobInput : TextInputModel = {
+    value : '',
+    errorMessage : '',
+    placeholder : 'DOB',
+    hasErrors : false
+  };
+  emailInput : TextInputModel = {
+    value : '',
+    errorMessage : '',
+    placeholder : 'Enter a valid email',
+    hasErrors : false
+  };
+  passwordInput : TextInputModel = {
+    value : '',
+    errorMessage : '',
+    placeholder : 'Enter a strong password',
+    hasErrors : false
+  };
 
 
   constructor(

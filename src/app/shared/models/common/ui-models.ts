@@ -5,3 +5,7 @@ export interface TextInputModel
   hasErrors : boolean;
   errorMessage : string;
 }
+export interface DdlModel extends TextInputModel
+{
+
+}

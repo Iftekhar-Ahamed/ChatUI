@@ -5,6 +5,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .sign-up h2 {
@@ -15,60 +16,59 @@
 
 .name-input {
   display: flex;
-  gap: 10px;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
-.title-first-name, .middle-name-last-name , .email-dob
+.title-first-name,.email-dob
 {
   display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-direction: row;
+  width: 100%;
+}
+
+.title-input
+{
+  display: flex;
+  width: 35%;
+}
+
+.first-name{
+  display: flex;
+  width: 65%;
+}
+
+.middle-name-last-name
+{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
   flex-direction: row;
 }
 
-.middle-name-last-name{
-  gap: 10px;
-  width: 90%;
-  border: black solid 5px;
-}
-
-.middle-name,.last-name{
-  max-width: 50%;
-  border: #007bff solid 5px;
-}
-
-.title-ddl, .text-input, .date-input, .password-input {
-  flex: 1;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.title-ddl
+.email-input
 {
-  max-width: 130px;
+  display: flex;
+  width: 64%;
 }
 
-.date-input{
-  max-width: 170px;
+.dob-input{
+  display: flex;
+  width: 36%;
 }
 
-.title-ddl select,
-.text-input input,
-.date-input input,
-.password-input input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: 'Inter', serif;
-  font-size: 14px;
+.password-input
+{
+  width: 100%;
 }
 
-.invalid-feedback {
-  color: red;
-  font-family: 'Inter', serif;
-  font-size: 0.875rem;
-  margin-top: 5px;
+.apply-sign-in-button
+{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .btn {
@@ -79,7 +79,7 @@
   font-family: 'Inter', serif;
 }
 
-.btn-primary {
+.btn-apply {
   background-color: green;
   color: white;
   margin-left: 10px;
@@ -89,61 +89,4 @@
   margin-right: 10px;
   background-color: #007bff;
   color: white;
-}
-
-.btn-sign-in:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-.btn-primary:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-.form-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.spinner-border {
-  margin-right: 5px;
-}
-
-@media (max-width: 768px) {
-  .name-input {
-    flex-direction: column;
-  }
-
-  .title-first-name,.middle-name-last-name,.email-dob{
-    flex-direction: column;
-  }
-
-  .title-ddl, .text-input, .date-input, .password-input {
-    max-width: 300px;
-  }
-
-  /*.middle-name-last-name{*/
-  /*  max-width: 300px;*/
-  /*}*/
-
-
-  .btn {
-    width: 250px;
-    margin-bottom: 10px;
-    margin-left: 0;
-    margin-right: 0;
-    text-align: center;
-  }
-
-  .form-group {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sign-up{
-    min-width: 300px;
-    max-width: 300px;
-  }
 }

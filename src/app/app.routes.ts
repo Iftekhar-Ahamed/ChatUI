@@ -9,7 +9,7 @@ import {ChatLayoutComponent} from "./layout/chat-layout/chat-layout.component";
 import {HomeLayoutComponent} from "./layout/home-layout/home-layout.component";
 import {MessageRequestLayoutComponent} from "./layout/message-request-layout/message-request-layout.component";
 import {ProfileLayoutComponent} from "./layout/profile-layout/profile-layout.component";
-import {TextInputComponent} from "./shared/components/text-input/text-input.component";
+import {DateTimePickerComponent} from "./shared/components/date-time-picker/date-time-picker.component";
 
 
 export const routes: Routes = [
@@ -61,7 +61,7 @@ export const routes: Routes = [
   },
   {
     path:'test',
-    component : TextInputComponent
+    component : DateTimePickerComponent
   },
   {
     path: '**',

@@ -1,68 +1,31 @@
 <div class="sign-up">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-
-    <h2>Create a new account</h2>
-
-    <div class="name-input">
-
-<!--      <div class="title-first-name">-->
-<!--        <div class="title-ddl">-->
-
-<!--          <select formControlName="title"  [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">-->
-<!--            <option value="">Select title</option>-->
-<!--            <option value="Mr">Mr</option>-->
-<!--            <option value="Ms">Ms</option>-->
-<!--          </select>-->
-
-<!--          <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">-->
-<!--            <div *ngIf="f['title'].errors?.['required']">Title is required</div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <app-text-input [data] = "firstNameInput"></app-text-input>-->
-<!--      </div>-->
-
-      <div class="middle-name-last-name">
-        <app-text-input class="middle-name" [data] = "middleNameInput"></app-text-input>
-        <app-text-input class="last-name" [data] = "lastNameInput"></app-text-input>
-      </div>
-
+  <h2>Create a new account</h2>
+  <div class="name-input">
+    <div class="title-first-name">
+      <app-drop-down-list class="title-input" [data]="firstNameInput"></app-drop-down-list>
+      <app-text-input class="first-name" [data] = "firstNameInput"></app-text-input>
     </div>
+    <div class="middle-name-last-name">
+      <app-text-input [data] = "middleNameInput"></app-text-input>
+      <app-text-input [data] = "lastNameInput"></app-text-input>
+    </div>
+  </div>
+  <div class="email-dob">
+    <app-text-input class="email-input" [data] = "emailInput"></app-text-input>
+    <app-date-time-picker class="dob-input"></app-date-time-picker>
+  </div>
+  <app-password-input class="password-input" [data]="passwordInput"></app-password-input>
 
-<!--    <div class="email-dob">-->
-<!--      <div class="text-input">-->
-<!--        <input type="email" placeholder="Enter a valid email" formControlName="email"  autocomplete="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />-->
-<!--        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">-->
-<!--          <div *ngIf="f['email'].errors?.['required']">Email is required</div>-->
-<!--          <div *ngIf="f['email'].errors?.['email']">Email must be a valid email address</div>-->
-<!--        </div>-->
-<!--      </div>-->
+  <div class="apply-sign-in-button">
+    <button [disabled]="loading" class="btn btn-apply">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Apply
+    </button>
+    <button [disabled]="loading" class="btn btn-sign-in">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Sign In
+    </button>
+  </div>
 
-<!--      <div class="date-input">-->
-<!--        <input placeholder="DOB" type="date" formControlName="dob"  autocomplete="dob" [ngClass]="{ 'is-invalid': submitted && f['dob'].errors }" />-->
-<!--        <div *ngIf="submitted && f['dob'].errors" class="invalid-feedback">-->
-<!--          <div *ngIf="f['dob'].errors?.['required']">Dob is required</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="password-input">-->
-<!--      <input placeholder="Enter a strong password" type="password" formControlName="password" autocomplete="new-password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />-->
-<!--      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">-->
-<!--        <div *ngIf="f['password'].errors?.['required']">Password is required</div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-    <div class="form-group">
-          <button [disabled]="loading" class="btn btn-primary">
-              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              Apply
-          </button>
-          <button [disabled]="loading" class="btn btn-sign-in">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Sign In
-          </button>
-      </div>
-  </form>
 </div>
 
