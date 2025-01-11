@@ -27,7 +27,10 @@ export class ToastrInterceptor implements HttpInterceptor {
                         : null;
 
                     if (rsp && rsp.showMessage) {
-                        this.toastr.success(rsp.message || 'Operation completed successfully.');
+                        this.toastr.success(rsp.message || 'Operation completed successfully.', '', {
+                            positionClass: 'toast-bottom-right'
+                        });
+
                     }
                 }
             }),
@@ -52,13 +55,20 @@ export class ToastrInterceptor implements HttpInterceptor {
 
                         if(!hasErrorBreakDown)
                         {
-                            this.toastr.error(rsp.message || 'An error occurred.');
+                            this.toastr.error(rsp.message || 'An error occurred.', 'Error', {
+                                positionClass: 'toast-bottom-right'
+                            });
+
                         }
                     } else {
-                        this.toastr.error('An unknown server error occurred.', 'Error');
+                        this.toastr.error('An unknown server error occurred.', 'Error', {
+                            positionClass: 'toast-bottom-right'
+                        });
                     }
                 } else if (error.status >= 500) {
-                    this.toastr.error('A server error occurred. Please try again later.', 'Server Error');
+                    this.toastr.error('A server error occurred. Please try again later.', 'Server Error', {
+                        positionClass: 'toast-bottom-right'
+                    });
                 }
                 throw error;
             })
