@@ -13,7 +13,7 @@ import {DateTimePickerComponent} from "./shared/components/date-time-picker/date
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/welcome/signInAccount', pathMatch: 'full' },
+  { path: '', redirectTo: '/welcome/sign-in', pathMatch: 'full' },
   {
       path: 'home',
       component: HomeLayoutComponent,
@@ -50,11 +50,11 @@ export const routes: Routes = [
       children:
       [
           {
-              path: 'signInAccount',
+              path: 'sign-in',
               component: SignInComponent,
           },
           {
-              path: 'signUpAccount',
+              path: 'sign-up',
               component: SignUpComponent
           }
       ]
@@ -65,6 +65,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/welcome/signInAccount'
+    redirectTo: '/welcome/sign-in'
   }
 ];

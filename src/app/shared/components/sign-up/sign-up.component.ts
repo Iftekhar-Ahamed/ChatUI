@@ -12,6 +12,7 @@ import {UserSignUpRequest} from "../../models/user-sign-up/user-sign-up.model";
 import {Store} from "@ngxs/store";
 import {UserActions} from "../../../store/user-actions/user-actions.action";
 import {lastValueFrom} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-sign-up',
@@ -81,7 +82,7 @@ export class SignUpComponent {
     };
 
 
-    constructor(private store : Store) {
+    constructor(private store : Store,private router : Router,private route: ActivatedRoute) {
     }
 
     validateInput(): boolean {
@@ -154,5 +155,16 @@ export class SignUpComponent {
             await lastValueFrom(this.store.dispatch(new UserActions.createNewAccountAsync(request)));
         }
     }
+
+    signIn() {
+        this.router.navigate(['../sign-in'], { relativeTo: this.route }).then((r) => {
+            if (r) {
+                console.log('Navigation to /welcome/sign-in successful!');
+            } else {
+                console.log('Navigation to /welcome/sign-in failed!');
+            }
+        });
+    }
+
 
 }
