@@ -8,6 +8,10 @@ import {DateTimePickerComponent} from "../date-time-picker/date-time-picker.comp
 import {PasswordInputComponent} from "../password-input/password-input.component";
 import {StringUtils} from "../../../utils/string.utils";
 import {DateTimeUtils} from "../../../utils/date-time.utils";
+import {UserSignUpRequest} from "../../models/user-sign-up/user-sign-up.model";
+import {Store} from "@ngxs/store";
+import {UserActions} from "../../../store/user-actions/user-actions.action";
+import {lastValueFrom} from "rxjs";
 
 @Component({
     selector: 'app-sign-up',
@@ -17,8 +21,6 @@ import {DateTimeUtils} from "../../../utils/date-time.utils";
     styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
-
-    submitted = false;
 
     titleDdl: DdlModel = {
         data: [
@@ -79,7 +81,7 @@ export class SignUpComponent {
     };
 
 
-    constructor() {
+    constructor(private store : Store) {
     }
 
     validateInput(): boolean {
@@ -130,10 +132,26 @@ export class SignUpComponent {
         return isValid;
     }
 
-    apply() {
+    async apply() {
 
-        if (this.validateInput()) {
+        if (this.validateInput())
+        {
+            let request : UserSignUpRequest = {
+                name : {
+                    title : this.titleDdl.selectedData.value,
+                    firstName : this.firstNameInput.value,
+                    middleName : this.middleNameInput.value,
+                    lastName : this.lastNameInput.value
+                },
+                dob : this.dobInput.value,
+                email : this.emailInput.value,
+                password: this.passwordInput.value,
+                contactNumberCountryCode : null,
+                contactNumber : null,
+                userId : null
+            }
 
+            await lastValueFrom(this.store.dispatch(new UserActions.createNewAccountAsync(request)));
         }
     }
 
