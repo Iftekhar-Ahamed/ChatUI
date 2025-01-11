@@ -53,7 +53,6 @@ export class ApiService {
             map((response: ApiResponseDto<LogInResponseDto>) => response),
             catchError(this.handleError)
         );
-
     }
 
     userSignUp(payload: UserSignUpRequest): Observable<ApiResponseDto<string> | null> {
