@@ -47,15 +47,20 @@
   flex-direction: row;
 }
 
+.middle-name,.last-name
+{
+  width: 50%;
+}
+
 .email-input
 {
   display: flex;
-  width: 64%;
+  width: 55%;
 }
 
 .dob-input{
   display: flex;
-  width: 36%;
+  width: 45%;
 }
 
 .password-input
@@ -82,11 +87,9 @@
 .btn-apply {
   background-color: green;
   color: white;
-  margin-left: 10px;
 }
 
 .btn-sign-in {
-  margin-right: 10px;
   background-color: #007bff;
   color: white;
 }
