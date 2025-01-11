@@ -71,7 +71,7 @@ export class SignInComponent {
             };
 
             try {
-                const result = await lastValueFrom(this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)));
+                await lastValueFrom(this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)));
 
                 this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
                     if (isLoggedIn) {
