@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TextInputModel} from "../../models/common/ui-models";
 import {NgClass} from "@angular/common";
 
@@ -12,25 +12,21 @@ import {NgClass} from "@angular/common";
 })
 export class PasswordInputComponent
 {
-  @Input() data!: TextInputModel;
+  @Input() data: TextInputModel;
+  @Output() dataChange = new EventEmitter<TextInputModel>();
   isVisible : boolean = false;
 
-  ngOnInit(): void {
-    if (!this.data) {
-      this.data = {
-        placeholder: 'Default placeholder',
-        value: '',
-        hasErrors: true,
-        errorMessage : 'Default error',
-      };
-    }
+  onValueChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.data.value = inputElement.value;
+    this.data.hasErrors = false;
   }
 
   get placeHolder() : string
   {
     if(this.data.hasErrors)
     {
-      return this.data.errorMessage;
+      return this.data.placeholder;
     }
 
     return this.data.placeholder;

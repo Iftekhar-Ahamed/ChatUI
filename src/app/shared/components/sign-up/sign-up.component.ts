@@ -105,6 +105,16 @@ export class SignUpComponent {
             this.dobInput.hasErrors = false;
         }
 
+        if(StringUtils.isEmptyOrWhitespace(this.passwordInput.value))
+        {
+            this.passwordInput.hasErrors = true;
+            isValid = false;
+        }
+        else
+        {
+            this.passwordInput.hasErrors = false;
+        }
+
 
         return isValid;
     }
