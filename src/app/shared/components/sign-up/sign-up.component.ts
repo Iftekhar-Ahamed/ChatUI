@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TextInputModel} from "../../models/common/ui-models";
+import {DdlModel, TextInputModel} from "../../models/common/ui-models";
 import {TextInputComponent} from "../text-input/text-input.component";
 import {DropDownListComponent} from "../drop-down-list/drop-down-list.component";
 import {DateTimePickerComponent} from "../date-time-picker/date-time-picker.component";
@@ -20,6 +20,27 @@ export class SignUpComponent {
 
     submitted = false;
 
+    titleDdl: DdlModel = {
+        data: [
+            {
+                key: "",
+                value: "Select title"
+            },
+            {
+                key: "1",
+                value: "Mr"
+            },
+            {
+                key: "2",
+                value: "Ms"
+            },
+        ],
+        hasErrors: false,
+        selectedData: {
+            key: "",
+            value: "Select title"
+        }
+    };
     firstNameInput: TextInputModel = {
         value: '',
         errorMessage: '',
@@ -61,70 +82,57 @@ export class SignUpComponent {
     constructor() {
     }
 
-    validateInput():boolean
-    {
+    validateInput(): boolean {
         let isValid: boolean = true;
 
-        if(StringUtils.isEmptyOrWhitespace(this.firstNameInput.value))
-        {
+        if (StringUtils.isEmptyOrWhitespace(this.firstNameInput.value)) {
             this.firstNameInput.hasErrors = true;
             isValid = false;
-        }
-        else
-        {
+        } else {
             this.firstNameInput.hasErrors = false;
         }
 
-        if(StringUtils.isEmptyOrWhitespace(this.lastNameInput.value))
-        {
+        if (StringUtils.isEmptyOrWhitespace(this.lastNameInput.value)) {
             this.lastNameInput.hasErrors = true;
             isValid = false;
-        }
-        else
-        {
+        } else {
             this.lastNameInput.hasErrors = false;
         }
 
-        if(!StringUtils.isValidEmail(this.emailInput.value))
-        {
+        if (!StringUtils.isValidEmail(this.emailInput.value)) {
             this.emailInput.hasErrors = true;
             isValid = false;
-        }
-        else
-        {
+        } else {
             this.emailInput.hasErrors = false;
         }
 
-        if(!DateTimeUtils.isBefore18Years(this.dobInput.value))
-        {
+        if (!DateTimeUtils.isBefore18Years(this.dobInput.value)) {
             this.dobInput.hasErrors = true;
             isValid = false;
-        }
-        else
-        {
+        } else {
             this.dobInput.hasErrors = false;
         }
 
-        if(StringUtils.isEmptyOrWhitespace(this.passwordInput.value))
-        {
+        if (StringUtils.isEmptyOrWhitespace(this.passwordInput.value)) {
             this.passwordInput.hasErrors = true;
             isValid = false;
-        }
-        else
-        {
+        } else {
             this.passwordInput.hasErrors = false;
         }
 
+        if (this.titleDdl.selectedData.key == "") {
+            this.titleDdl.hasErrors = true;
+            isValid = false;
+        } else {
+            this.titleDdl.hasErrors = false;
+        }
 
         return isValid;
     }
 
-    apply(){
+    apply() {
 
-        console.log(this.dobInput);
-
-        if(this.validateInput())
-        {
+        if (this.validateInput()) {
 
         }
     }

@@ -19,3 +19,9 @@
   height: 100%;
   border: 1px solid #ccc;
 }
+
+.ddl select.is-invalid
+{
+  border-color: red;
+  background-color: #ffe6e6;
+}

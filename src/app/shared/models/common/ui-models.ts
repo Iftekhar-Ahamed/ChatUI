@@ -5,9 +5,16 @@ export interface TextInputModel
   hasErrors : boolean;
   errorMessage : string;
 }
-export interface DdlModel extends TextInputModel
-{
 
+export interface  DdlDataModel{
+  value : string;
+  key : string;
+}
+export interface DdlModel
+{
+  data : DdlDataModel[];
+  selectedData : DdlDataModel;
+  hasErrors : boolean;
 }
 
 export interface DateInputModel extends TextInputModel

@@ -1,7 +1,9 @@
 <div class="ddl">
-  <select [ngClass]="{ 'is-invalid': data.hasErrors }">
-    <option value="">Select title</option>
-    <option value="Mr">Mr</option>
-    <option value="Ms">Ms</option>
-  </select>
+    <select
+            (change)="selectItem($event)"
+            [ngClass]="{ 'is-invalid': data.hasErrors }"
+            [value]="selectedItem"
+    >
+        <option *ngFor="let item of data.data" [value]="item.key">{{ item.value }}</option>
+    </select>
 </div>
