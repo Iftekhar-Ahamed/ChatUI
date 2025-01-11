@@ -4,7 +4,7 @@
     align-items: center; /* Vertically center items */
     padding: 10px 20px;
     color: white;
-    font-family: 'Medium';
+    font-family: 'Inter', serif;
     backdrop-filter: blur(14px);
     background-color: rgba(37, 38, 40, .21);
     background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, .2), rgba(50, 50, 50, .2) 80%);
