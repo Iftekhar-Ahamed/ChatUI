@@ -15,4 +15,5 @@
 
 .text-input input.is-invalid {
   border-color: red;
+  background-color: #ffe6e6;
 }

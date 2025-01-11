@@ -3,6 +3,7 @@
     [ngClass]="{ 'is-invalid': data.hasErrors }"
     [placeholder]="placeHolder"
     [value]="data.value"
+    (input)="onValueChange($event)"
     type="text"
   />
 </div>

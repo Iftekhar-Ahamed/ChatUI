@@ -9,3 +9,7 @@ export interface DdlModel extends TextInputModel
 {
 
 }
+
+export interface DateInputModel extends TextInputModel
+{
+}

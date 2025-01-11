@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {TextInputModel} from "../../models/common/ui-models";
 import {NgClass} from "@angular/common";
+import {StringUtils} from "../../../utils/string.utils";
 
 @Component({
   selector: 'app-text-input',
@@ -11,7 +12,8 @@ import {NgClass} from "@angular/common";
   styleUrls: ['./text-input.component.css']
 })
 export class TextInputComponent implements OnInit {
-  @Input() data!: TextInputModel;
+  @Input() data: TextInputModel;
+  @Output() dataChange = new EventEmitter<TextInputModel>();
 
   ngOnInit(): void {
     if (!this.data) {
@@ -24,11 +26,21 @@ export class TextInputComponent implements OnInit {
     }
   }
 
+  onValueChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.data.value = inputElement.value;
+    this.data.hasErrors = false;
+  }
+
+
   get placeHolder() : string
   {
     if(this.data.hasErrors)
     {
-      return this.data.errorMessage;
+      if(StringUtils.isEmptyOrWhitespace(this.data.value))
+      {
+        return this.data.placeholder;
+      }
     }
 
     return this.data.placeholder;

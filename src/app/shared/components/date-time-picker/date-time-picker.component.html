@@ -1,4 +1,9 @@
 <div class="date-time">
-  <label>{{"DOB"}}</label>
-  <input type="date" placeholder="DD/MM/YYYY">
+    <label>{{ data.placeholder }}</label>
+    <input
+        (input)="onValueChange($event)"
+        [ngClass]="{ 'is-invalid': data.hasErrors }"
+        placeholder="DD/MM/YYYY"
+        type="date"
+    >
 </div>
