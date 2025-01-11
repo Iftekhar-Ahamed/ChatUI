@@ -1,0 +1,21 @@
+.ddl
+{
+  font-family: 'Inter', serif;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+}
+
+.ddl select
+{
+  background-color: white;
+  font-family: 'Inter', serif;
+  font-size: 14px;
+  border-radius: 4px;
+  width: 100%;
+  padding: 5px;
+  height: 100%;
+  border: 1px solid #ccc;
+}

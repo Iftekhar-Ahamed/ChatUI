@@ -1,0 +1,23 @@
+.date-time{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-time label {
+  font-size: 14px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.date-time input{
+  width: 76%;
+  height: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Inter', serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
