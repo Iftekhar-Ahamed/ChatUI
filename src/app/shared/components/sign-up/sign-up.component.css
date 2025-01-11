@@ -93,3 +93,20 @@
   background-color: #007bff;
   color: white;
 }
+
+
+
+@media (max-width: 768px)
+{
+  .title-first-name,.email-dob,.middle-name-last-name
+  {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .title-input,.first-name,.middle-name,.last-name,.dob-input,.email-input
+  {
+    width: 100%;
+  }
+
+}

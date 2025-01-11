@@ -8,6 +8,15 @@
 
 .sign-in-sign-up
 {
+  padding: 20px;
   width: 500px;
   height: 380px;
+}
+
+
+@media (max-width: 768px)
+{
+  .sign-in-sign-up{
+    height: 500px;
+  }
 }
