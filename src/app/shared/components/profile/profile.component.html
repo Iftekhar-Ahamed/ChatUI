@@ -1,35 +1,38 @@
 <div class="profile-container">
-  <div class="profile-info" *ngIf="user$ | async as user">
-    <div class="profile-pic">
-      <img [src]="'assets/avatar.jpg'" alt="{{ user.name }}" class="user-image">
+    <div *ngIf="user$ | async as user" class="profile-info">
+        <div class="profile-pic">
+            <img [src]="'assets/avatar.jpg'" alt="{{ user.name }}" class="user-image">
+        </div>
+        <div class="profile-details">
+            <form [formGroup]="profileForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" formControlName="name" id="name" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control" formControlName="username" id="username" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input [type]="passwordFieldType" class="form-control" formControlName="password"
+                               id="password"/>
+                        <i (click)="togglePasswordVisibility()"
+                           [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
+                           class="password-icon">
+                        </i>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button (click)="toggleEdit()" *ngIf="!isEditable" class="btn btn-primary" type="button">Update
+                    </button>
+                    <button (click)="toggleEdit()" *ngIf="isEditable" class="btn btn-primary" type="button">Cancel
+                    </button>
+                    <button (click)="onUpdate()" *ngIf="isEditable" class="btn btn-success" type="submit">Save</button>
+                    <button (click)="onLogout()" class="btn btn-secondary" type="button">Logout</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="profile-details">
-      <form [formGroup]="profileForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" type="text" formControlName="name" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input id="username" type="text" formControlName="username" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <div class="password-wrapper">
-            <input id="password" [type]="passwordFieldType" formControlName="password" class="form-control" />
-            <i class="password-icon"
-               [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
-               (click)="togglePasswordVisibility()">
-            </i>
-          </div>
-        </div>
-        <div class="actions">
-          <button type="button" class="btn btn-primary" *ngIf="!isEditable" (click)="toggleEdit()">Update</button>
-          <button type="button" class="btn btn-primary" *ngIf="isEditable" (click)="toggleEdit()">Cancel</button>
-          <button type="submit" class="btn btn-success" *ngIf="isEditable" (click)="onUpdate()">Save</button>
-          <button type="button" class="btn btn-secondary" (click)="onLogout()">Logout</button>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>

@@ -1,21 +1,20 @@
 <header class="header">
-  <nav>
-      <ul class="nav-links">
-          <li *ngFor="let item of (itemLinks$ | async); trackBy: trackFn">
-              <a *ngIf="item.isViewInHeader" [routerLink]="resolveUrl(item)" [ngClass]="{'selected': item.isSelected}">
-                  {{ item.name }}
-              </a>
-          </li>
-
-          <li *ngIf="userInfo$ | async as user" class="user-profile">
-              <a [routerLink]="'/profile'" [ngClass]="{'selected': true}">
-                  <img
-                          [src]="'assets/avatar.jpg'"
-                          alt="{{ userFullName(user.name) }}"
-                  />
-                  {{  userFullName(user.name) }}
-              </a>
-          </li>
-      </ul>
-  </nav>
+    <nav>
+        <ul class="nav-links">
+            <li *ngFor="let item of (itemLinks$ | async); trackBy: trackFn">
+                <a *ngIf="item.isViewInHeader" [routerLink]="resolveUrl(item)" [ngClass]="{'selected': item.isSelected}">
+                    {{ item.name }}
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div *ngIf="userInfo$ | async as user" class="user-profile">
+        <a [routerLink]="'/profile'" [ngClass]="{'selected': true}">
+            <img
+                    [src]="'assets/avatar.jpg'"
+                    alt="{{ userFullName(user.name) }}"
+            />
+            {{ userFullName(user.name) }}
+        </a>
+    </div>
 </header>
