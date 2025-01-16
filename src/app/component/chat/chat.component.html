@@ -1,9 +1,12 @@
 <div class="chat-container ">
-  <div class="user-list">
+  <div class="chat-list-container">
     <app-start-new-chat-card></app-start-new-chat-card>
-    <app-list-view></app-list-view>
+    <app-list-view class="user-list"></app-list-view>
   </div>
-  <div class="chat-content ">
-    <router-outlet></router-outlet>
+  <div class="chat-list-content-container">
+      <div class="chat-message-container">
+          <router-outlet></router-outlet>
+      </div>
+
   </div>
 </div>
