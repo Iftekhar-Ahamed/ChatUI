@@ -1,8 +1,9 @@
 <div class="search-container">
-    <div >
-        <app-search-bar class ="search-Bar"></app-search-bar>
+    <div class="search-Bar">
+        <app-text-input class="text-input" [data]="searchTerm"></app-text-input>
+        <button class="btn" (click)="searchUserAsync()">
+            Search
+        </button>
     </div>
-    <div class="search-result">
-        <app-search-result></app-search-result>
-    </div>
+    <app-list-view class="search-result"></app-list-view>
 </div>
