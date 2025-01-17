@@ -1,3 +1,5 @@
+import {UserSignUpRequest} from "../../shared/models/user-sign-up/user-sign-up.model";
+
 export namespace UserActions
 {
   export class searchUserAsync
@@ -17,5 +19,11 @@ export namespace UserActions
     static readonly type = 'sentMessageRequestAsync';
 
     constructor(public selfUserId:number,public otherUserId:number){}
+  }
+  export class createNewAccountAsync
+  {
+    static readonly type = 'createNewAccountAsync';
+
+    constructor(public userInfo : UserSignUpRequest){}
   }
 }

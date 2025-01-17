@@ -1,28 +1,26 @@
 .header {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-between; /* Ensure space between nav links and user info */
-    align-items: center; /* Vertically center items */
-    padding: 10px 20px;
-    color: white;
-    font-family: 'Medium';
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', serif;
     backdrop-filter: blur(14px);
-    background-color: rgba(37, 38, 40, .21);
-    background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, .2), rgba(50, 50, 50, .2) 80%);
+    background-color: rgba(37, 38, 40, 0.21);
+    background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.2), rgba(50, 50, 50, 0.2) 80%);
+    box-sizing: border-box;
+    padding: 0 16px;
+    gap: 10px; /* Adds some space between nav-links and user-profile */
 }
 
 .header .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.header .nav-links li {
-    margin-left: 20px;
-}
-
-.header .nav-links li:first-child {
-    margin-left: 0;
+    flex-grow: 1; /* Ensures nav-links take up remaining space */
+    gap: 10px; /* Adds space between nav items */
 }
 
 .header .nav-links a {
@@ -31,33 +29,52 @@
     padding: 8px 12px;
     border-radius: 4px;
     transition: background 0.3s;
-}
-
-.header .nav-links a:hover {
-    background-color: hsla(0, 0%, 100%, .3);
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
 .header .nav-links .selected {
-    background-color: hsla(0, 0%, 100%, .3);
+    background-color: hsla(0, 0%, 100%, 0.3);
 }
 
-.user-info {
-    display: flex;
-    align-items: center; /* Center user info vertically */
-    background-color: hsla(0, 0%, 100%, .3);
-    border-radius: 30px; /* Adjust the value as needed for desired roundness */
-}
-
-
-.user-info .user-image {
-    width: 25px;
-    height: 25px;
+.nav-links img {
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    margin-left: 10px;
+    margin-right: 8px;
+    object-fit: cover;
 }
 
-.user-info .user-name {
-    font-size: 1em;
-    font-weight: normal;
-    margin-left: 10px;
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.user-profile img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+}
+
+.user-profile a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.user-profile a:hover {
+    color: hsla(0, 0%, 100%, 0.8); /* Slight color change on hover */
 }

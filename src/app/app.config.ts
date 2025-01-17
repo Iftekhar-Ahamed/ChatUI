@@ -18,6 +18,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {LoadingInterceptor} from "./interceptors/loading.interceptor";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {JwtInterceptor} from "./interceptors/jwt.interceptor";
+import {provideToastr} from "ngx-toastr";
+import {ToastrInterceptor} from "./interceptors/toastr-interceptor.interceptor";
 
 
 export const appConfig: ApplicationConfig = {
@@ -27,9 +29,15 @@ export const appConfig: ApplicationConfig = {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true,
-    },{
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ToastrInterceptor, // Register ToastrInterceptor
       multi: true,
     },
     provideClientHydration(),
@@ -54,6 +62,7 @@ export const appConfig: ApplicationConfig = {
       NgxsLoggerPluginModule.forRoot({ disabled: environment.production })
     ),
     provideAnimations(),
+    provideToastr(),
     provideAnimationsAsync(),
   ]
 };

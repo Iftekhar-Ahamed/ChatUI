@@ -11,6 +11,9 @@
   padding: 20px;
   width: 500px;
   height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 

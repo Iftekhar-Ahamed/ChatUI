@@ -102,7 +102,7 @@ export class ChatListState
             }
         }
 
-        if(state.chatList.startNewChat.isSelected === true)
+        if(state.chatList.startNewChat.isSelected)
         {
             state.chatList.startNewChat.isSelected = false;
         }
