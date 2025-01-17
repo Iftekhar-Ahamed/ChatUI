@@ -1,11 +1,10 @@
-/* search-user-card.component.css */
 .search-user-card {
     display: flex;
     align-items: center;
     padding: 5px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: 'Medium';
+    font-family: 'Inter', serif;
     user-select: none;
     background-color: hsla(0, 0%, 100%, 0.266);
     justify-content: space-between;
@@ -31,7 +30,6 @@
 .search-user-card__info {
     display: flex;
     align-items: center;
-    font-family: 'Medium';
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -47,13 +45,11 @@
 .search-user-card__info__status__indicator.online {
     background-color: #1ce623;
     border: #000000 1px solid;
-    /* Green for online */
 }
 
 .search-user-card__info__status__indicator.offline {
     background-color: #f44336;
     border: #000000 1px solid;
-    /* Red for offline */
 }
 
 .search-user-card__info__status {
@@ -66,7 +62,6 @@
     font-family: 'Thin';
     color: #000000;
     margin-top: 5px;
-    /* Add margin-top for spacing */
 }
 
 .btn-cancel-request {
