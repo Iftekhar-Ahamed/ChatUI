@@ -34,8 +34,11 @@ export class SearchUserCardComponent {
     }
 
     sendFriendRequest(): void {
-        console.log("OK");
         this.store.dispatch(new UserActions.sentMessageRequestAsync(this.selfUserId, this.user.id));
+    }
+
+    cancelFriendRequest(): void {
+        this.store.dispatch(new UserActions.cancelMessageRequestAsync(this.selfUserId, this.user.id));
     }
 
     onSelect(): void {

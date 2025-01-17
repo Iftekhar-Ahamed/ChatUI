@@ -4,7 +4,7 @@ import {SearchResultModel} from "../../shared/models/search-result/search-result
 import {UserActions} from "./user-actions.action";
 import {ApiService} from "../../services/api-service.service";
 import {lastValueFrom} from "rxjs";
-import {SendMessageRequest} from "../../shared/models/chat/message-request.model";
+import {CancelMessageRequest, SendMessageRequest} from "../../shared/models/chat/message-request.model";
 
 export interface UserActionsStateModel {
     searchActions: SearchResultSateModel | null,
@@ -62,21 +62,19 @@ export class UserActionsState {
 
         const result = await lastValueFrom(this.apiService.searchUserAsync(action.searchTerm));
 
-        if (result != null) {
-            let searchAction =
-                {
-                    searchKey: action.searchTerm,
-                    searchResult: result,
-                }
-
-            ctx.setState
-            (
-                {
-                    ...state,
-                    searchActions: searchAction
-                }
-            );
+        let searchAction =
+        {
+            searchKey: action.searchTerm,
+            searchResult: result ?? [],
         }
+
+        ctx.setState
+        (
+            {
+                ...state,
+                searchActions: searchAction
+            }
+        );
 
     }
 
@@ -117,16 +115,27 @@ export class UserActionsState {
         let res = await lastValueFrom(this.apiService.sentMessageRequest(payload));
     }
 
+    @Action(UserActions.cancelMessageRequestAsync)
+    async cancelMessageRequestAsync(
+        ctx: StateContext<UserActionsStateModel>,
+        action: UserActions.cancelMessageRequestAsync
+    ) {
+
+        let payload: CancelMessageRequest = {
+            selfUserId: action.selfUserId,
+            requestedUserId: action.otherUserId,
+        }
+        let res = await lastValueFrom(this.apiService.cancelMessageRequest(payload));
+    }
+
     @Action(UserActions.createNewAccountAsync)
-    async  createNewAccount(
+    async createNewAccount(
         ctx: StateContext<UserActionsStateModel>,
         action: UserActions.createNewAccountAsync
-    )
-    {
+    ) {
         let rsp = await lastValueFrom(this.apiService.userSignUp(action.userInfo));
 
-        if(rsp != null)
-        {
+        if (rsp != null) {
             console.log(rsp);
         }
     }

@@ -7,13 +7,13 @@
         <span class="search-user-card__info__name">{{ user.name }}</span>
     </div>
     <div>
-        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.New " class="btn-send-request"
+        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.New " class="btn btn-send-request"
                 type="button">Send Request
         </button>
-        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Accepted" class="btn-remove-request"
+        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Accepted" class="btn btn-remove-request"
                 type="button">Remove
         </button>
-        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Pending" class="btn-cancel-request"
+        <button (click)="cancelFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Pending" class=" btn btn-cancel-request"
                 type="button">Cancel
         </button>
     </div>
