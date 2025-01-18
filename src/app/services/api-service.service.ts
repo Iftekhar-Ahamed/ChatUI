@@ -91,11 +91,11 @@ export class ApiService {
 
     }
 
-    sentMessageRequest(payload: SendMessageRequest): Observable<string | null> {
+    sentMessageRequest(payload: SendMessageRequest): Observable<boolean | null> {
         console.log(payload);
         return this.postData(`/api/Chat/SentChatFriendRequest`, payload).pipe
         (
-            map(rsp => rsp.data as string),
+            map(rsp => rsp.success as boolean),
             catchError(this.handleError)
         );
 

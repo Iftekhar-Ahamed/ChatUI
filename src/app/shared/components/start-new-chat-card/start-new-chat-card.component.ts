@@ -9,7 +9,7 @@ import { StartNewChatProperty } from '../../models/chatList.model';
 @Component({
   selector: 'app-start-new-chat-card',
   standalone: true,
-  imports: [NgClass, NgIf,RouterModule],
+  imports: [RouterModule],
   templateUrl: './start-new-chat-card.component.html',
   styleUrl: './start-new-chat-card.component.css'
 })

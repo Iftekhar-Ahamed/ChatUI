@@ -5,6 +5,7 @@ import {UserActions} from "./user-actions.action";
 import {ApiService} from "../../services/api-service.service";
 import {lastValueFrom} from "rxjs";
 import {CancelMessageRequest, SendMessageRequest} from "../../shared/models/chat/message-request.model";
+import {FriendshipStatus} from "../../shared/enums/user.enum";
 
 export interface UserActionsStateModel {
     searchActions: SearchResultSateModel | null,
@@ -113,6 +114,30 @@ export class UserActionsState {
             requestedUserId: action.otherUserId,
         }
         let res = await lastValueFrom(this.apiService.sentMessageRequest(payload));
+
+        if (res != null && res) {
+            let state = ctx.getState();
+
+            let updatedSearchActions = {
+                ...state.searchActions,
+                searchKey : state.searchActions?.searchKey ?? "",
+                searchResult: state.searchActions?.searchResult.map(result => {
+                    if (result.id === action.otherUserId) {
+                        return {
+                            ...result,
+                            friendshipStatus: FriendshipStatus.Pending
+                        };
+                    }
+                    return result;
+                }) ?? []
+            };
+
+            ctx.setState({
+                ...state,
+                searchActions: updatedSearchActions
+            });
+        }
+
     }
 
     @Action(UserActions.cancelMessageRequestAsync)
