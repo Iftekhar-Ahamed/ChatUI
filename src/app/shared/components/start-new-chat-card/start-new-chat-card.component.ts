@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { NgClass, NgIf } from '@angular/common';
 import { ChatListState } from '../../../store';
 import { Observable, take} from 'rxjs';
 import { StartNewChatProperty } from '../../models/chatList.model';
