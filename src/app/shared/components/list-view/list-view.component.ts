@@ -13,5 +13,4 @@ import {ListViewModel} from "../../models/common/list-view.model";
 })
 export class ListViewComponent {
     @Input() ListOfResult: ListViewModel;
-
 }

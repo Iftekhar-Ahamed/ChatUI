@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Action, Selector, State, StateContext, Store} from "@ngxs/store";
+import {Action, createSelector, Selector, State, StateContext, Store} from "@ngxs/store";
 import {SearchResultModel} from "../../shared/models/search-result/search-result.model";
 import {UserActions} from "./user-actions.action";
 import {ApiService} from "../../services/api-service.service";
@@ -29,7 +29,7 @@ export interface MessageRequestResultModel {
 @State<UserActionsStateModel>
 (
     {
-        name: 'userAction',
+        name: 'userActions',
         defaults:
             {
                 searchActions: null,
@@ -48,6 +48,13 @@ export class UserActionsState {
         return state.searchActions?.searchResult ?? [];
     }
 
+    static searchedResultById(userId: number) {
+        return createSelector(
+            [UserActionsState.searchedResult],
+            (searchResults: SearchResultModel[]) => searchResults.find(result => result.id === userId)
+        );
+    }
+
     @Selector()
     static searchKey(state: UserActionsStateModel): string {
         return state.searchActions?.searchKey ?? "";
@@ -64,10 +71,10 @@ export class UserActionsState {
         const result = await lastValueFrom(this.apiService.searchUserAsync(action.searchTerm));
 
         let searchAction =
-        {
-            searchKey: action.searchTerm,
-            searchResult: result ?? [],
-        }
+            {
+                searchKey: action.searchTerm,
+                searchResult: result ?? [],
+            }
 
         ctx.setState
         (
@@ -120,7 +127,7 @@ export class UserActionsState {
 
             let updatedSearchActions = {
                 ...state.searchActions,
-                searchKey : state.searchActions?.searchKey ?? "",
+                searchKey: state.searchActions?.searchKey ?? "",
                 searchResult: state.searchActions?.searchResult.map(result => {
                     if (result.id === action.otherUserId) {
                         return {
@@ -151,7 +158,32 @@ export class UserActionsState {
             requestedUserId: action.otherUserId,
         }
         let res = await lastValueFrom(this.apiService.cancelMessageRequest(payload));
+
+        if (res != null && res) {
+            let state = ctx.getState();
+
+            let updatedSearchActions = {
+                ...state.searchActions,
+                searchKey: state.searchActions?.searchKey ?? "",
+                searchResult: state.searchActions?.searchResult.map(result => {
+                    if (result.id === action.otherUserId) {
+                        return {
+                            ...result,
+                            friendshipStatus: FriendshipStatus.New
+                        };
+                    }
+                    return result;
+                }) ?? []
+            };
+
+            ctx.setState({
+                ...state,
+                searchActions: updatedSearchActions
+            });
+        }
     }
+
+
 
     @Action(UserActions.createNewAccountAsync)
     async createNewAccount(

@@ -101,11 +101,11 @@ export class ApiService {
 
     }
 
-    cancelMessageRequest(payload: CancelMessageRequest): Observable<string | null> {
+    cancelMessageRequest(payload: CancelMessageRequest): Observable<boolean | null> {
         console.log(payload);
         return this.postData(`/api/Chat/CancelChatFriendRequest`, payload).pipe
         (
-            map(rsp => rsp.data as string),
+            map(rsp => rsp.success as boolean),
             catchError(this.handleError)
         );
 
