@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Action, createSelector, Selector, State, StateContext, Store} from "@ngxs/store";
+import {Action, Selector, State, StateContext, Store} from "@ngxs/store";
 import {SearchResultModel} from "../../shared/models/search-result/search-result.model";
 import {UserActions} from "./user-actions.action";
 import {ApiService} from "../../services/api-service.service";
@@ -46,13 +46,6 @@ export class UserActionsState {
     @Selector()
     static searchedResult(state: UserActionsStateModel): SearchResultModel[] {
         return state.searchActions?.searchResult ?? [];
-    }
-
-    static searchedResultById(userId: number) {
-        return createSelector(
-            [UserActionsState.searchedResult],
-            (searchResults: SearchResultModel[]) => searchResults.find(result => result.id === userId)
-        );
     }
 
     @Selector()
