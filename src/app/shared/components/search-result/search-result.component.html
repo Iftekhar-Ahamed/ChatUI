@@ -2,7 +2,7 @@
   <div *ngIf="SearchedUserResult">
     <cdk-virtual-scroll-viewport itemSize="5" class="search-result">
       <div *cdkVirtualFor="let item of SearchedUserResult; let i = index" class="search-item">
-        <app-search-user-card [user]="item"></app-search-user-card>
+        <app-search-user-card [userId]="item.id"></app-search-user-card>
       </div>
     </cdk-virtual-scroll-viewport>
   </div>

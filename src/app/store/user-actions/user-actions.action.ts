@@ -1,29 +1,38 @@
 import {UserSignUpRequest} from "../../shared/models/user-sign-up/user-sign-up.model";
 
-export namespace UserActions
-{
-  export class searchUserAsync
-  {
-    static readonly type = 'searchUserAsync';
+export namespace UserActions {
+    export class searchUserAsync {
+        static readonly type = 'searchUserAsync';
 
-    constructor(public searchTerm: string){}
-  }
-  export class getAllMessageRequestsAsync
-  {
-    static readonly type = 'getAllMessageRequestsAsync';
+        constructor(public searchTerm: string) {
+        }
+    }
 
-    constructor(){}
-  }
-  export class sentMessageRequestAsync
-  {
-    static readonly type = 'sentMessageRequestAsync';
+    export class getAllMessageRequestsAsync {
+        static readonly type = 'getAllMessageRequestsAsync';
 
-    constructor(public selfUserId:number,public otherUserId:number){}
-  }
-  export class createNewAccountAsync
-  {
-    static readonly type = 'createNewAccountAsync';
+        constructor() {
+        }
+    }
 
-    constructor(public userInfo : UserSignUpRequest){}
-  }
+    export class sentMessageRequestAsync {
+        static readonly type = 'sentMessageRequestAsync';
+
+        constructor(public selfUserId: number, public otherUserId: number) {
+        }
+    }
+
+    export class cancelMessageRequestAsync {
+        static readonly type = 'cancelMessageRequestAsync';
+
+        constructor(public selfUserId: number, public otherUserId: number) {
+        }
+    }
+
+    export class createNewAccountAsync {
+        static readonly type = 'createNewAccountAsync';
+
+        constructor(public userInfo: UserSignUpRequest) {
+        }
+    }
 }

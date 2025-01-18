@@ -1,50 +1,52 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Store } from '@ngxs/store';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FriendshipStatus } from '../../enums/user.enum';
-import { SearchResultModel } from "../../models/search-result/search-result.model";
+import {Store} from '@ngxs/store';
+import {CommonModule} from '@angular/common';
+import {FriendshipStatus} from '../../enums/user.enum';
+import {SearchResultModel} from "../../models/search-result/search-result.model";
 import {UserInfoState} from "../../../store/user-info/user-info.state";
 import {map, take} from "rxjs";
 import {UserActions} from "../../../store/user-actions/user-actions.action";
 
 @Component({
-  selector: 'app-search-user-card',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './search-user-card.component.html',
-  styleUrl: './search-user-card.component.css'
+    selector: 'app-search-user-card',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './search-user-card.component.html',
+    styleUrl: './search-user-card.component.css'
 })
-export class SearchUserCardComponent{
+export class SearchUserCardComponent implements OnInit {
 
-  @Input() user!: SearchResultModel;
-  selfUserId:number;
+    @Input() user:SearchResultModel;
+    selfUserId: number;
 
-  constructor(private store: Store, private router: Router, private activeRouter: ActivatedRoute)
-  {
-    this.store.select(UserInfoState.getUserInfo).pipe
-    (
-      take(1),
-      map( x => this.selfUserId = x?.id ?? 0)
-    ).subscribe();
 
-  }
+    protected readonly FriendshipStatus = FriendshipStatus;
 
-  get avatar(): string
-  {
-    return `assets/avatar.jpg`;
-  }
+    constructor(private store: Store) {}
 
-  sendFriendRequest(): void
-  {
-    console.log("OK");
-    this.store.dispatch(new UserActions.sentMessageRequestAsync(this.selfUserId,this.user.id));
-  }
+    ngOnInit() {
 
-  onSelect(): void
-  {
-    //this.router.navigate([this.user.id], { relativeTo: this.activeRouter });
-  }
+        this.store.select(UserInfoState.getUserInfo).pipe
+        (
+            take(1),
+            map(x => this.selfUserId = x?.id ?? 0)
+        ).subscribe();
+    }
 
-  protected readonly FriendshipStatus = FriendshipStatus;
+    get avatar(): string {
+        return `assets/avatar.jpg`;
+    }
+
+    sendFriendRequest(): void {
+        this.store.dispatch(new UserActions.sentMessageRequestAsync(this.selfUserId, this.user.id));
+    }
+
+    cancelFriendRequest(): void {
+        this.store.dispatch(new UserActions.cancelMessageRequestAsync(this.selfUserId, this.user.id));
+    }
+
+    onSelect(): void {
+        //this.router.navigate([this.user.id], { relativeTo: this.activeRouter });
+    }
+
 }

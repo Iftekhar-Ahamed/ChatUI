@@ -39,6 +39,9 @@ export class TextInputComponent implements OnInit {
     {
       if(StringUtils.isEmptyOrWhitespace(this.data.value))
       {
+        if(!StringUtils.isEmptyOrWhitespace(this.data.errorMessage)){
+          return this.data.errorMessage;
+        }
         return this.data.placeholder;
       }
     }

@@ -1,43 +1,47 @@
-.fadeIn-Animation{
-  animation: fadeIn 0.5s;
-}
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+.search-container, .search-result {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-.search-result {
-  background-color: hsla(0, 0%, 100%, .3);
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  min-height: calc(100vh - 190px);
-  max-height: calc(100vh - 190px);
-  overflow: auto;
-}
 .search-item {
-  padding: 7px;
+    height: 80px;
+    width: 100%;
+    margin-bottom: 10px;
 }
-/* For webkit-based browsers */
+
 .search-result::-webkit-scrollbar {
-  width: 0px;
-  /* Adjust the width of the scrollbar */
+    width: 0px;
 }
 
 .search-result::-webkit-scrollbar-thumb {
-  background: #888;
-  /* Color of the scrollbar thumb */
-  border-radius: 4px;
-  /* Rounded corners for the scrollbar thumb */
+    background: #888;
+    border-radius: 4px;
 }
 
 .search-result::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  /* Color of the scrollbar thumb on hover */
+    background: #555;
 }
 
 .search-result
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  /* Color of the scrollbar track */
+    background: #f1f1f1;
+}
+
+.fadeIn-Animation {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

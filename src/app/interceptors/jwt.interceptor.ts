@@ -24,9 +24,9 @@ export class JwtInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
           catchError((error: HttpErrorResponse) =>
           {
-            // if (error.status === 401) {
-            //   return this.handle401Error(request, next);
-            // }
+            if (error.status === 401) {
+              return this.handle401Error(request, next);
+            }
 
             return throwError(error);
           })
@@ -35,44 +35,42 @@ export class JwtInterceptor implements HttpInterceptor {
     );
   }
 
-  // private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //     return this.store.select(UserAuthenticateState.getRefreshToken).pipe(
-  //       take(1),
-  //       switchMap(refreshToken => {
-  //         if (refreshToken == "") {
-  //
-  //           this.router.navigate(['/login']);
-  //           return throwError('No refresh token available');
-  //         }
-  //
-  //         this.refreshTokenInProgress = this.apiService.getAccessToken(refreshToken).pipe(
-  //           switchMap((newTokens: UserLoginResponse | null) => {
-  //             if (!newTokens) {
-  //               this.store.dispatch(new userAuthenticateAction.ClearResult());
-  //               this.router.navigate(['/login']);
-  //               return throwError('Failed to refresh token');
-  //
-  //             }
-  //             this.store.dispatch(new userAuthenticateAction.UpdateTokens(newTokens.token, newTokens.refreshToken));
-  //
-  //             request = this.addTokenHeader(request, newTokens.token);
-  //             return next.handle(request);
-  //           }),
-  //           catchError(err => {
-  //             this.store.dispatch(new userAuthenticateAction.ClearResult());
-  //             this.router.navigate(['/login']);
-  //             return throwError(err);
-  //           }),
-  //
-  //           switchMap(response => {
-  //             return of(response);
-  //           })
-  //         );
-  //
-  //         return this.refreshTokenInProgress;
-  //       })
-  //     );
-  // }
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      return this.store.select(UserInfoState.getAccessToken).pipe(
+        take(1),
+        switchMap(refreshToken => {
+
+          this.router.navigate(['welcome/sign-in']);
+          return throwError('No refresh token available');
+
+          // this.refreshTokenInProgress = this.apiService.getAccessToken(refreshToken).pipe(
+          //   switchMap((newTokens: UserLoginResponse | null) => {
+          //     if (!newTokens) {
+          //       this.store.dispatch(new userAuthenticateAction.ClearResult());
+          //       this.router.navigate(['/login']);
+          //       return throwError('Failed to refresh token');
+          //
+          //     }
+          //     this.store.dispatch(new userAuthenticateAction.UpdateTokens(newTokens.token, newTokens.refreshToken));
+          //
+          //     request = this.addTokenHeader(request, newTokens.token);
+          //     return next.handle(request);
+          //   }),
+          //   catchError(err => {
+          //     this.store.dispatch(new userAuthenticateAction.ClearResult());
+          //     this.router.navigate(['/login']);
+          //     return throwError(err);
+          //   }),
+          //
+          //   switchMap(response => {
+          //     return of(response);
+          //   })
+          // );
+          //
+          // return this.refreshTokenInProgress;
+        })
+      );
+  }
 
   private addTokenHeader(req: HttpRequest<any>, token: string) {
     return req.clone({
