@@ -1,29 +1,15 @@
 <div class="profile-container">
-    <div *ngIf="user$ | async as user" class="profile-info">
-        <div class="profile-pic">
-            <img [src]="'assets/avatar.jpg'" alt="{{ user.name }}" class="user-image">
-        </div>
-        <div class="profile-details">
-            <form [formGroup]="profileForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input class="form-control" formControlName="name" id="name" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input class="form-control" formControlName="username" id="username" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-wrapper">
-                        <input [type]="passwordFieldType" class="form-control" formControlName="password"
-                               id="password"/>
-                        <i (click)="togglePasswordVisibility()"
-                           [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
-                           class="password-icon">
-                        </i>
-                    </div>
-                </div>
+    <div *ngIf="user$ | async as user"  class="profile-info">
+            <div class="profile-pic">
+                <img [src]="'assets/avatar.jpg'" alt="{{ user.name }}" class="user-image">
+            </div>
+            <div class="profile-details">
+                <app-drop-down-list [data]="titleDdl" class="text-input"></app-drop-down-list>
+                <app-text-input [data]="firstNameInput" class="text-input"></app-text-input>
+                <app-text-input [data]="middleNameInput" class="text-input"></app-text-input>
+                <app-text-input [data]="lastNameInput" class="text-input"></app-text-input>
+                <app-text-input [data]="emailInput" class="text-input"></app-text-input>
+                <app-password-input [data]="passwordInput" class="text-input"></app-password-input>
                 <div class="actions">
                     <button (click)="toggleEdit()" *ngIf="!isEditable" class="btn btn-primary" type="button">Update
                     </button>
@@ -32,7 +18,6 @@
                     <button (click)="onUpdate()" *ngIf="isEditable" class="btn btn-success" type="submit">Save</button>
                     <button (click)="onLogout()" class="btn btn-secondary" type="button">Logout</button>
                 </div>
-            </form>
-        </div>
+            </div>
     </div>
 </div>

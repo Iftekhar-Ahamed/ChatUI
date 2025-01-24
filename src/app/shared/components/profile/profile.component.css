@@ -8,13 +8,13 @@
     align-items: center;
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
-    padding: 20px;
 }
 
 .profile-info {
-    height: 100%;
-    width: 100%;
+    height: 70%;
+    width: 70%;
     display: flex;
+    flex-direction: row;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-image: radial-gradient(circle at 25%, hsla(0, 0%, 100%, 0.355), rgba(50, 50, 50, .2) 80%);
@@ -39,10 +39,18 @@
 
 .profile-details {
     width: 50%;
+    height: 100%;
     display: flex;
+    place-content: center;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 5%;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.text-input{
+    width: 100%;
+    height: 40px;
 }
 
 .user-image {
@@ -50,26 +58,20 @@
     border-radius: 50%;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-form {
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: hsla(0, 0%, 100%, .3);
-}
-
-
 .actions {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+    height: 40px;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -82,46 +84,6 @@ form {
     /* Tailwind's blue-600 */
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-/* Styling for form control elements */
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.password-wrapper {
-    position: relative; /* Make the wrapper relative for absolute positioning of the icon */
-}
-
-.password-wrapper .form-control {
-    padding-right: 30px; /* Add padding to make space for the icon */
-}
-
-.password-icon {
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    right: 10px; /* Position the icon inside the input */
-    transform: translateY(-50%);
-    width: 20px; /* Adjust width as necessary */
-    height: 20px; /* Adjust height as necessary */
-    background-size: contain; /* Ensure the icon fits */
-}
-
-.fa-eye {
-    background-image: url('https://cdn-icons-png.flaticon.com/512/159/159604.png');
-}
-
-.fa-eye-slash {
-    background-image: url('https://cdn-icons-png.flaticon.com/512/10812/10812267.png');
-}
 
 @keyframes fadeIn {
     0% {

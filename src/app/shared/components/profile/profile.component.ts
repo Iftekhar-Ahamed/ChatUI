@@ -1,17 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {UserInfoModel} from "../../models/user.model";
 import {UserInfoState} from "../../../store/user-info/user-info.state";
 import {UserInfoAction} from "../../../store/user-info/user-info.action";
+import {DropDownListComponent} from "../drop-down-list/drop-down-list.component";
+import {TextInputComponent} from "../text-input/text-input.component";
+import {PasswordInputComponent} from "../password-input/password-input.component";
+import {DdlModel, TextInputModel} from "../../models/common/ui-models";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, DropDownListComponent, TextInputComponent, PasswordInputComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -20,6 +24,65 @@ export class ProfileComponent implements OnInit {
   user$: Observable<UserInfoModel|null>;
   isEditable: boolean = false;
   passwordFieldType = 'password';
+
+
+  titleDdl: DdlModel = {
+    data: [
+      {
+        key: "",
+        value: "Select title"
+      },
+      {
+        key: "1",
+        value: "Mr"
+      },
+      {
+        key: "2",
+        value: "Ms"
+      },
+    ],
+    hasErrors: false,
+    selectedData: {
+      key: "",
+      value: "Select title"
+    }
+  };
+  firstNameInput: TextInputModel = {
+    value: '',
+    errorMessage: '',
+    placeholder: 'Enter your first name',
+    hasErrors: false
+  };
+  middleNameInput: TextInputModel = {
+    value: '',
+    errorMessage: '',
+    placeholder: 'Enter your middle name',
+    hasErrors: false
+  };
+  lastNameInput: TextInputModel = {
+    value: '',
+    errorMessage: '',
+    placeholder: 'Enter your last name',
+    hasErrors: false
+  };
+  dobInput: TextInputModel = {
+    value: '',
+    errorMessage: '',
+    placeholder: 'DOB',
+    hasErrors: false
+  };
+  emailInput: TextInputModel = {
+    value: '',
+    errorMessage: '',
+    placeholder: 'Enter a valid email',
+    hasErrors: false
+  };
+  passwordInput: TextInputModel = {
+    value: '',
+    errorMessage: '',
+    placeholder: 'Enter a strong password',
+    hasErrors: false
+  };
 
   constructor(
     private store : Store,
