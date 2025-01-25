@@ -1,28 +1,24 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgClass, NgForOf} from "@angular/common";
-import {DdlModel} from "../../models/common/ui-models";
+import {DdlDataModel, DdlModel} from "../../models/common/ui-models";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-drop-down-list',
   imports: [
     NgClass,
-    NgForOf
+    NgForOf,
+    FormsModule
   ],
   templateUrl: './drop-down-list.component.html',
   styleUrl: './drop-down-list.component.css'
 })
-export class DropDownListComponent implements OnInit {
+export class DropDownListComponent {
   @Input() data : DdlModel;
-  selectedItem : string;
 
-  selectItem(event: any) {
-    const selectedValue = event.target.value;
-    this.data.selectedData = this.data.data.find(option => option.key === selectedValue)!;
+  onModelChange(selectedItem: DdlDataModel) {
+    console.log(this.data.selectedData,selectedItem);
+    //this.data.selectedData = selectedItem;
     this.data.hasErrors = false;
-  }
-
-  ngOnInit()
-  {
-    this.selectedItem = this.data.selectedData?.key ?? "Default";
   }
 }

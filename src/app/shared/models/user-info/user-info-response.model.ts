@@ -1,10 +1,10 @@
 export interface UserInformationDto {
   userId: number;
   name: NameElementDto;
-  dob: Date;
+  dob: Date | null;
   email: string;
-  contactNumberCountryCode: string;
-  contactNumber: string;
+  contactNumberCountryCode: string | null;
+  contactNumber: string | null;
 }
 
 export interface NameElementDto {

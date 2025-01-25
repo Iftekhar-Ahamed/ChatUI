@@ -38,6 +38,7 @@ export class SignUpComponent {
                 value: "Ms"
             },
         ],
+        isEditable: true,
         hasErrors: false,
         selectedData: {
             key: "",
@@ -47,6 +48,7 @@ export class SignUpComponent {
     firstNameInput: TextInputModel = {
         value: '',
         errorMessage: '',
+        isEditable: true,
         placeholder: 'Enter your first name',
         hasErrors: false
     };
@@ -54,30 +56,35 @@ export class SignUpComponent {
         value: '',
         errorMessage: '',
         placeholder: 'Enter your middle name',
+        isEditable: true,
         hasErrors: false
     };
     lastNameInput: TextInputModel = {
         value: '',
         errorMessage: '',
         placeholder: 'Enter your last name',
+        isEditable: true,
         hasErrors: false
     };
     dobInput: TextInputModel = {
         value: '',
         errorMessage: '',
         placeholder: 'DOB',
+        isEditable: true,
         hasErrors: false
     };
     emailInput: TextInputModel = {
         value: '',
         errorMessage: '',
         placeholder: 'Enter a valid email',
+        isEditable: true,
         hasErrors: false
     };
     passwordInput: TextInputModel = {
         value: '',
         errorMessage: '',
         placeholder: 'Enter a strong password',
+        isEditable: true,
         hasErrors: false
     };
 

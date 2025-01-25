@@ -13,7 +13,7 @@
                 <div class="actions">
                     <button (click)="toggleEdit()" *ngIf="!isEditable" class="btn btn-primary" type="button">Update
                     </button>
-                    <button (click)="toggleEdit()" *ngIf="isEditable" class="btn btn-primary" type="button">Cancel
+                    <button (click)="onCancel()" *ngIf="isEditable" class="btn btn-primary" type="button">Cancel
                     </button>
                     <button (click)="onUpdate()" *ngIf="isEditable" class="btn btn-success" type="submit">Save</button>
                     <button (click)="onLogout()" class="btn btn-secondary" type="button">Logout</button>

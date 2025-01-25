@@ -24,12 +24,14 @@ export class SignInComponent {
     usernameInput: TextInputModel = {
         value: '',
         errorMessage: '',
+        isEditable: true,
         placeholder: 'Enter your registered email',
         hasErrors: false
     };
     passwordInput: TextInputModel = {
         value: '',
         errorMessage: '',
+        isEditable: true,
         placeholder: 'Enter your password',
         hasErrors: false
     };
@@ -71,7 +73,7 @@ export class SignInComponent {
             };
 
             try {
-                await lastValueFrom(this.store.dispatch(new UserInfoAction.userLogInAsync(userLogInReq)));
+                await lastValueFrom(this.store.dispatch(new UserInfoAction.UserLogInAsync(userLogInReq)));
 
                 this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
                     if (isLoggedIn) {

@@ -1,9 +1,10 @@
 <div class="ddl">
     <select
-            (change)="selectItem($event)"
+            [(ngModel)]="data.selectedData"
+            (ngModelChange)="onModelChange($event)"
             [ngClass]="{ 'is-invalid': data.hasErrors }"
-            [value]="selectedItem"
+            [disabled]="!data.isEditable"
     >
-        <option *ngFor="let item of data.data" [value]="item.key">{{ item.value }}</option>
+        <option *ngFor="let item of data.data" [ngValue]="item">{{ item.value }}</option>
     </select>
 </div>

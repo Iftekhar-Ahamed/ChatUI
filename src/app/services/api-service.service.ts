@@ -9,6 +9,7 @@ import {environment} from "../environments/environment";
 import {SearchResultModel} from "../shared/models/search-result/search-result.model";
 import {CancelMessageRequest, SendMessageRequest} from "../shared/models/chat/message-request.model";
 import {UserSignUpRequest} from "../shared/models/user-sign-up/user-sign-up.model";
+import {UserInfoModel} from "../shared/models/user.model";
 
 @Injectable({
     providedIn: 'root'
@@ -104,6 +105,16 @@ export class ApiService {
     cancelMessageRequest(payload: CancelMessageRequest): Observable<boolean | null> {
         console.log(payload);
         return this.postData(`/api/Chat/CancelChatFriendRequest`, payload).pipe
+        (
+            map(rsp => rsp.success as boolean),
+            catchError(this.handleError)
+        );
+
+    }
+
+    updateUserInfo(payload: UserInformationDto): Observable<boolean | null> {
+        console.log(payload);
+        return this.postData(`/api/User/UpdateUser`, payload).pipe
         (
             map(rsp => rsp.success as boolean),
             catchError(this.handleError)

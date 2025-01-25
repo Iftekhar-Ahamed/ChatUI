@@ -1,9 +1,10 @@
 <div class="text-input">
-  <input
-    [ngClass]="{ 'is-invalid': data.hasErrors }"
-    [placeholder]="placeHolder"
-    [value]="data.value"
-    (input)="onValueChange($event)"
-    type="text"
-  />
+    <input
+            (input)="onValueChange($event)"
+            [ngClass]="{ 'is-invalid': data.hasErrors }"
+            [placeholder]="placeHolder"
+            [readonly]="!data.isEditable"
+            [value]="data.value"
+            type="text"
+    />
 </div>

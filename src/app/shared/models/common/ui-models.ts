@@ -3,6 +3,7 @@ export interface TextInputModel
   value : string;
   placeholder : string;
   hasErrors : boolean;
+  isEditable : boolean;
   errorMessage : string;
 }
 
@@ -14,6 +15,7 @@ export interface DdlModel
 {
   data : DdlDataModel[];
   selectedData : DdlDataModel;
+  isEditable : boolean;
   hasErrors : boolean;
 }
 

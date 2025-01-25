@@ -27,6 +27,7 @@ export class SearchNewChatFriendComponent implements OnInit,OnDestroy {
         value: '',
         errorMessage: '',
         placeholder: 'Enter user email',
+        isEditable: true,
         hasErrors: false
     };
     searchResult$: Observable<SearchResultModel[]> = this.store.select(UserActionsState.searchedResult);
