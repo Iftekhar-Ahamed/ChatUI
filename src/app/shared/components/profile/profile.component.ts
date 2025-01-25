@@ -11,7 +11,7 @@ import {DropDownListComponent} from "../drop-down-list/drop-down-list.component"
 import {TextInputComponent} from "../text-input/text-input.component";
 import {PasswordInputComponent} from "../password-input/password-input.component";
 import {DdlModel, TextInputModel} from "../../models/common/ui-models";
-import {NameElementDto, UserInformationDto} from "../../models/user-info/user-info-response.model";
+import {UserInformationDto} from "../../models/user-info/user-info-response.model";
 
 @Component({
     selector: 'app-profile',

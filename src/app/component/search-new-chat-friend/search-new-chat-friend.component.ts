@@ -7,7 +7,7 @@ import {MenuNavigationAction} from '../../store/menu-navigation/menu-navigation.
 import {TextInputComponent} from "../../shared/components/text-input/text-input.component";
 import {ListViewComponent} from "../../shared/components/list-view/list-view.component";
 import {TextInputModel} from "../../shared/models/common/ui-models";
-import {lastValueFrom, Observable, take, takeWhile} from "rxjs";
+import {lastValueFrom, Observable, takeWhile} from "rxjs";
 import {UserActions} from "../../store/user-actions/user-actions.action";
 import {StringUtils} from "../../utils/string.utils";
 import {ListViewModel} from "../../shared/models/common/list-view.model";

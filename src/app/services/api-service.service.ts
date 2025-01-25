@@ -9,7 +9,6 @@ import {environment} from "../environments/environment";
 import {SearchResultModel} from "../shared/models/search-result/search-result.model";
 import {CancelMessageRequest, SendMessageRequest} from "../shared/models/chat/message-request.model";
 import {UserSignUpRequest} from "../shared/models/user-sign-up/user-sign-up.model";
-import {UserInfoModel} from "../shared/models/user.model";
 
 @Injectable({
     providedIn: 'root'

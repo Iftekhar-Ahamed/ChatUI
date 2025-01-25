@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgClass, NgForOf} from "@angular/common";
 import {DdlDataModel, DdlModel} from "../../models/common/ui-models";
 import {FormsModule} from "@angular/forms";
