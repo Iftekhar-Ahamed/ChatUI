@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable} from 'rxjs';
 import { MenuConfigModel } from '../../models/menu-config.model';
-import { Router, RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { UserInfoState } from "../../../store/user-info/user-info.state";
 import { UserInfoModel } from "../../models/user.model";
 import { NameElementDto } from "../../models/user-info/user-info-response.model";
