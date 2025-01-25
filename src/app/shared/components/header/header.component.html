@@ -2,14 +2,16 @@
     <nav>
         <ul class="nav-links">
             <li *ngFor="let item of (itemLinks$ | async); trackBy: trackFn">
-                <a *ngIf="item.isViewInHeader" [routerLink]="resolveUrl(item)" [ngClass]="{'selected': item.isSelected}">
-                    {{ item.name }}
+                <a *ngIf="item.isViewInHeader" [ngClass]="{'selected': item.isSelected}"
+                   [routerLink]="resolveUrl(item).path"
+                   [queryParams]="resolveUrl(item).queryParams">
+                   {{ item.name }}
                 </a>
             </li>
         </ul>
     </nav>
     <div *ngIf="userInfo$ | async as user" class="user-profile">
-        <a [routerLink]="'/profile'" [ngClass]="{'selected': true}">
+        <a [ngClass]="{'selected': true}" [routerLink]="'/profile'">
             <img
                     [src]="'assets/avatar.jpg'"
                     alt="{{ userFullName(user.name) }}"

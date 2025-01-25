@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngxs/store';
 import {CommonModule} from '@angular/common';
 import {ChatListAction} from '../../store';
@@ -22,51 +22,61 @@ import {UserActionsState} from "../../store/user-actions/user-actions.state";
     templateUrl: './search-new-chat-friend.component.html',
     styleUrl: './search-new-chat-friend.component.css'
 })
-export class SearchNewChatFriendComponent implements OnInit,OnDestroy {
+export class SearchNewChatFriendComponent implements OnInit, OnDestroy {
     searchTerm: TextInputModel = {
         value: '',
         errorMessage: '',
         placeholder: 'Enter user email',
         isEditable: true,
-        hasErrors: false
+        hasErrors: false,
     };
     searchResult$: Observable<SearchResultModel[]> = this.store.select(UserActionsState.searchedResult);
 
     searchResult: ListViewModel = {
         data: [],
-        key: ListKey.Search_Result
-    }
+        key: ListKey.Search_Result,
+    };
 
     isActive = false;
 
-    constructor(private route: Router, private store: Store) {
+    constructor(private route: ActivatedRoute, private router: Router, private store: Store) {
     }
 
     ngOnInit(): void {
         this.store.dispatch(new ChatListAction.SelectNewChat());
-        this.store.dispatch(new MenuNavigationAction.UpdateMenuCurrentUrl("home/chatList", this.route.url));
+        this.store.dispatch(new MenuNavigationAction.UpdateMenuCurrentUrl("home/chatList", this.router.url));
+
+        this.route.queryParamMap.subscribe(async (params) => {
+            const query = params.get('key');
+            if (query) {
+                this.searchTerm.value = query;
+                await this.searchUserAsync();
+            }
+        });
+
         this.isActive = true;
     }
-    ngOnDestroy(){
+
+    ngOnDestroy() {
         this.isActive = false;
     }
 
     async searchUserAsync() {
-
         if (!StringUtils.isEmptyOrWhitespace(this.searchTerm.value)) {
+
             await lastValueFrom(this.store.dispatch(new UserActions.searchUserAsync(this.searchTerm.value)));
 
-            this.searchResult$.pipe(
-                takeWhile(() => this.isActive)
-            ).subscribe((result) => {
+            await this.router.navigate([], {
+                queryParams: {key: this.searchTerm.value},
+                queryParamsHandling: 'merge', // Keeps existing query params and updates the 'key'
+            });
+            this.searchResult$.pipe(takeWhile(() => this.isActive)).subscribe((result) => {
                 this.searchResult.data = result;
             });
-
-        }
-        else
-        {
+        } else {
             this.searchTerm.hasErrors = true;
             this.searchTerm.errorMessage = 'Enter a valid user email';
         }
     }
+
 }

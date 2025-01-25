@@ -28,9 +28,24 @@ export class HeaderComponent
   {
   }
 
-  resolveUrl(menu : MenuConfigModel):string
-  {
-    return this.menuService.resolveMenuUrl(menu);
+  resolveUrl(menu: MenuConfigModel): { path: string; queryParams: any } {
+    const menuUrl = this.menuService.resolveMenuUrl(menu);
+
+    const [path, queryString] = menuUrl.split('?');
+    const queryParams = this.parseQueryString(queryString);
+
+    return { path, queryParams };
+  }
+
+  parseQueryString(queryString: string | undefined): any {
+    if (!queryString) return {};
+    return queryString
+        .split('&')
+        .reduce((params: any, pair) => {
+          const [key, value] = pair.split('=');
+          params[key] = decodeURIComponent(value || '');
+          return params;
+        }, {});
   }
 
   trackFn(index :number,item: MenuConfigModel): string

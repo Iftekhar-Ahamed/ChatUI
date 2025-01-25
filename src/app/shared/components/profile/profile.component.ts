@@ -158,7 +158,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.middleNameInput.isEditable = this.isEditable;
         this.lastNameInput.isEditable = this.isEditable;
         this.dobInput.isEditable = this.isEditable;
-        this.emailInput.isEditable = this.isEditable;
         this.passwordInput.isEditable = this.isEditable;
     }
 
