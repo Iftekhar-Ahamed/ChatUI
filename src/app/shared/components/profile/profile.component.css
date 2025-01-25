@@ -11,7 +11,7 @@
 }
 
 .profile-info {
-    height: 70%;
+    height: auto;
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -94,6 +94,15 @@
     .profile-details{
         width: 100%;
         padding: 10px;
+    }
+}
+
+@media (max-height: 600px)
+{
+    .profile-container{
+        height: auto;
+        overflow: auto;
+        scrollbar-width: thin;
     }
 }
 
