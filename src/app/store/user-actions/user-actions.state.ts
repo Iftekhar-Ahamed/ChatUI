@@ -176,8 +176,6 @@ export class UserActionsState {
         }
     }
 
-
-
     @Action(UserActions.createNewAccountAsync)
     async createNewAccount(
         ctx: StateContext<UserActionsStateModel>,
@@ -190,4 +188,15 @@ export class UserActionsState {
         }
     }
 
+    @Action(UserActions.createNewAccountAsync)
+    async getMessageRequests(
+        ctx: StateContext<UserActionsStateModel>,
+        action: UserActions.createNewAccountAsync
+    ) {
+        let rsp = await lastValueFrom(this.apiService.userSignUp(action.userInfo));
+
+        if (rsp != null) {
+            console.log(rsp);
+        }
+    }
 }

@@ -10,10 +10,10 @@
         <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.New " class="btn btn-send-request"
                 type="button">Send Request
         </button>
-        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Requested" class="btn btn-send-request"
+        <button (click)="acceptFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Requested" class="btn btn-send-request"
                 type="button">Accept
         </button>
-        <button (click)="sendFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Requested" class="btn btn-remove-request"
+        <button (click)="removeFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Requested" class="btn btn-remove-request"
                 type="button">Remove
         </button>
         <button (click)="cancelFriendRequest()" *ngIf=" user.friendshipStatus === FriendshipStatus.Pending" class=" btn btn-cancel-request"

@@ -45,6 +45,13 @@ export class SearchUserCardComponent implements OnInit {
         this.store.dispatch(new UserActions.cancelMessageRequestAsync(this.selfUserId, this.user.id));
     }
 
+    acceptFriendRequest(): void {
+    }
+
+    removeFriendRequest(): void {
+        this.store.dispatch(new UserActions.cancelMessageRequestAsync(this.selfUserId, this.user.id));
+    }
+
     onSelect(): void {
         //this.router.navigate([this.user.id], { relativeTo: this.activeRouter });
     }

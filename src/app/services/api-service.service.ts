@@ -121,4 +121,12 @@ export class ApiService {
 
     }
 
+    getMessageRequests(): Observable<UserInformationDto | null> {
+        return this.getData('/api/Chat/GetFriendRequest').pipe(
+            map((response: ApiResponseDto<UserInformationDto>) => response.data),
+            catchError(this.handleError)
+        );
+
+    }
+
 }
