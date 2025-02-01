@@ -1,17 +1,15 @@
-<div class="sign-in">
+<form (submit)="logIn()" class="sign-in">
     <h2>Log in account</h2>
     <div class="username-password-input">
-        <app-text-input [data]="usernameInput" class="username-name"></app-text-input>
-        <app-password-input [data]="passwordInput" class="password-input"></app-password-input>
+        <app-text-input class="username" [data]="usernameInput"></app-text-input>
+        <app-password-input class="password" [data]="passwordInput"></app-password-input>
     </div>
     <div class="sign-up-log-in-button">
-        <button (click)="logIn()" class="btn btn-log-in">
+        <button type="submit" class="btn btn-log-in">
             Log In
         </button>
-        <button (click)="signUp()" class="btn btn-sign-up">
+        <button type="button" (click)="signUp()" class="btn btn-sign-up">
             Sign Up
         </button>
     </div>
-
-</div>
-
+</form>

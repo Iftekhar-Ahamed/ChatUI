@@ -27,7 +27,7 @@
   flex-direction: column;
 }
 
-.username-name,.password-input
+.username,.password
 {
   width: 100%;
 }

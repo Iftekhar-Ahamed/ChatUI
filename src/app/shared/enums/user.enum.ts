@@ -11,4 +11,5 @@ export enum FriendshipStatus {
   Accepted = 3,
   Blocked = 4,
   New = 1,
+  Requested = 5,
 }
