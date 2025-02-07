@@ -6,8 +6,7 @@ import {HeaderComponent} from "../../shared/components/header/header.component";
   selector: 'app-message-request-layout',
   standalone: true,
   imports: [
-    MessageRequestComponent,
-    HeaderComponent
+    MessageRequestComponent
   ],
   templateUrl: './message-request-layout.component.html',
   styleUrl: './message-request-layout.component.css'

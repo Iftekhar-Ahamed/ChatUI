@@ -22,6 +22,8 @@ export class AppComponent {
     this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
       if (isLoggedIn) {
         this.isLoggedIn = true;
+      }else {
+        this.isLoggedIn = false;
       }
     });
   }

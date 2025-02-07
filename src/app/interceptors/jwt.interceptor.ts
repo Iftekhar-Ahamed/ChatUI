@@ -5,6 +5,8 @@ import {ApiService} from "../services/api-service.service";
 import { Router } from "@angular/router";
 import { Store } from "@ngxs/store";
 import {UserInfoState} from "../store/user-info/user-info.state";
+import {UserActions} from "../store/user-actions/user-actions.action";
+import {UserInfoAction} from "../store/user-info/user-info.action";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
