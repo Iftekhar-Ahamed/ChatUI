@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NgxSpinnerModule} from "ngx-spinner";
-import {MenuService} from "./services/menu.service";
 import {HeaderComponent} from "./shared/components/header/header.component";
 import {UserInfoState} from "./store/user-info/user-info.state";
 import {Store} from "@ngxs/store";
@@ -20,11 +19,7 @@ export class AppComponent {
 
   constructor(private store: Store) {
     this.store.select(UserInfoState.isUserLogIn).subscribe(isLoggedIn => {
-      if (isLoggedIn) {
-        this.isLoggedIn = true;
-      }else {
-        this.isLoggedIn = false;
-      }
+      this.isLoggedIn = isLoggedIn;
     });
   }
 
